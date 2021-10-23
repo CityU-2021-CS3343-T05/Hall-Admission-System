@@ -4,7 +4,7 @@ public class Hall2 implements Hall {
 
 	private Hall2 instance;
 	private int hallNumber;
-	private int numberofAcceptance;
+	private int numberOfAcceptance;
 	private WeightComponents weightingComponents;
 
 	private Hall2() {
@@ -12,44 +12,34 @@ public class Hall2 implements Hall {
 		throw new UnsupportedOperationException();
 	}
 
-	public Hall2 getInstance() {
+	@Override
+	public Hall getInstance() {
 		return this.instance;
 	}
 
+	@Override
 	public int getHallNumber() {
 		return this.hallNumber;
 	}
 
-	/**
-	 * 
-	 * @param hallNumber
-	 */
-	public void setHallNumber(int hallNumber) {
-		this.hallNumber = hallNumber;
-	}
-
-	public int getNumberofAcceptance() {
-		return this.numberofAcceptance;
-	}
-
-	/**
-	 * 
-	 * @param numberofAcceptance
-	 */
-	public void setNumberofAcceptance(int numberofAcceptance) {
-		this.numberofAcceptance = numberofAcceptance;
-	}
-
+	@Override
 	public WeightComponents getWeightingComponents() {
 		return this.weightingComponents;
 	}
 
-	/**
-	 * 
-	 * @param weightingComponents
-	 */
+	@Override
 	public void setWeightingComponents(WeightComponents weightingComponents) {
 		this.weightingComponents = weightingComponents;
+	}
+
+	@Override
+	public int getNumberofAcceptance() {
+		return this.numberOfAcceptance;
+	}
+
+	@Override
+	public void setNumberofAcceptance(int numberofAcceptance) {
+		this.numberOfAcceptance = numberofAcceptance;
 	}
 
 }

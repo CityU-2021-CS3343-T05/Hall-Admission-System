@@ -1,5 +1,7 @@
 package HallAdmissionSystem;
 
+import java.util.Date;
+
 public class Application {
 
 	private String sid;
@@ -8,7 +10,7 @@ public class Application {
 	private int ecaHr;
 	private int schoolRepresentive;
 	private String location;
-	private DateTime applyTime;
+	private Date applyTime;
 	private Hall perferenceHall;
 	private int score;
 	private boolean isLocal;
@@ -85,7 +87,7 @@ public class Application {
 		this.location = location;
 	}
 
-	public DateTime getApplyTime() {
+	public Date getApplyTime() {
 		return this.applyTime;
 	}
 
@@ -93,7 +95,7 @@ public class Application {
 	 * 
 	 * @param applyTime
 	 */
-	public void setApplyTime(DateTime applyTime) {
+	public void setApplyTime(Date applyTime) {
 		this.applyTime = applyTime;
 	}
 

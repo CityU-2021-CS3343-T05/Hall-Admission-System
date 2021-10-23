@@ -13,9 +13,4 @@ public interface Hall {
 	public WeightComponents getWeightingComponents();
 	
 	public void setWeightingComponents(WeightComponents weightingComponents);
-	
-	public int getNumberOfAcceptance();
-
-	public void setNumberOfAcceptance(int numberOfAc);
-	
 }

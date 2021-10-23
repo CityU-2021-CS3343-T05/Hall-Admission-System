@@ -2,18 +2,17 @@ package HallAdmissionSystem;
 
 public class Hall1 implements Hall {
 
-	private Hall1 instance;
+	private Hall1 instance = new Hall1();;
 	private int hallNumber;
 	private int numberOfAcceptance;
 	private WeightComponents weightingComponents;
 
 	private Hall1() {
-		// TODO - implement Hall1.Hall1
-		throw new UnsupportedOperationException();
+		this.hallNumber = 1;
 	}
-
+	
 	@Override
-	public Hall1 getInstance() {
+	public Hall getInstance() {
 		return this.instance;
 	}
 
@@ -33,13 +32,12 @@ public class Hall1 implements Hall {
 	}
 
 	@Override
-	public int getNumberOfAcceptance() {
-		return numberOfAcceptance;
-	}
-	
-	@Override
-	public void setNumberOfAcceptance(int numberOfAcceptance) {
-		this.numberOfAcceptance=numberOfAcceptance;
+	public int getNumberofAcceptance() {
+		return this.numberOfAcceptance;
 	}
 
+	@Override
+	public void setNumberofAcceptance(int numberofAcceptance) {
+		this.numberOfAcceptance = numberofAcceptance;
+	}
 }

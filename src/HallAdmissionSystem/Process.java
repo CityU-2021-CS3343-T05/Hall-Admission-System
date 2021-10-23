@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Process {
 
-	private Proess instance;
+	private Process instance;
 	private HashMap<Hall, ArrayList<Application>> allOutput;
 	private ArrayList<Application> waitingList;
 
