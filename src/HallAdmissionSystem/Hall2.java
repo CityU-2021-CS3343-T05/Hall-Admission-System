@@ -1,45 +1,14 @@
 package HallAdmissionSystem;
 
-public class Hall2 implements Hall {
+public class Hall2 extends Hall {
 
-	private Hall2 instance;
-	private int hallNumber;
-	private int numberOfAcceptance;
-	private WeightComponents weightingComponents;
-
+	private static Hall instance = new Hall2();
+	
 	private Hall2() {
-		// TODO - implement Hall2.Hall2
-		throw new UnsupportedOperationException();
+		super(2, 30, new WeightComponents());
 	}
-
-	@Override
-	public Hall getInstance() {
-		return this.instance;
+	
+	public static Hall getInstance() {
+		return instance;
 	}
-
-	@Override
-	public int getHallNumber() {
-		return this.hallNumber;
-	}
-
-	@Override
-	public WeightComponents getWeightingComponents() {
-		return this.weightingComponents;
-	}
-
-	@Override
-	public void setWeightingComponents(WeightComponents weightingComponents) {
-		this.weightingComponents = weightingComponents;
-	}
-
-	@Override
-	public int getNumberofAcceptance() {
-		return this.numberOfAcceptance;
-	}
-
-	@Override
-	public void setNumberofAcceptance(int numberofAcceptance) {
-		this.numberOfAcceptance = numberofAcceptance;
-	}
-
 }

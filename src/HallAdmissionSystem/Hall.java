@@ -1,16 +1,35 @@
 package HallAdmissionSystem;
 
-public interface Hall {
+public abstract class Hall {
 
-	public Hall getInstance();
-
-	public int getHallNumber();
+	private int hallNumber;
+	private int numberOfAcceptance;
+	private WeightComponents weightingComponents;
 	
-	public int getNumberofAcceptance();
+	protected Hall(int hallNumber, int numOfAcceptance, WeightComponents weightComponents) {
+		this.hallNumber = hallNumber;
+		this.numberOfAcceptance = numOfAcceptance;
+		this.weightingComponents = weightComponents;
+	}
 
-	public void setNumberofAcceptance(int numberofAcceptance);
+	public int getHallNumber() {
+		return this.hallNumber;
+	}
 
-	public WeightComponents getWeightingComponents();
-	
-	public void setWeightingComponents(WeightComponents weightingComponents);
+	public WeightComponents getWeightingComponents() {
+		return this.weightingComponents;
+	}
+
+	public void setWeightingComponents(WeightComponents weightingComponents) {
+		this.weightingComponents = weightingComponents;
+	}
+
+	public int getNumberofAcceptance() {
+		return this.numberOfAcceptance;
+	}
+
+	public void setNumberofAcceptance(int numberofAcceptance) {
+		this.numberOfAcceptance = numberofAcceptance;
+	}
+
 }
