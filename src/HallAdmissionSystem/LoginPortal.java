@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LoginPortal{
 
-		private LoginPortal instance = new LoginPortal();
+		private static LoginPortal instance = new LoginPortal();
 		private ArrayList<Account> accountList;
 
 
