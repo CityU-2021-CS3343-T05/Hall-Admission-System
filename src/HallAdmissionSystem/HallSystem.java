@@ -2,19 +2,19 @@ package HallAdmissionSystem;
 
 import java.util.ArrayList;
 
-public class System implements CityUFunction, StudentFunction {
+public class HallSystem implements CityUFunction, StudentFunction {
 
-	private System instance;
+	private HallSystem instance;
 	private ArrayList<Hall> allHall;
 	private ArrayList<Application> allApplication;
 	private Process process;
 
-	private System() {
+	private HallSystem() {
 		// TODO - implement System.System
 		throw new UnsupportedOperationException();
 	}
 
-	public System getInstance() {
+	public HallSystem getInstance() {
 		return this.instance;
 	}
 
