@@ -1,16 +1,31 @@
 package HallAdmissionSystem;
 
-public class LoginPortal {
+import java.io.*;
+import java.util.*;
 
-	private LoginPortal instance;
+public class LoginPortal{
 
-	private LoginPortal() {
-		// TODO - implement LoginPortal.LoginPortal
-		throw new UnsupportedOperationException();
+		private LoginPortal instance = new LoginPortal();
+		private ArrayList<Account> accountList;
+
+
+	private LoginPortal(){
+		try {
+		File inputFile=new File("C:\\Users\\amble\\OneDrive\\орн▒\\Cs3343\\Hall-Admission-System\\src\\Database.csv");
+		Scanner in=new Scanner(inputFile);
+		
+		in.nextLine();
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("File Not Found");
+		}
+		
+		
 	}
 
-	private LoginPortal getInstance() {
-		return this.instance;
+	private static LoginPortal getInstance() {
+		
+		return instance;
 	}
 
 	public Account login() {
