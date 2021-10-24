@@ -5,6 +5,12 @@ public class CityU implements Account {
 	private String userName;
 	private String userPwd;
 
+	
+	public CityU(String userName,String userPwd) {
+		this.userName=userName;
+		this.userPwd=userPwd;
+	}
+	
 	public String getUserName() {
 		return this.userName;
 	}

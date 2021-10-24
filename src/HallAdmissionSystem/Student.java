@@ -5,9 +5,17 @@ public class Student implements Account {
 	private String userName;
 	private String userPwd;
 	private String sid;
-	private String nation;
+	private boolean isLocal;
 	private int year;
 
+	public Student(String sid,int year,boolean isLocal,String userNmae,String userPwd) {
+		this.setSid(sid);
+		this.setYear(year);
+		this.setIsLocal(isLocal);
+		this.setUserName(userNmae);
+		this.setUserPwd(userPwd);
+	}
+	
 	public String getUserName() {
 		return this.userName;
 	}
@@ -54,16 +62,16 @@ public class Student implements Account {
 		this.sid = sid;
 	}
 
-	public String getNation() {
-		return this.nation;
+	public boolean getIsLocal() {
+		return this.isLocal;
 	}
 
 	/**
 	 * 
-	 * @param nation
+	 * @param isLocal
 	 */
-	public void setNation(String nation) {
-		this.nation = nation;
+	public void setIsLocal(boolean isLocal) {
+		this.isLocal = isLocal;
 	}
 
 	public int getYear() {
