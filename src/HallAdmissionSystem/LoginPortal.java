@@ -7,8 +7,6 @@ public class LoginPortal{
 
 	private static LoginPortal instance = new LoginPortal();
 	private ArrayList<Account> accountList=new ArrayList<Account>();
-	private Account cityU;
-
 
 	private LoginPortal(){
 		try {
@@ -26,7 +24,8 @@ public class LoginPortal{
 				if (type.equals("School")) {
 					userName=inLineContent[4];
 					userPwd=inLineContent[5];
-					cityU=new CityU(userName,userPwd);
+					Account account=new CityU(userName,userPwd);
+					accountList.add(account);
 				}else if(type.equals("Student")) {
 					sid=inLineContent[1];
 					year=Integer.parseInt(inLineContent[2]);
@@ -37,12 +36,12 @@ public class LoginPortal{
 						isLocal=false;
 					userName=inLineContent[4];
 					userPwd=inLineContent[5];
-					Student student=new Student(sid,year,isLocal,userName,userPwd);
-					accountList.add(student);
-					System.out.println(student.getUserName());
+					Account account=new Student(sid,year,isLocal,userName,userPwd);
+					accountList.add(account);
 				}
 				
 			}
+			
 			in.close();
 		}
 		catch(FileNotFoundException e) {
@@ -57,7 +56,7 @@ public class LoginPortal{
 	}
 	
 	public Account findAccount(String inputUserName) {
-		if(inputUserName==null) { 
+		if(inputUserName.isEmpty()) { 
 			System.out.println("User Name cannot empty! Please try again!");
 			return null;
 		}else{
@@ -66,17 +65,19 @@ public class LoginPortal{
 					return e;
 			}
 		}
+		System.out.println("No existing User! Please try again!");
 		return null;
 	}
 	
 	public Account checkPwd(Account targetAc, String inputUserPwd) {
-		if(inputUserPwd==null) { 
+		if(inputUserPwd.isEmpty()) { 
 			System.out.println("Password cannot empty! Please try again!");
 			return null;
 		}else{
 			if(inputUserPwd.equals(targetAc.getUserPwd()))
 				return targetAc;
 		}
+		System.out.println("Wrong Password!Please try again!");
 		return null;
 		
 	}
