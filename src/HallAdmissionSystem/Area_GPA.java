@@ -8,10 +8,13 @@ public class Area_GPA extends Area_Academic {
 		super(new ValueScore(convertScore(rawString), rawString));
 	}
 
-	@Override
 	public static int convertScore(String rawData) {
 		
 		return (int) Math.round(Long.parseLong(rawData)/4.3);
 	}
 
+	@Override
+	public void setValue(String v) {
+		super.setValue(Integer.toString(convertScore(v)));
+	}
 }

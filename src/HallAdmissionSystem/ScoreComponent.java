@@ -8,9 +8,17 @@ public class ScoreComponent {
 
 	public ScoreComponent(String academicType, String academic, String leadership, String eCA, String location) {
 		this.academic = Area_Academic.createArea_Academic(academicType, academic);
-		this.leadership = new Area_LeaderShip(leadership);
+//		this.leadership = new Area_LeaderShip(leadership);
+	}
+	
+	public int getAcademic() {
+		return academic.getValue();
 	}
 
+	public void setAcademic(String newScore) {
+		this.academic.setValue(newScore);;
+	}
+	
 	public Area_LeaderShip getLeaderShip() {
 		return null;
 	}
@@ -21,19 +29,7 @@ public class ScoreComponent {
 	 */
 	public void setLeaderShip(Area_LeaderShip leaderShip) {
 	}
-
-	public Area_Academic getAcademic() {
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param academic
-	 */
-	public void setAcademic(Area_Academic academic) {
-		this.academic = academic;
-	}
-
+	
 	public Area_ECA getEca() {
 		return null;
 	}

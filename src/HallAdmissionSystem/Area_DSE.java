@@ -27,9 +27,8 @@ public class Area_DSE extends Area_Academic {
 	}
 
 	@Override
-	public void setValue(int v) {
-		// TODO Auto-generated method stub
-		
+	public void setValue(String v) {
+		super.setValue(Integer.toString(convertScore(v)));
 	}
 
 }

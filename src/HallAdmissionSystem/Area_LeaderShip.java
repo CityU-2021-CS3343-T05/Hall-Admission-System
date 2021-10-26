@@ -8,14 +8,13 @@ public class Area_LeaderShip implements Weighting, Score {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public int convertScore() {
+	public static int convertScore() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void setValue(int v) {
+	public void setValue(String v) {
 		// TODO Auto-generated method stub
 		
 	}

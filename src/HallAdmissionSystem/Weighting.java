@@ -2,7 +2,7 @@ package HallAdmissionSystem;
 
 public interface Weighting {
 
-	void setValue(int v);
+	void setValue(String v);
 
 	int getValue();
 

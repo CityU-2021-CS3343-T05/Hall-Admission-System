@@ -4,14 +4,13 @@ public class Area_ECA implements Weighting, Score {
 
 	private Value value;
 
-	@Override
-	public int convertScore() {
+	public static int convertScore() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void setValue() {
+	public void setValue(String v) {
 		// TODO Auto-generated method stub
 		
 	}

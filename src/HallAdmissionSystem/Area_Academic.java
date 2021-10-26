@@ -17,16 +17,12 @@ public abstract class Area_Academic implements Weighting, Score {
 	}
 
 	@Override
-	public void setValue(int v) {
-		this.value.setValue(v);		
+	public void setValue(String v) {
+		this.value.setValue(Integer.parseInt(v));		
 	}
 
 	@Override
 	public int getValue() {
 		return this.value.getValue();
-	}
-
-	public static int convertScore(String rawData) {
-		return -9999;
 	}
 }
