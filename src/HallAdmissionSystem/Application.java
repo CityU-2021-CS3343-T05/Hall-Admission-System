@@ -5,14 +5,9 @@ import java.util.Date;
 public class Application {
 
 	private String sid;
-	private int academicScore;
-	private int leadershipHr;
-	private int ecaHr;
-	private int schoolRepresentive;
-	private String location;
 	private Date applyTime;
 	private Hall perferenceHall;
-	private int score;
+	private Score score;
 	private boolean isLocal;
 
 	public String getSid() {

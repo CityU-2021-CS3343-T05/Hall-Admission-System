@@ -1,6 +1,8 @@
 package HallAdmissionSystem;
 
-public interface Weighting {
+public interface Score {
+
+	void convertScore();
 
 	void setValue();
 
