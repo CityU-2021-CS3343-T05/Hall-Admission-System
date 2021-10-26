@@ -4,6 +4,6 @@ public interface Value {
 
 	int getValue();
 
-	void setValue();
+	void setValue(int v);
 
 }

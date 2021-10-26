@@ -1,25 +1,32 @@
 package HallAdmissionSystem;
 
-public class Area_Academic implements Weighting, Score {
+public abstract class Area_Academic implements Weighting, Score {
 
 	private Value value;
-
-	@Override
-	public void convertScore() {
-		// TODO Auto-generated method stub
-		
+	
+	public Area_Academic(Value v) {
+		this.value = v;
+	}
+	
+	public static Area_Academic createArea_Academic(String type, String rawString) {
+		if(type.equals("DSE")) {
+			return new Area_DSE(rawString);
+		}else {
+			return new Area_GPA(rawString);
+		}
 	}
 
 	@Override
-	public void setValue() {
-		// TODO Auto-generated method stub
-		
+	public void setValue(int v) {
+		this.value.setValue(v);		
 	}
 
 	@Override
 	public int getValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.value.getValue();
 	}
 
+	public static int convertScore(String rawData) {
+		return -9999;
+	}
 }

@@ -23,7 +23,7 @@ public class Application {
 	}
 
 	public int getAcademicScore() {
-		return this.academicScore;
+		return 0;
 	}
 
 	/**
@@ -31,11 +31,10 @@ public class Application {
 	 * @param academicScore
 	 */
 	public void setAcademicScore(int academicScore) {
-		this.academicScore = academicScore;
 	}
 
 	public int getLeadershipHr() {
-		return this.leadershipHr;
+		return 0;
 	}
 
 	/**
@@ -43,11 +42,10 @@ public class Application {
 	 * @param leadershipHr
 	 */
 	public void setLeadershipHr(int leadershipHr) {
-		this.leadershipHr = leadershipHr;
 	}
 
 	public int getEcaHr() {
-		return this.ecaHr;
+		return 0;
 	}
 
 	/**
@@ -55,11 +53,10 @@ public class Application {
 	 * @param ecaHr
 	 */
 	public void setEcaHr(int ecaHr) {
-		this.ecaHr = ecaHr;
 	}
 
 	public int getSchoolRepresentive() {
-		return this.schoolRepresentive;
+		return 0;
 	}
 
 	/**
@@ -67,11 +64,10 @@ public class Application {
 	 * @param schoolRepresentive
 	 */
 	public void setSchoolRepresentive(int schoolRepresentive) {
-		this.schoolRepresentive = schoolRepresentive;
 	}
 
 	public String getLocation() {
-		return this.location;
+		return null;
 	}
 
 	/**
@@ -79,7 +75,6 @@ public class Application {
 	 * @param location
 	 */
 	public void setLocation(String location) {
-		this.location = location;
 	}
 
 	public Date getApplyTime() {
@@ -107,7 +102,7 @@ public class Application {
 	}
 
 	public int getScore() {
-		return this.score;
+		return 0;
 	}
 
 	/**
@@ -115,7 +110,6 @@ public class Application {
 	 * @param score
 	 */
 	public void setScore(int score) {
-		this.score = score;
 	}
 
 	public boolean getIsLocal() {

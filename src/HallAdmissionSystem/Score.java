@@ -2,9 +2,11 @@ package HallAdmissionSystem;
 
 public interface Score {
 
-	void convertScore();
+	static int convertScore(String rawData) {
+		return -9999;
+	}
 
-	void setValue();
+	void setValue(int v);
 
 	int getValue();
 

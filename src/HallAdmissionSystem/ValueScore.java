@@ -4,6 +4,11 @@ public class ValueScore implements Value {
 
 	private int score;
 	private String rawScore;
+	
+	public ValueScore(int rawScore, String rawData) {
+		this.rawScore = rawData;
+		this.score = rawScore;
+	}
 
 	public String getRawScore() {
 		return this.rawScore;
@@ -19,14 +24,12 @@ public class ValueScore implements Value {
 
 	@Override
 	public int getValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return score;
 	}
 
 	@Override
-	public void setValue() {
-		// TODO Auto-generated method stub
-		
+	public void setValue(int s) {
+		this.score = s;
 	}
 
 }

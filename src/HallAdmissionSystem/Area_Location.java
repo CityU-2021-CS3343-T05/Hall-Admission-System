@@ -5,9 +5,9 @@ public class Area_Location implements Weighting, Score {
 	private Value value;
 
 	@Override
-	public void convertScore() {
+	public int convertScore() {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override

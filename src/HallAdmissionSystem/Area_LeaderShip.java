@@ -4,14 +4,18 @@ public class Area_LeaderShip implements Weighting, Score {
 
 	private Value value;
 
-	@Override
-	public void convertScore() {
-		// TODO Auto-generated method stub
-		
+	public Area_LeaderShip(String leadershipTimes) {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void setValue() {
+	public int convertScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setValue(int v) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -21,5 +25,4 @@ public class Area_LeaderShip implements Weighting, Score {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
