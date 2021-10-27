@@ -2,42 +2,36 @@ package HallAdmissionSystem;
 
 public class Student implements Account {
 
+	private String sid;
 	private String userName;
 	private String userPwd;
-	private String sid;
 	private boolean isLocal;
 	private int year;
 
-	public Student(String sid,int year,boolean isLocal,String userNmae,String userPwd) {
-		this.setSid(sid);
-		this.setYear(year);
-		this.setIsLocal(isLocal);
-		this.setUserName(userNmae);
-		this.setUserPwd(userPwd);
-	}
-	
-	public String getUserName() {
-		return this.userName;
+	public Student(String sid, String userNmae, String userPwd, boolean isLocal, int year) {
+		this.sid = sid;
+		this.userName = userNmae;
+		this.userPwd = userPwd;
+		this.year = year;
+		this.isLocal = isLocal;
 	}
 
-	/**
-	 * 
-	 * @param userName
-	 */
+	@Override
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	public String getUserPwd() {
-		return this.userPwd;
+	public String getUserName() {
+		return this.userName;
 	}
 
-	/**
-	 * 
-	 * @param userPwd
-	 */
+	@Override
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
+	}
+
+	public String getUserPwd() {
+		return this.userPwd;
 	}
 
 	public void createApplication() {
@@ -54,36 +48,12 @@ public class Student implements Account {
 		return this.sid;
 	}
 
-	/**
-	 * 
-	 * @param sid
-	 */
-	public void setSid(String sid) {
-		this.sid = sid;
-	}
-
 	public boolean getIsLocal() {
 		return this.isLocal;
 	}
 
-	/**
-	 * 
-	 * @param isLocal
-	 */
-	public void setIsLocal(boolean isLocal) {
-		this.isLocal = isLocal;
-	}
-
 	public int getYear() {
 		return this.year;
-	}
-
-	/**
-	 * 
-	 * @param year
-	 */
-	public void setYear(int year) {
-		this.year = year;
 	}
 
 }
