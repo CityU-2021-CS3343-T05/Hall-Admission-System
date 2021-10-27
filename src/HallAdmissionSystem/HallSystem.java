@@ -7,11 +7,13 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	private static HallSystem instance = new HallSystem();
 	private ArrayList<Hall> allHallListing;
 	private ArrayList<Application> allApplication;
-	private Process process;
+	private Process processResult;
 
 	private HallSystem() {
 		allHallListing = new ArrayList<>();
 		allApplication = new ArrayList<>();
+		
+		processResult = new Process();
 		
 		allHallListing.add(new Hall(1, 50, new WeightComponent(0, 0, 0, 0)));
 		allHallListing.add(new Hall(2, 100, new WeightComponent(0, 0, 0, 0)));
@@ -36,12 +38,11 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-
+		
 	}
 
 	@Override
 	public void processApplication() {
-		
 		
 	}
 

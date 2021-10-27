@@ -4,11 +4,10 @@ import java.util.*;
 
 public class Process {
 
-	private Process instance;
 	private HashMap<Hall, ArrayList<Application>> allOutput;
 	private ArrayList<Application> waitingList;
 
-	private Process() {
+	public Process() {
 		// TODO - implement Process.Process
 		throw new UnsupportedOperationException();
 	}
