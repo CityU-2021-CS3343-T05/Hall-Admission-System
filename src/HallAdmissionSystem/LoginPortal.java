@@ -36,7 +36,7 @@ public class LoginPortal{
 						isLocal=false;
 					userName=inLineContent[4];
 					userPwd=inLineContent[5];
-					Account account=new Student(sid,year,isLocal,userName,userPwd);
+					Account account=new Student(sid,userName,userPwd,isLocal,year);
 					accountList.add(account);
 				}
 				

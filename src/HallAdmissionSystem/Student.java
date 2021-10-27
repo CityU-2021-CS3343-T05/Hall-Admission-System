@@ -33,17 +33,7 @@ public class Student implements Account {
 	public String getUserPwd() {
 		return this.userPwd;
 	}
-
-	public void createApplication() {
-		// TODO - implement Student.createApplication
-		throw new UnsupportedOperationException();
-	}
-
-	public void viewApplication() {
-		// TODO - implement Student.viewApplication
-		throw new UnsupportedOperationException();
-	}
-
+	
 	public String getSid() {
 		return this.sid;
 	}
@@ -56,4 +46,17 @@ public class Student implements Account {
 		return this.year;
 	}
 
+	public void mainManuel() {
+		
+	}
+
+	public void createApplication() {
+		// TODO - implement Student.createApplication
+		throw new UnsupportedOperationException();
+	}
+
+	public void viewApplication() {
+		// TODO - implement Student.viewApplication
+		throw new UnsupportedOperationException();
+	}
 }

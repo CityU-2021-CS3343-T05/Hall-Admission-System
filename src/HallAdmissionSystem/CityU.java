@@ -15,10 +15,6 @@ public class CityU implements Account {
 		return this.userName;
 	}
 
-	/**
-	 * 
-	 * @param userName
-	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -27,10 +23,6 @@ public class CityU implements Account {
 		return this.userPwd;
 	}
 
-	/**
-	 * 
-	 * @param userPwd
-	 */
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
