@@ -1,21 +1,25 @@
 package HallAdmissionSystem;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Result {
 
 	private Hall hall;
 	private ArrayList<Application> waitingList;
 	private ArrayList<Application> admissionList;
+	private PriorityQueue<Application> fullQueue;
 
-	public Result(Hall hall, ArrayList<Application> recWaitingList, ArrayList<Application> recAdmissionList) {
+	public Result(Hall hall) {
 		this.hall = hall;
-		waitingList = recWaitingList;
-		admissionList = recAdmissionList;
+		fullQueue = new PriorityQueue<>();
 	}
 	
 	public Hall getHall() {
 		return hall;
+	}
+	
+	public void addToQueue(Application app) {
+		fullQueue.add(app);
 	}
 
 	public ArrayList<Application> getWaitingList() {

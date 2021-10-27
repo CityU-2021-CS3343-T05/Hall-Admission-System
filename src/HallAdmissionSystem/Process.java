@@ -5,24 +5,16 @@ import java.util.*;
 public class Process {
 
 	private ArrayList<Result> allOutput;
+	private ArrayList<Application> allInput;
 	
-	public Process() {
-		// TODO - implement Process.Process
-		throw new UnsupportedOperationException();
+	public Process(ArrayList<Application> list) {
+		this.allInput = list;
 	}
 
-	public Process getInstance() {
-		// TODO - implement Process.getInstance
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param allApplication
-	 */
-	public void calculateApplicationScore(ArrayList<Application> allApplication) {
-		// TODO - implement Process.calculateApplicationScore
-		throw new UnsupportedOperationException();
+	public void calculateApplicationScore(ArrayList<Application> list) {
+		for (Application application : list) {
+			int[] detailScore = 
+		}
 	}
 
 	public void sortApplication() {
@@ -43,6 +35,10 @@ public class Process {
 	public void runLocalProcess() {
 		// TODO - implement Process.runLocalProcess
 		throw new UnsupportedOperationException();
+	}
+	
+	public void runProcess() {
+		
 	}
 
 }

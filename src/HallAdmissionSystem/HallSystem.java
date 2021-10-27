@@ -13,8 +13,6 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		allHallListing = new ArrayList<>();
 		allApplication = new ArrayList<>();
 		
-		processResult = new Process();
-		
 		allHallListing.add(new Hall(1, 50, new WeightComponent(0, 0, 0, 0)));
 		allHallListing.add(new Hall(2, 100, new WeightComponent(0, 0, 0, 0)));
 		allHallListing.add(new Hall(3, 80, new WeightComponent(0, 0, 0, 0)));
@@ -43,7 +41,8 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void processApplication() {
-		
+		processResult = new Process(allApplication);
+		processResult.runProcess();
 	}
 
 	@Override
@@ -56,7 +55,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	@Override
 	public Hall getHall(int targetHall) {
 		for (Hall hall : allHallListing) {
-			if(hall.getHallNumber()==targetHall) {
+			if(hall.equals(targetHall)) {
 				return hall;
 			}
 		}

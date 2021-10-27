@@ -2,13 +2,14 @@ package HallAdmissionSystem;
 
 import java.util.Date;
 
-public class Application {
+public class Application{
 
 	private Date applyTime;
 	private String sid;
 	private boolean isLocal;
 	private Hall perferenceHall;
 	private ScoreComponent score;
+	private int totalScore;
 	
 	public Application(Student std, int perferHall, ScoreComponent score) {
 		this.applyTime = new Date();
@@ -32,28 +33,21 @@ public class Application {
 	public Hall getPerferenceHall() {
 		return this.perferenceHall;
 	}
-
-	public void setPerferenceHall(int newHallNumber) {
-	}
-
+	
 	public ScoreComponent getScore() {
 		return score;
-	}
-
-	public void setScore(int score) {
 	}
 
 	public boolean getIsLocal() {
 		return this.isLocal;
 	}
-
-	public void setIsLocal(boolean isLocal) {
-		this.isLocal = isLocal;
+	
+	public void setTotalScore(int s) {
+		this.totalScore = s;
 	}
 	
 	@Override
 	public String toString() {
 		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.perferenceHall + "\t" + this.score;	
 	}
-
 }
