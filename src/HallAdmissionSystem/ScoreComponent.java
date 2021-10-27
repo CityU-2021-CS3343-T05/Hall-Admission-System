@@ -37,12 +37,12 @@ public class ScoreComponent {
 		this.eCA.setValue(newHour);
 	}
 
-	public Area_Location getLocation() {
-		return null;
+	public int getLocation() {
+		return this.location.getValue();
 	}
 
-	public void setLocation(Area_Location location) {
-		this.location = location;
+	public void setLocation(String newLocation) {
+		this.location.setValue(newLocation);
 	}
 
 }

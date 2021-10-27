@@ -11,7 +11,7 @@ public class ValueWeighting implements Value {
 	}
 
 	@Override
-	public void setValue() {
+	public void setValue(int v) {
 		// TODO Auto-generated method stub
 		
 	}
