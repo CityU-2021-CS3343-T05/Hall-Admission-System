@@ -12,7 +12,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	private HallSystem() {
 		allHallListing = new ArrayList<>();
 		allApplication = new ArrayList<>();
-		
+
 		allHallListing.add(new Hall(1, 50, new WeightComponent(0, 0, 0, 0)));
 		allHallListing.add(new Hall(2, 100, new WeightComponent(0, 0, 0, 0)));
 		allHallListing.add(new Hall(3, 80, new WeightComponent(0, 0, 0, 0)));
@@ -36,7 +36,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-		
+
 	}
 
 	@Override
@@ -55,20 +55,26 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	@Override
 	public Hall getHall(int targetHall) {
 		for (Hall hall : allHallListing) {
-			if(hall.equals(targetHall)) {
+			if (hall.equals(targetHall)) {
 				return hall;
 			}
 		}
 		return null;
 	}
 
+	public ArrayList<Hall> getHallList() {
+		return allHallListing;
+	}
+
 	@Override
-	public void changeHallSetting(Hall hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight, int newLocationWeight) {
+	public void changeHallSetting(Hall hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight,
+			int newLocationWeight) {
 		hall.setNewHallWeightings(newAcademicWeight, newLeaderShipWeight, newEcaWeight, newLocationWeight);
 	}
 
 	@Override
-	public void createNewwHall(int hallNum, int capacity, int academicWeight, int leaderShipWeight, int ecaWeight, int locationWeight) {
+	public void createNewwHall(int hallNum, int capacity, int academicWeight, int leaderShipWeight, int ecaWeight,
+			int locationWeight) {
 		new Hall(hallNum, capacity, new WeightComponent(academicWeight, leaderShipWeight, ecaWeight, locationWeight));
 	}
 }

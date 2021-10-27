@@ -14,4 +14,5 @@ public interface CityUFunction {
 			int locationWeight);
 
 	void changeHallSetting(Hall hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight, int newLocationWeight);
+
 }
