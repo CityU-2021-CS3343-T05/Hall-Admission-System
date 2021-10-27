@@ -1,7 +1,5 @@
 package HallAdmissionSystem;
 
-import java.util.Iterator;
-
 public class Area_Location implements Weighting, Score {
 
 	private Value value;
@@ -16,7 +14,7 @@ public class Area_Location implements Weighting, Score {
 	public static int convertScore(String rawData) {
 		for (int i = 0; i < locationList.length; i++) {
 			if(rawData.equals(locationList[i])) {
-				return locationScore[i];
+				return locationScore[i]/100*10;
 			}
 		}
 		

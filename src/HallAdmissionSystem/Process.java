@@ -4,9 +4,8 @@ import java.util.*;
 
 public class Process {
 
-	private HashMap<Hall, ArrayList<Application>> allOutput;
-	private ArrayList<Application> waitingList;
-
+	private ArrayList<Result> allOutput;
+	
 	public Process() {
 		// TODO - implement Process.Process
 		throw new UnsupportedOperationException();

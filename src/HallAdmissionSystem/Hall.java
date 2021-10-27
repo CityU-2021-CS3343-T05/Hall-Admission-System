@@ -36,5 +36,22 @@ public class Hall {
 	public String toString() {
 		return Integer.toString(hallNumber);
 	}
-
+	
+	@Override
+	public boolean equals(Object target) {
+		if (target == this) {
+            return true;
+        }
+        if (target == null || target.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Hall hallTarget = (Hall)target;
+		
+		if(this.hallNumber == hallTarget.hallNumber) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
