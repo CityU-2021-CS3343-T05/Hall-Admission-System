@@ -2,8 +2,8 @@ package HallAdmissionSystem;
 
 public class Area_DSE extends Area_Academic {
 
-	public Area_DSE(String rawString) {
-		super(new ValueScore(convertScore(rawString), rawString));
+	public Area_DSE(String rawScore) {
+		super(new ValueScore(convertScore(rawScore), rawScore));
 	}
 
 	public static int convertScore(String rawData) {

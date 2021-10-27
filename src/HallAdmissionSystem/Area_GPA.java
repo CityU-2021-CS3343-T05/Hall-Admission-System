@@ -4,8 +4,8 @@ import java.lang.Math;
 
 public class Area_GPA extends Area_Academic {
 
-	public Area_GPA(String rawString) {
-		super(new ValueScore(convertScore(rawString), rawString));
+	public Area_GPA(String rawScore) {
+		super(new ValueScore(convertScore(rawScore), rawScore));
 	}
 
 	public static int convertScore(String rawData) {

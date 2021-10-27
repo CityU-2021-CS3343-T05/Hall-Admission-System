@@ -6,49 +6,41 @@ public class ScoreComponent {
 
 	private Score academic, leadership, eCA, location;
 
-	public ScoreComponent(String academicType, String academic, String leadership, String eCA, String location) {
-		this.academic = Area_Academic.createArea_Academic(academicType, academic);
-//		this.leadership = new Area_LeaderShip(leadership);
+	public ScoreComponent(String academicType, String academicScore, String leadershipTimes, String ecaHour, String location) {
+		this.academic = Area_Academic.createArea_Academic(academicType, academicScore);
+		this.leadership = new Area_LeaderShip(leadershipTimes);
+		this.eCA = new Area_ECA(ecaHour);
+		this.location = new Area_Location(location);
 	}
 	
 	public int getAcademic() {
-		return academic.getValue();
+		return this.academic.getValue();
 	}
 
 	public void setAcademic(String newScore) {
 		this.academic.setValue(newScore);;
 	}
 	
-	public Area_LeaderShip getLeaderShip() {
-		return null;
+	public int getLeaderShip() {
+		return this.leadership.getValue();
 	}
 
-	/**
-	 * 
-	 * @param leaderShip
-	 */
-	public void setLeaderShip(Area_LeaderShip leaderShip) {
+	public void setLeaderShip(String newTimes) {
+		this.leadership.setValue(newTimes);
 	}
 	
-	public Area_ECA getEca() {
-		return null;
+	public int getECA() {
+		return this.eCA.getValue();
 	}
-
-	/**
-	 * 
-	 * @param eca
-	 */
-	public void setEca(Area_ECA eca) {
+	
+	public void setECA(String newHour) {
+		this.eCA.setValue(newHour);
 	}
 
 	public Area_Location getLocation() {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param location
-	 */
 	public void setLocation(Area_Location location) {
 		this.location = location;
 	}

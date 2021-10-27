@@ -12,15 +12,28 @@ public class main {
 		
 		//Test add score
 		System.out.println("Testing Academic DSE");
-		ScoreComponent s_AC_1 = new ScoreComponent("DSE", "5*", null, null, null);
+		ScoreComponent s_AC_1 = new ScoreComponent("DSE", "5*", "5", "180", null);
 		System.out.println(s_AC_1.getAcademic());
 		s_AC_1.setAcademic("5**");
 		System.out.println(s_AC_1.getAcademic());
 		
+		System.out.println("Testing Leader");
+		System.out.println(s_AC_1.getLeaderShip());
+		s_AC_1.setLeaderShip("2");
+		System.out.println(s_AC_1.getLeaderShip());
+		
+		System.out.println("Testing ECA");
+		System.out.println(s_AC_1.getECA());
+		s_AC_1.setECA("2");
+		System.out.println(s_AC_1.getECA());
+		
+		
+		
 		System.out.println("Testing Academic GPA");
-		ScoreComponent s_AC_2 = new ScoreComponent("GPA", "4.3", null, null, null);
+		ScoreComponent s_AC_2 = new ScoreComponent("GPA", "4.3", "2", "300", null);
 		System.out.println(s_AC_2.getAcademic());
 		s_AC_2.setAcademic("2");
 		System.out.println(s_AC_2.getAcademic());
+		
 	}
 }

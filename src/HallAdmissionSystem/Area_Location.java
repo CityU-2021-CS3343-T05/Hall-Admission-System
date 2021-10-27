@@ -4,8 +4,12 @@ public class Area_Location implements Weighting, Score {
 
 	private Value value;
 	
-	public int convertScore() {
-		// TODO Auto-generated method stub
+	public Area_Location(String location) {
+		this.value = new ValueScore(convertScore(location), location);
+	}
+	
+	public static int convertScore(String rawData) {
+
 		return 0;
 	}
 
