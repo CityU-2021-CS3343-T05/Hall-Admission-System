@@ -31,20 +31,17 @@ public class Process {
 	}
 
 	private void calculateApplicationScore(Application application) {
-		System.out.println("==============");
 		System.out.println(application);
 		int[] detailScore = application.getDetailScore();
-		
 		Hall preferencedHall = application.getPerferenceHall();
-		System.out.println(preferencedHall);
+//		System.out.println(preferencedHall);
 		int[] detailWeighting = preferencedHall.getHallWeightings();
-		System.out.println("==============");
 		int sum = 0;
 
 		for (int i = 0; i < detailWeighting.length; i++) {
 			sum += detailWeighting[i] * detailScore[i];
 		}
-
+		System.out.println(">"+sum);
 		application.setTotalScore(sum);
 	}
 
@@ -72,14 +69,13 @@ public class Process {
 	}
 	
 	private void testResult() {
-		for (Result res : allOutput) {
-			System.out.println(res);
-		}
+		System.out.println(allOutput);
 	}
 
 	public void runProcess() {
 		setupQueue();
 		sortApplication();
+		System.out.println("Result");
 		testResult();
 	}
 

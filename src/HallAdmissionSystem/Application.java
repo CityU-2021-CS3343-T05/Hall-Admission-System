@@ -48,17 +48,17 @@ public class Application implements Comparable<Application> {
 
 	@Override
 	public String toString() {
-		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.perferenceHall + "\t" + this.score;
+		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.perferenceHall + "\t" + this.score + "\t" + this.totalScore;
 	}
 
 	@Override
 	public int compareTo(Application target) {
 		if (this.totalScore > target.totalScore) {
-			return 1;
+			return -1;
 		} else if (this.totalScore == target.totalScore) {
 			return 0;
 		} else {
-			return -1;
+			return 1;
 		}
 	}
 }

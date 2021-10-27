@@ -40,13 +40,16 @@ public class Result {
 			output += this.hall + "\t full \t" + application + "\n";
 		}
 		
-		for (Application application : admissionList) {
-			output += this.hall + "\t admissionList \t" + application + "\n";
-		}
+		System.out.println("Test poll");
+		System.out.println(fullQueue.poll());
 		
-		for (Application application : waitingList) {
-			output += this.hall + "\t waitingList \t" + application + "\n";
-		}
+//		for (Application application : admissionList) {
+//			output += this.hall + "\t admissionList \t" + application + "\n";
+//		}
+//		
+//		for (Application application : waitingList) {
+//			output += this.hall + "\t waitingList \t" + application + "\n";
+//		}
 		return output;
 	}
 }
