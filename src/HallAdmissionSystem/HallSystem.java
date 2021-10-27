@@ -73,7 +73,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	}
 
 	@Override
-	public void createNewwHall(int hallNum, int capacity, int academicWeight, int leaderShipWeight, int ecaWeight,
+	public void createNewHall(int hallNum, int capacity, int academicWeight, int leaderShipWeight, int ecaWeight,
 			int locationWeight) {
 		new Hall(hallNum, capacity, new WeightComponent(academicWeight, leaderShipWeight, ecaWeight, locationWeight));
 	}

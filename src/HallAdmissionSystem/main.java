@@ -37,17 +37,26 @@ public class main {
 //		s_AC_2.setAcademic("2");
 //		System.out.println(s_AC_2.getAcademic());
 		
-		System.out.println("Test Weighting");
-		WeightComponent wc1 = new WeightComponent(0, 20, 100, 90);
-		int[] arr = wc1.getWeightings();
-		for (int i : arr) {
-			System.out.println(i);
-		}
-		System.out.println("Test Update Weighting");
-		wc1.setWeightings(110, 220, 90, 100);
-		int[] arr2 = wc1.getWeightings();
-		for (int i : arr2) {
-			System.out.println(i);
-		}
+//		System.out.println("Test Weighting");
+//		WeightComponent wc1 = new WeightComponent(0, 20, 100, 90);
+//		int[] arr = wc1.getWeightings();
+//		for (int i : arr) {
+//			System.out.println(i);
+//		}
+//		System.out.println("Test Update Weighting");
+//		wc1.setWeightings(110, 220, 90, 100);
+//		int[] arr2 = wc1.getWeightings();
+//		for (int i : arr2) {
+//			System.out.println(i);
+//		}
+		
+		HallSystem hS = HallSystem.getInstance();
+		Student std1 = new Student("001", "Jennifer", "Elston", false, 2020);
+		hS.createApplication(std1, 1, new ScoreComponent("GPA", "4.3", "2", "300", "Kowloon Tong"));
+		
+		Student std2 = new Student("002", "Elston", "Jennifer", false, 2019);
+		hS.createApplication(std1, 1, new ScoreComponent("GPA", "3.5", "2", "300", "Kowloon Tong"));
+		
+		hS.processApplication();
 	}
 }

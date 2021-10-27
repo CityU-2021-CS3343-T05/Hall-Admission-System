@@ -65,10 +65,17 @@ public class Process {
 		// TODO - implement Process.runLocalProcess
 		throw new UnsupportedOperationException();
 	}
+	
+	private void testResult() {
+		for (Result res : allOutput) {
+			System.out.println(res);
+		}
+	}
 
 	public void runProcess() {
 		setupQueue();
 		sortApplication();
+		testResult();
 	}
 
 }
