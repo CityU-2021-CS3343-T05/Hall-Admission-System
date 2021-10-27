@@ -5,7 +5,7 @@ public abstract class Hall {
 	private int hallNumber;
 	private int numberOfAcceptance;
 	private WeightComponent weightingComponents;
-	
+
 	protected Hall(int hallNumber, int numOfAcceptance, WeightComponent weightComponents) {
 		this.hallNumber = hallNumber;
 		this.numberOfAcceptance = numOfAcceptance;
@@ -16,12 +16,12 @@ public abstract class Hall {
 		return this.hallNumber;
 	}
 
-	public WeightComponent getWeightingComponents() {
-		return this.weightingComponents;
+	public int[] getHallWeightings() {
+		return this.weightingComponents.getWeightings();
 	}
 
-	public void setWeightingComponents(WeightComponent weightingComponents) {
-		this.weightingComponents = weightingComponents;
+	public void setNewHallWeightings(int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight, int newLocationWeight) {
+		this.weightingComponents.setWeightings(newAcademicWeight, newLeaderShipWeight, newEcaWeight, newLocationWeight);
 	}
 
 	public int getNumberofAcceptance() {
