@@ -1,6 +1,6 @@
 package HallAdmissionSystem;
 
-public abstract class Area_Academic implements Weighting, Score {
+public class Area_Academic implements Weighting, Score {
 
 	private Value value;
 	
@@ -17,8 +17,13 @@ public abstract class Area_Academic implements Weighting, Score {
 	}
 
 	@Override
-	public void setValue(String v) {
+	public void setScoreValue(String v) {
 		this.value.setValue(Integer.parseInt(v));		
+	}
+	
+	@Override
+	public void setWeightValue(int newWeight) {
+		this.value.setValue(newWeight);
 	}
 
 	@Override

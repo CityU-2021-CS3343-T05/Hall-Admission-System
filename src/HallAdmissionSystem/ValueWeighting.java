@@ -4,16 +4,18 @@ public class ValueWeighting implements Value {
 
 	private int weight;
 
+	public ValueWeighting(int academicWeight) {
+		this.weight = academicWeight;
+	}
+
 	@Override
 	public int getValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.weight;
 	}
 
 	@Override
 	public void setValue(int v) {
-		// TODO Auto-generated method stub
-		
+		this.weight = v;
 	}
 
 }

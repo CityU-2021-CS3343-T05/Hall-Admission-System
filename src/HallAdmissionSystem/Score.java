@@ -2,7 +2,7 @@ package HallAdmissionSystem;
 
 public interface Score {
 
-	void setValue(String v);
+	void setScoreValue(String v);
 
 	int getValue();
 

@@ -13,7 +13,7 @@ public class Area_GPA extends Area_Academic {
 	}
 
 	@Override
-	public void setValue(String v) {
-		super.setValue(Integer.toString(convertScore(v)));
+	public void setScoreValue(String v) {
+		super.setScoreValue(Integer.toString(convertScore(v)));
 	}
 }

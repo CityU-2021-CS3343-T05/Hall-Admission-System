@@ -1,16 +1,14 @@
 package HallAdmissionSystem;
 
-import java.util.ArrayList;
-
 public class ScoreComponent {
 
 	private Score academic, leadership, eCA, location;
 
 	public ScoreComponent(String academicType, String academicScore, String leadershipTimes, String ecaHour, String location) {
 		this.academic = Area_Academic.createArea_Academic(academicType, academicScore);
-		this.leadership = new Area_LeaderShip(leadershipTimes);
-		this.eCA = new Area_ECA(ecaHour);
-		this.location = new Area_Location(location);
+		this.leadership = new Area_LeaderShip(new ValueScore(Area_LeaderShip.convertScore(leadershipTimes), leadershipTimes));
+		this.eCA = new Area_ECA(new ValueScore(Area_ECA.convertScore(ecaHour), ecaHour));
+		this.location = new Area_Location(new ValueScore(Area_Location.convertScore(location), location));
 	}
 	
 	public int getAcademic() {
@@ -18,7 +16,7 @@ public class ScoreComponent {
 	}
 
 	public void setAcademic(String newScore) {
-		this.academic.setValue(newScore);;
+		this.academic.setScoreValue(newScore);;
 	}
 	
 	public int getLeaderShip() {
@@ -26,7 +24,7 @@ public class ScoreComponent {
 	}
 
 	public void setLeaderShip(String newTimes) {
-		this.leadership.setValue(newTimes);
+		this.leadership.setScoreValue(newTimes);
 	}
 	
 	public int getECA() {
@@ -34,7 +32,7 @@ public class ScoreComponent {
 	}
 	
 	public void setECA(String newHour) {
-		this.eCA.setValue(newHour);
+		this.eCA.setScoreValue(newHour);
 	}
 
 	public int getLocation() {
@@ -42,7 +40,7 @@ public class ScoreComponent {
 	}
 
 	public void setLocation(String newLocation) {
-		this.location.setValue(newLocation);
+		this.location.setScoreValue(newLocation);
 	}
 
 }

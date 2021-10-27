@@ -1,56 +1,57 @@
 package HallAdmissionSystem;
 
-import java.util.ArrayList;
-
 public class WeightComponent {
 
 	private Weighting academic, leadership, eCA, location;
 
-
-	public Area_LeaderShip getLeaderShip() {
-		return null;
+	public WeightComponent(int academicWeight, int leadershipWeight, int ecaWeight, int locationWeight) {
+		this.academic = new Area_Academic(new ValueWeighting(academicWeight));
+		this.leadership = new Area_LeaderShip(new ValueWeighting(leadershipWeight));
+		this.eCA = new Area_ECA(new ValueWeighting(ecaWeight));
+		this.location = new Area_Location(new ValueWeighting(locationWeight));
 	}
 
-	/**
-	 * 
-	 * @param leaderShip
-	 */
-	public void setLeaderShip(Area_LeaderShip leaderShip) {
+//	public int getAcademic() {
+//		return this.getAcademic();
+//	}
+
+	public void setAcademic(int newWeight) {
+		this.academic.setWeightValue(newWeight);
 	}
 
-	public Area_Academic getAcademic() {
-		return null;
+//	public int getLeaderShip() {
+//		return this.leadership.getValue();
+//	}
+
+	public void setLeaderShip(int newLeaderShipTimes) {
+		this.leadership.setWeightValue(newLeaderShipTimes);
 	}
 
-	/**
-	 * 
-	 * @param academic
-	 */
-	public void setAcademic(Area_Academic academic) {
-		this.academic = academic;
+//	public int getECA() {
+//		return this.eCA.getValue();
+//	}
+
+	public void setEca(int newEca) {
+		this.eCA.setWeightValue(newEca);
 	}
 
-	public Area_ECA getEca() {
-		return null;
+//	public int getLocation() {
+//		return this.location.getValue();
+//	}
+
+	public void setLocation(int newLocation) {
+		this.location.setWeightValue(newLocation);
 	}
 
-	/**
-	 * 
-	 * @param eca
-	 */
-	public void setEca(Area_ECA eca) {
+	public void setWeightings(int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight, int newLocationWeight) {
+		this.academic.setWeightValue(newAcademicWeight);
+		this.leadership.setWeightValue(newLeaderShipWeight);
+		this.eCA.setWeightValue(newEcaWeight);
+		this.location.setWeightValue(newLocationWeight);
 	}
 
-	public Area_Location getLocation() {
-		return null;
+	public int[] getWeightings() {
+		return new int[] { this.academic.getValue(), this.leadership.getValue(), this.eCA.getValue(),
+				this.location.getValue() };
 	}
-
-	/**
-	 * 
-	 * @param location
-	 */
-	public void setLocation(Area_Location location) {
-		this.location = location;
-	}
-
 }

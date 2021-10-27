@@ -4,8 +4,8 @@ public class Area_ECA implements Weighting, Score {
 
 	private Value value;
 
-	public Area_ECA(String ecaHour) {
-		this.value = new ValueScore(convertScore(ecaHour), ecaHour);
+	public Area_ECA(Value v) {
+		this.value = v;
 	}
 
 	public static int convertScore(String rawData) {
@@ -30,9 +30,15 @@ public class Area_ECA implements Weighting, Score {
 	}
 
 	@Override
-	public void setValue(String v) {
+	public void setScoreValue(String v) {
 		this.value.setValue(convertScore(v));
 	}
+	
+	@Override
+	public void setWeightValue(int newWeight) {
+		this.value.setValue(newWeight);
+	}
+
 
 	@Override
 	public int getValue() {
