@@ -9,8 +9,7 @@ public class Area_GPA extends Area_Academic {
 	}
 
 	public static int convertScore(String rawData) {
-		
-		return (int) Math.round(Long.parseLong(rawData)/4.3);
+		return (int) Math.round(Double.parseDouble(rawData)/4.3*10);
 	}
 
 	@Override
