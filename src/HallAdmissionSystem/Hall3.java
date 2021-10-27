@@ -8,6 +8,10 @@ public class Hall3 extends Hall {
 		super(3, 50, new WeightComponent(0, 0, 0, 0));
 	}
 	
+//	public Hall3(int number, int capacity, WeightComponent w) {
+//		super(number, capacity, w);
+//	}
+	
 	public static Hall getInstance() {
 		return instance;
 	}
