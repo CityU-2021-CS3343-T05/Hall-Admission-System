@@ -34,8 +34,8 @@ public class Application{
 		return this.perferenceHall;
 	}
 	
-	public ScoreComponent getScore() {
-		return score;
+	public int[] getDetailScore() {
+		return score.getDetailScoreList();
 	}
 
 	public boolean getIsLocal() {

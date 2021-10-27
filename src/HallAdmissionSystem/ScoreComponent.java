@@ -43,6 +43,10 @@ public class ScoreComponent {
 		this.location.setScoreValue(newLocation);
 	}
 	
+	public int[] getDetailScoreList() {
+		return new int[] {this.academic.getValue(), this.leadership.getValue(), this.eCA.getValue(), this.location.getValue()};
+	}
+	
 	@Override
 	public String toString() {
 		return this.academic.getValue() + "\t" + this.leadership.getValue() + "\t" + this.eCA.getValue() + "\t" + this.location.getValue();

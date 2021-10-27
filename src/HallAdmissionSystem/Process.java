@@ -13,7 +13,8 @@ public class Process {
 
 	public void calculateApplicationScore(ArrayList<Application> list) {
 		for (Application application : list) {
-			int[] detailScore = 
+			int[] detailScore =new int[10];
+			detailScore = application.getDetailScore();
 		}
 	}
 
