@@ -9,6 +9,7 @@ public class Process {
 
 	public Process(ArrayList<Application> allApplication) {
 		this.allApplication = allApplication;
+		this.allOutput = new ArrayList<>();
 	}
 
 	private void setupQueue() {
@@ -30,10 +31,14 @@ public class Process {
 	}
 
 	private void calculateApplicationScore(Application application) {
+		System.out.println("==============");
+		System.out.println(application);
 		int[] detailScore = application.getDetailScore();
+		
 		Hall preferencedHall = application.getPerferenceHall();
+		System.out.println(preferencedHall);
 		int[] detailWeighting = preferencedHall.getHallWeightings();
-
+		System.out.println("==============");
 		int sum = 0;
 
 		for (int i = 0; i < detailWeighting.length; i++) {

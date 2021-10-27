@@ -51,11 +51,15 @@ public class main {
 //		}
 		
 		HallSystem hS = HallSystem.getInstance();
+		hS.viewHallList();
+		
 		Student std1 = new Student("001", "Jennifer", "Elston", false, 2020);
 		hS.createApplication(std1, 1, new ScoreComponent("GPA", "4.3", "2", "300", "Kowloon Tong"));
 		
 		Student std2 = new Student("002", "Elston", "Jennifer", false, 2019);
-		hS.createApplication(std1, 1, new ScoreComponent("GPA", "3.5", "2", "300", "Kowloon Tong"));
+		hS.createApplication(std2, 1, new ScoreComponent("GPA", "3.5", "2", "300", "Kowloon Tong"));
+		
+		hS.viewApplication();
 		
 		hS.processApplication();
 	}

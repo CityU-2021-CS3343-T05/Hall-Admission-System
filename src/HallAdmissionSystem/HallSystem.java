@@ -55,7 +55,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	@Override
 	public Hall getHall(int targetHall) {
 		for (Hall hall : allHallListing) {
-			if (hall.equals(targetHall)) {
+			if (hall.getHallNumber() == targetHall) {
 				return hall;
 			}
 		}

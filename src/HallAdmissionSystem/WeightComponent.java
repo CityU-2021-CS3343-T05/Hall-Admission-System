@@ -51,6 +51,7 @@ public class WeightComponent {
 	}
 
 	public int[] getWeightings() {
+		System.out.println(this.academic);
 		return new int[] { this.academic.getValue(), this.leadership.getValue(), this.eCA.getValue(),
 				this.location.getValue() };
 	}

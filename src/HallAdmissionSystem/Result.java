@@ -12,6 +12,8 @@ public class Result {
 	public Result(Hall hall) {
 		this.hall = hall;
 		fullQueue = new PriorityQueue<>();
+		admissionList = new ArrayList<>();
+		waitingList = new ArrayList<>();
 	}
 
 	public Hall getHall() {
@@ -33,6 +35,11 @@ public class Result {
 	@Override
 	public String toString() {
 		String output = "";
+		
+		for (Application application : fullQueue) {
+			output += this.hall + "\t full \t" + application + "\n";
+		}
+		
 		for (Application application : admissionList) {
 			output += this.hall + "\t admissionList \t" + application + "\n";
 		}
