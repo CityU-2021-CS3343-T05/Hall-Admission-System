@@ -24,8 +24,8 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	}
 
 	@Override
-	public void createApplication() {
-
+	public void createApplication(Student std, int perferHall, ScoreComponent score) {
+		
 	}
 
 	@Override
@@ -50,5 +50,4 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

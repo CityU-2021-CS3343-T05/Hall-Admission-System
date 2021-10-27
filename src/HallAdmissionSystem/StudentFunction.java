@@ -12,4 +12,6 @@ public interface StudentFunction {
 	
 	Hall getHall(int targetHall);
 
+	void createApplication(Student std, int perferHall, ScoreComponent score);
+
 }
