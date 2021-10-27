@@ -1,12 +1,12 @@
 package HallAdmissionSystem;
 
-public abstract class Hall {
+public class Hall {
 
 	private int hallNumber;
 	private int numberOfAcceptance;
 	private WeightComponent weightingComponents;
 
-	protected Hall(int hallNumber, int numOfAcceptance, WeightComponent weightComponents) {
+	public Hall(int hallNumber, int numOfAcceptance, WeightComponent weightComponents) {
 		this.hallNumber = hallNumber;
 		this.numberOfAcceptance = numOfAcceptance;
 		this.weightingComponents = weightComponents;
@@ -30,6 +30,11 @@ public abstract class Hall {
 
 	public void setNumberofAcceptance(int numberofAcceptance) {
 		this.numberOfAcceptance = numberofAcceptance;
+	}
+	
+	@Override
+	public String toString() {
+		return Integer.toString(hallNumber);
 	}
 
 }

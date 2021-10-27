@@ -42,5 +42,10 @@ public class ScoreComponent {
 	public void setLocation(String newLocation) {
 		this.location.setScoreValue(newLocation);
 	}
+	
+	@Override
+	public String toString() {
+		return this.academic.getValue() + "\t" + this.leadership.getValue() + "\t" + this.eCA.getValue() + "\t" + this.location.getValue();
+	}
 
 }

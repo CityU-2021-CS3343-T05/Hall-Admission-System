@@ -50,5 +50,10 @@ public class Application {
 	public void setIsLocal(boolean isLocal) {
 		this.isLocal = isLocal;
 	}
+	
+	@Override
+	public String toString() {
+		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.perferenceHall + "\t" + this.score;	
+	}
 
 }

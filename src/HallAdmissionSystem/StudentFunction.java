@@ -2,7 +2,7 @@ package HallAdmissionSystem;
 
 public interface StudentFunction {
 
-	void createApplication();
+	void createApplication(Student std, int perferHall, ScoreComponent score);
 
 	void viewApplication();
 
@@ -11,7 +11,5 @@ public interface StudentFunction {
 	void viewResult();
 	
 	Hall getHall(int targetHall);
-
-	void createApplication(Student std, int perferHall, ScoreComponent score);
 
 }

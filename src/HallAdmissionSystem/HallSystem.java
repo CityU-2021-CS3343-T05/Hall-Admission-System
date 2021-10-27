@@ -5,13 +5,17 @@ import java.util.ArrayList;
 public class HallSystem implements CityUFunction, StudentFunction {
 
 	private static HallSystem instance = new HallSystem();
-	private ArrayList<Hall> allHall;
+	private ArrayList<Hall> allHallListing;
 	private ArrayList<Application> allApplication;
 	private Process process;
 
 	private HallSystem() {
-		allHall = new ArrayList<>();
+		allHallListing = new ArrayList<>();
 		allApplication = new ArrayList<>();
+		
+		allHallListing.add(new Hall(1, 50, new WeightComponent(0, 0, 0, 0)));
+		allHallListing.add(new Hall(2, 100, new WeightComponent(0, 0, 0, 0)));
+		allHallListing.add(new Hall(3, 80, new WeightComponent(0, 0, 0, 0)));
 	}
 
 	public static HallSystem getInstance() {
@@ -20,12 +24,14 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewApplication() {
-
+		for (Application application : allApplication) {
+			System.out.println(application);
+		}
 	}
 
 	@Override
 	public void createApplication(Student std, int perferHall, ScoreComponent score) {
-		
+		allApplication.add(new Application(std, perferHall, score));
 	}
 
 	@Override
@@ -35,19 +41,34 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void processApplication() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void viewHallList() {
-		// TODO Auto-generated method stub
-		
+		for (Hall hall : allHallListing) {
+			System.out.println(hall);
+		}
 	}
 
 	@Override
 	public Hall getHall(int targetHall) {
-		// TODO Auto-generated method stub
+		for (Hall hall : allHallListing) {
+			if(hall.getHallNumber()==targetHall) {
+				return hall;
+			}
+		}
 		return null;
+	}
+
+	@Override
+	public void changeHallSetting(Hall hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight, int newLocationWeight) {
+		hall.setNewHallWeightings(newAcademicWeight, newLeaderShipWeight, newEcaWeight, newLocationWeight);
+	}
+
+	@Override
+	public void createNewwHall(int hallNum, int capacity, int academicWeight, int leaderShipWeight, int ecaWeight, int locationWeight) {
+		new Hall(hallNum, capacity, new WeightComponent(academicWeight, leaderShipWeight, ecaWeight, locationWeight));
 	}
 }
