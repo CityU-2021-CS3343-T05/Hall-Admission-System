@@ -4,43 +4,51 @@ import java.util.ArrayList;
 
 public class HallSystem implements CityUFunction, StudentFunction {
 
-	private HallSystem instance;
+	private static HallSystem instance = new HallSystem();
 	private ArrayList<Hall> allHall;
 	private ArrayList<Application> allApplication;
 	private Process process;
 
 	private HallSystem() {
-		// TODO - implement System.System
-		throw new UnsupportedOperationException();
+		allHall = new ArrayList<>();
+		allApplication = new ArrayList<>();
 	}
 
-	public HallSystem getInstance() {
-		return this.instance;
+	public static HallSystem getInstance() {
+		return instance;
 	}
 
-	public void processApplication() {
-		// TODO - implement System.processApplication
-		throw new UnsupportedOperationException();
-	}
-
+	@Override
 	public void viewApplication() {
-		// TODO - implement System.viewApplication
-		throw new UnsupportedOperationException();
+
 	}
 
+	@Override
 	public void createApplication() {
-		// TODO - implement System.createApplication
-		throw new UnsupportedOperationException();
+
 	}
 
-	public void viewHallList() {
-		// TODO - implement System.viewHallList
-		throw new UnsupportedOperationException();
-	}
-
+	@Override
 	public void viewResult() {
-		// TODO - implement System.viewResult
-		throw new UnsupportedOperationException();
+
+	}
+
+	@Override
+	public void processApplication() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewHallList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Hall getHall(int targetHall) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

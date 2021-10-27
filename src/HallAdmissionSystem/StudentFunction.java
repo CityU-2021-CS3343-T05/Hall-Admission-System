@@ -9,5 +9,7 @@ public interface StudentFunction {
 	void viewHallList();
 
 	void viewResult();
+	
+	Hall getHall(int targetHall);
 
 }
