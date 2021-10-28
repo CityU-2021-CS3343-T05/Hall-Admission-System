@@ -45,12 +45,16 @@ public class Process {
 		application.setTotalScore(sum);
 	}
 
-	private void sortApplication() {
+	private void importApplication() {
 		for (Application application : allApplication) {
 			calculateApplicationScore(application);
 			Result inputTo = findOutput(application.getPerferenceHall());
-			inputTo.addToQueue(application);
+			inputTo.addToList(application);
 		}
+	}
+	
+	private void sortApplication() {
+		
 	}
 
 	private void runNonLocalProcess() {
@@ -74,6 +78,7 @@ public class Process {
 
 	public void runProcess() {
 		setupQueue();
+		importApplication();
 		sortApplication();
 		System.out.println("Result");
 		testResult();

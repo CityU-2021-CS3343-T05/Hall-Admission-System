@@ -5,26 +5,25 @@ import java.util.*;
 public class Result {
 
 	private Hall hall;
-	private ArrayList<Application> waitingList;
+	private static PriorityQueue<Application> waitingList;
 	private ArrayList<Application> admissionList;
-	private PriorityQueue<Application> fullQueue;
+	private PriorityQueue<Application> fullList;
 
 	public Result(Hall hall) {
 		this.hall = hall;
-		fullQueue = new PriorityQueue<>();
 		admissionList = new ArrayList<>();
-		waitingList = new ArrayList<>();
+		fullList = new PriorityQueue<>();
 	}
 
 	public Hall getHall() {
 		return hall;
 	}
 
-	public void addToQueue(Application app) {
-		fullQueue.add(app);
+	public void addToList(Application app) {
+		fullList.add(app);
 	}
 
-	public ArrayList<Application> getWaitingList() {
+	public PriorityQueue<Application> getWaitingList() {
 		return waitingList;
 	}
 
@@ -36,20 +35,17 @@ public class Result {
 	public String toString() {
 		String output = "";
 		
-		for (Application application : fullQueue) {
+		for (Application application : fullList) {
 			output += this.hall + "\t full \t" + application + "\n";
 		}
 		
-		System.out.println("Test poll");
-		System.out.println(fullQueue.poll());
+		for (Application application : admissionList) {
+			output += this.hall + "\t admissionList \t" + application + "\n";
+		}
 		
-//		for (Application application : admissionList) {
-//			output += this.hall + "\t admissionList \t" + application + "\n";
-//		}
-//		
-//		for (Application application : waitingList) {
-//			output += this.hall + "\t waitingList \t" + application + "\n";
-//		}
+		for (Application application : waitingList) {
+			output += this.hall + "\t waitingList \t" + application + "\n";
+		}
 		return output;
 	}
 }
