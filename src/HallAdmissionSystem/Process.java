@@ -88,9 +88,8 @@ public class Process {
 			boolean isLocal = res.getIsLocal();
 
 			handleAdmission(res, isLocal);
-			
-			handleWaiting(res, isLocal);
 
+			handleWaiting(res, isLocal);
 		}
 	}
 
