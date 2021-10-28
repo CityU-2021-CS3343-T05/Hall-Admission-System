@@ -17,13 +17,15 @@ public class Process {
 		ArrayList<Hall> hallList = hS.getHallList();
 
 		for (Hall hall : hallList) {
-			allOutput.add(new Result(hall));
+			allOutput.add(new Result(hall, true));
+			allOutput.add(new Result(hall, false));
 		}
 	}
-	
-	private Result findOutput(Hall hall) {
+
+	private Result findOutput(Hall hall, boolean isLocal) {
 		for (Result res : allOutput) {
-			if(res.getHall().equals(hall)) {
+			if (res.getHall().equals(hall)) {
+				if(res.getIsLocal() == isLocal);
 				return res;
 			}
 		}
@@ -41,37 +43,44 @@ public class Process {
 		for (int i = 0; i < detailWeighting.length; i++) {
 			sum += detailWeighting[i] * detailScore[i];
 		}
-		System.out.println(">"+sum);
+		System.out.println(">" + sum);
 		application.setTotalScore(sum);
 	}
 
 	private void importApplication() {
 		for (Application application : allApplication) {
 			calculateApplicationScore(application);
-			Result inputTo = findOutput(application.getPerferenceHall());
+			Result inputTo = findOutput(application.getPerferenceHall(), application.getIsLocal());
 			inputTo.addToList(application);
 		}
 	}
-	
+
 	private void sortApplication() {
-		
+		for (Result res : allOutput) {
+			boolean isLocal = res.getIsLocal();
+			
+			for (int i = 0; i < res.getHall().getNumberofAcceptance(); i++) {
+				Application application = res.getTopAppliant();
+				if(isLocal) {
+					res.addToAdmission(application);
+				}else {
+					if(application.getYear() > 3) {
+						Result.addToWaiting(application);
+						i--;
+					}else {
+						res.addToAdmission(application);
+					}
+				}
+			}
+			
+			Application waitApplication = res.getTopAppliant();
+			while (waitApplication != null) {
+				Result.addToWaiting(waitApplication);
+				waitApplication = res.getTopAppliant();
+			}
+		}
 	}
 
-	private void runNonLocalProcess() {
-		// TODO - implement Process.runNonLocalProcess
-		throw new UnsupportedOperationException();
-	}
-
-	private void runNonLocalWaitingProcess() {
-		// TODO - implement Process.runNonLocalWaitingProcess
-		throw new UnsupportedOperationException();
-	}
-
-	private void runLocalProcess() {
-		// TODO - implement Process.runLocalProcess
-		throw new UnsupportedOperationException();
-	}
-	
 	private void testResult() {
 		System.out.println(allOutput);
 	}

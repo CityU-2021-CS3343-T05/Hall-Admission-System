@@ -7,6 +7,7 @@ public class Application implements Comparable<Application> {
 	private Date applyTime;
 	private String sid;
 	private boolean isLocal;
+	private int year;
 	private Hall perferenceHall;
 	private ScoreComponent score;
 	private int totalScore;
@@ -15,7 +16,8 @@ public class Application implements Comparable<Application> {
 		this.applyTime = new Date();
 		this.sid = std.getSid();
 		this.isLocal = std.getIsLocal();
-
+		this.year = std.getYear();
+		
 		HallSystem hS = HallSystem.getInstance();
 		perferenceHall = hS.getHall(perferHall);
 
@@ -24,6 +26,10 @@ public class Application implements Comparable<Application> {
 
 	public String getSid() {
 		return this.sid;
+	}
+	
+	public int getYear() {
+		return this.year;
 	}
 
 	public Date getApplyTime() {
