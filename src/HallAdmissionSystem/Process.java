@@ -25,9 +25,9 @@ public class Process {
 	private Result findOutput(Hall hall, boolean isLocal) {
 		for (Result res : allOutput) {
 			if (res.getHall().equals(hall)) {
-				if (res.getIsLocal() == isLocal)
-					;
-				return res;
+				if (res.getIsLocal() == isLocal) {
+					return res;
+				}
 			}
 		}
 		return null;
@@ -51,7 +51,9 @@ public class Process {
 	private void importApplication() {
 		for (Application application : allApplication) {
 			calculateApplicationScore(application);
+			System.out.println(application.getPerferenceHall() + "======" + application.getIsLocal());
 			Result inputTo = findOutput(application.getPerferenceHall(), application.getIsLocal());
+			System.out.println(inputTo.getHall() + "{}{}{}{}" + inputTo.getIsLocal());
 			inputTo.addToList(application);
 		}
 	}
@@ -59,10 +61,18 @@ public class Process {
 	private void handleAdmission(Result res, boolean isLocal) {
 		for (int i = 0; i < res.getHall().getNumberofAcceptance(); i++) {
 			Application application = res.getTopAppliant();
+			if (application == null) {
+				break;
+			}
+
 			if (isLocal) {
 				res.addToAdmission(application);
 			} else {
+				System.out.println(">>>>>>>>>" + application.getYear());
+				
 				if (application.getYear() > 3) {
+					System.out.println("???" + application);
+					//Line 76 run many time for random reason
 					Result.addToWaiting(application);
 					i--;
 				} else {
@@ -86,6 +96,8 @@ public class Process {
 	private void sortApplication() {
 		for (Result res : allOutput) {
 			boolean isLocal = res.getIsLocal();
+
+			System.out.println(res.getHall() + "\t" + res.getIsLocal());
 
 			handleAdmission(res, isLocal);
 

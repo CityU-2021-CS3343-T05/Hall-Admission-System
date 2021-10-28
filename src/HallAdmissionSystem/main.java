@@ -54,10 +54,10 @@ public class main {
 		HallSystem hS = HallSystem.getInstance();
 		hS.viewHallList();
 		
-		Student std1 = new Student("001", "Jennifer", "Elston", false, 2020);
+		Student std1 = new Student("001", "Jennifer", "Elston", false, 4);
 		hS.createApplication(std1, 1, new ScoreComponent("GPA", "4.3", "2", "300", "Cheung Chau"));
 		
-		Student std2 = new Student("002", "Elston", "Jennifer", false, 2019);
+		Student std2 = new Student("002", "Elston", "Jennifer", true, 2);
 		hS.createApplication(std2, 1, new ScoreComponent("GPA", "3.3", "2", "300", "Cheung Chau"));
 		
 		System.out.println("Application");
