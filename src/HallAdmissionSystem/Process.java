@@ -65,6 +65,8 @@ public class Process {
 	private ProcessData findProcessData(Hall hall, boolean isLocal) {
 		for (ProcessData pData : allProcessData) {
 			if (pData.getHall().equals(hall) && pData.getIsLocal() == isLocal) {
+				System.out.println(">>>>>>>>>");
+				System.out.println(hall + "" + pData.getIsLocal());
 				return pData;
 			}
 		}
@@ -72,12 +74,12 @@ public class Process {
 	}
 
 	private void handleAdmission() {
-
+System.out.println("Doing++++++++++++++++++++++");
 		for (Result res : allResult) {
 			Hall pHall = res.getHall();
 
 			ProcessData pDataIsLocal = findProcessData(pHall, true);
-			ProcessData pDataNotLocal = findOutput(pHall, false);
+			ProcessData pDataNotLocal = findProcessData(pHall, false);
 
 			// Non local
 			Application pApplication = pDataNotLocal.getTopAppliant();
@@ -96,7 +98,7 @@ public class Process {
 			}
 
 			// Local
-			pApplication = pDataNotLocal.getTopAppliant();
+			pApplication = pDataIsLocal.getTopAppliant();
 			while (pApplication != null) {
 				Application status;
 
@@ -104,17 +106,23 @@ public class Process {
 				if (status == null) {
 					ProcessData.addToReject(pApplication);
 				}
-				pApplication = pDataNotLocal.getTopAppliant();
+				pApplication = pDataIsLocal.getTopAppliant();
 			}
 		}
 
 	}
 
-	public void showProcessResult() {
-		for (ProcessData res : allProcessData) {
+	public void showProcessDetailedResult() {
+		for (Result res : allResult) {
 			System.out.println(res);
 		}
+
+		for (ProcessData pData : allProcessData) {
+			System.out.println(pData);
+		}
+
 		System.out.println(ProcessData.getWaitingListing());
+
 	}
 
 	public void runProcess() {

@@ -39,7 +39,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	@Override
 	public void viewResult() {
 		System.out.println("=========================== Result ===========================");
-		processResult.showProcessResult();
+		processResult.showProcessDetailedResult();
 	}
 
 	@Override

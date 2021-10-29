@@ -8,7 +8,7 @@ public class Result {
 	
 	public Result(Hall hall) {
 		this.hall = hall;
-		
+		System.out.println("++++++++++++++++"+hall.getNumberofAcceptance());
 		admissionList = new ArrayList<>(hall.getNumberofAcceptance());
 	}
 	
@@ -22,6 +22,7 @@ public class Result {
 			admissionList.add(app);
 			return null;
 		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("!!!!!!!!!!!!!!!");
 			return app;
 		}
 	}
