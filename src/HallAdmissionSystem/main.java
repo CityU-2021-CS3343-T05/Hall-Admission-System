@@ -55,11 +55,17 @@ public class main {
 		hS.viewHallList();
 		
 		System.out.println("> Application");
-		Student std1 = new Student("001", "Jennifer", "Elston", false, 4);
+		Student std1 = new Student("001", "Jennifer", "s001", false, 4);
 		hS.createApplication(std1, 1, new ScoreComponent("GPA", "4.3", "2", "300", "Cheung Chau"));
 		
-		Student std2 = new Student("002", "Elston", "Jennifer", true, 2);
+		Student std2 = new Student("002", "Elston", "s002", false, 2);
 		hS.createApplication(std2, 1, new ScoreComponent("GPA", "3.3", "2", "300", "Cheung Chau"));
+		
+		Student std3 = new Student("003", "Wilson", "s003", true, 2);
+		hS.createApplication(std3, 1, new ScoreComponent("GPA", "4.0", "2", "300", "Cheung Chau"));
+		
+		Student std4 = new Student("004", "Chung", "s004", true, 2);
+		hS.createApplication(std3, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau"));
 		
 		hS.viewApplication();
 		
