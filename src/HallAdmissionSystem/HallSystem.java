@@ -13,9 +13,9 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		allHallListing = new ArrayList<>();
 		allApplication = new ArrayList<>();
 
-		allHallListing.add(new Hall(1, 50, new WeightComponent(1, 1, 1, 1)));
-		allHallListing.add(new Hall(2, 100, new WeightComponent(0, 0, 0, 0)));
-		allHallListing.add(new Hall(3, 80, new WeightComponent(0, 0, 0, 0)));
+		allHallListing.add(new Hall(1, 2, new WeightComponent(1, 1, 1, 1)));
+		allHallListing.add(new Hall(2, 2, new WeightComponent(0, 0, 0, 0)));
+		allHallListing.add(new Hall(3, 2, new WeightComponent(0, 0, 0, 0)));
 	}
 
 	public static HallSystem getInstance() {
