@@ -20,7 +20,7 @@ public class Result {
 	public Hall getHall() {
 		return hall;
 	}
-	
+
 	public boolean getIsLocal() {
 		return isLocal;
 	}
@@ -51,18 +51,24 @@ public class Result {
 
 	@Override
 	public String toString() {
-		String output = "";
+		String output = "Hall " + hall + "\t" + isLocal + "\n";
 
 		for (Application application : fullList) {
-			output += this.hall + "\t full \t" + application + "\n";
+			output += "full        \t" + this.hall + "\t" + application + "\n";
 		}
 
 		for (Application application : admissionList) {
-			output += this.hall + "\t admissionList \t" + application + "\n";
+			output += "addmission  \t" + this.hall + "\t" + application + "\n";
 		}
 
+		output += "\n";
+		return output;
+	}
+
+	public static String getWaitingListing() {
+		String output = "Waiting List\n";
 		for (Application application : waitingList) {
-			output += this.hall + "\t waitingList \t" + application + "\n";
+			output += application + "\n";
 		}
 		return output;
 	}

@@ -51,15 +51,14 @@ public class Process {
 	private void importApplication() {
 		for (Application application : allApplication) {
 			calculateApplicationScore(application);
-			System.out.println(application.getPerferenceHall() + "======" + application.getIsLocal());
 			Result inputTo = findOutput(application.getPerferenceHall(), application.getIsLocal());
-			System.out.println(inputTo.getHall() + "{}{}{}{}" + inputTo.getIsLocal());
 			inputTo.addToList(application);
 		}
 	}
 
 	private void handleAdmission(Result res, boolean isLocal) {
-		for (int i = 0; i < res.getHall().getNumberofAcceptance(); i++) {
+		int i = 0;
+		while ( i < res.getHall().getNumberofAcceptance()) {
 			Application application = res.getTopAppliant();
 			if (application == null) {
 				break;
@@ -67,16 +66,15 @@ public class Process {
 
 			if (isLocal) {
 				res.addToAdmission(application);
-			} else {
-				System.out.println(">>>>>>>>>" + application.getYear());
-				
+				i++;
+			} else {			
 				if (application.getYear() > 3) {
-					System.out.println("???" + application);
+//					System.out.println("===================???" + application);
 					//Line 76 run many time for random reason
 					Result.addToWaiting(application);
-					i--;
 				} else {
 					res.addToAdmission(application);
+					i++;
 				}
 			}
 		}
@@ -105,16 +103,17 @@ public class Process {
 		}
 	}
 
-	private void testResult() {
-		System.out.println(allOutput);
+	public void showProcessResult() {
+		for (Result res : allOutput) {
+			System.out.println(res);
+		}
+		System.out.println(Result.getWaitingListing());
 	}
 
 	public void runProcess() {
 		setupQueue();
 		importApplication();
 		sortApplication();
-		System.out.println("Result");
-		testResult();
 	}
 
 }

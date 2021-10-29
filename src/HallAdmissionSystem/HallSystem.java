@@ -43,6 +43,9 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	public void processApplication() {
 		processResult = new Process(allApplication);
 		processResult.runProcess();
+		System.out.println("===========================================================");
+		System.out.println("Result");
+		processResult.showProcessResult();
 	}
 
 	@Override
