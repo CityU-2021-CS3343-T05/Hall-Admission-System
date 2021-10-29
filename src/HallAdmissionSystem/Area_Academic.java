@@ -8,11 +8,13 @@ public class Area_Academic implements Weighting, Score {
 		this.value = v;
 	}
 	
-	public static Area_Academic createArea_Academic(String type, String rawString) {
+	public static Area_Academic createArea_Academic(String type, String rawString) throws Ex_WrongExamType {
 		if(type.equals("DSE")) {
 			return new Area_DSE(rawString);
-		}else {
+		}else if(type.equals("GPA")){
 			return new Area_GPA(rawString);
+		}else {
+			throw new Ex_WrongExamType();
 		}
 	}
 
