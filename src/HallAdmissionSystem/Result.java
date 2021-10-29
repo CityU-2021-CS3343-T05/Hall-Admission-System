@@ -9,7 +9,7 @@ public class Result {
 	public Result(Hall hall) {
 		this.hall = hall;
 		
-		admissionList = new ArrayList<>();
+		admissionList = new ArrayList<>(hall.getNumberofAcceptance());
 	}
 	
 	public Hall getHall() {

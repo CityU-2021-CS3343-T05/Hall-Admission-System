@@ -79,64 +79,33 @@ public class Process {
 			ProcessData pDataIsLocal = findProcessData(pHall, true);
 			ProcessData pDataNotLocal = findOutput(pHall, false);
 
-			//Non local
+			// Non local
 			Application pApplication = pDataNotLocal.getTopAppliant();
 			while (pApplication != null) {
+				Application status;
+
 				if (pApplication.getYear() > 3) {
 					ProcessData.addToReject(pApplication);
 				} else {
-					res.addToAdmission(application);
-					i++;
+					status = res.addToAdmission(pApplication);
+					if (status == null) {
+						ProcessData.addToWaiting(pApplication);
+					}
 				}
-				
 				pApplication = pDataNotLocal.getTopAppliant();
 			}
-		}
 
-		while (i < pData.getHall().getNumberofAcceptance()) {
-			Application application = pData.getTopAppliant();
-			if (application == null) {
-				break;
-			}
+			// Local
+			pApplication = pDataNotLocal.getTopAppliant();
+			while (pApplication != null) {
+				Application status;
 
-			if (isLocal) {
-				pData.addToAdmission(application);
-				i++;
-			} else {
-				if (application.getYear() > 3) {
-					ProcessData.addToReject(application);
-				} else {
-					res.addToAdmission(application);
-					i++;
+				status = res.addToAdmission(pApplication);
+				if (status == null) {
+					ProcessData.addToReject(pApplication);
 				}
+				pApplication = pDataNotLocal.getTopAppliant();
 			}
-		}
-	}
-
-	private void handleWaiting(ProcessData res, boolean isLocal) {
-
-		if (!isLocal) {
-			Application waitApplication = res.getTopAppliant();
-			while (waitApplication != null) {
-				ProcessData.addToWaiting(waitApplication);
-				waitApplication = res.getTopAppliant();
-			}
-		}
-	}
-
-	private void sortApplication() {
-
-		int numberOfList = allProcessData.size();
-
-		for (ProcessData res : allProcessData) {
-			boolean isLocal = res.getIsLocal();
-
-			if (!isLocal) {
-				handleAdmission(res, isLocal);
-
-				handleWaiting(res, isLocal);
-			}
-
 		}
 
 	}
@@ -151,7 +120,7 @@ public class Process {
 	public void runProcess() {
 		setupQueue();
 		importApplication();
-		sortApplication();
+		handleAdmission();
 	}
 
 }
