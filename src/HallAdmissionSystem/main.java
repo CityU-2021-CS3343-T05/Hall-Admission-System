@@ -65,7 +65,7 @@ public class main {
 		hS.createApplication(std3, 1, new ScoreComponent("GPA", "4.0", "2", "300", "Cheung Chau"));
 		
 		Student std4 = new Student("004", "Chung", "s004", true, 2);
-		hS.createApplication(std3, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau"));
+		hS.createApplication(std4, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau"));
 		
 		hS.viewApplication();
 		

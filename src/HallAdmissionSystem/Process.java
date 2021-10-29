@@ -74,7 +74,7 @@ public class Process {
 	}
 
 	private void handleAdmission() {
-System.out.println("Doing++++++++++++++++++++++");
+		System.out.println("Doing++++++++++++++++++++++");
 		for (Result res : allResult) {
 			Hall pHall = res.getHall();
 
@@ -84,15 +84,18 @@ System.out.println("Doing++++++++++++++++++++++");
 			// Non local
 			Application pApplication = pDataNotLocal.getTopAppliant();
 			while (pApplication != null) {
+				System.out.println(">>>=========>>>" + pApplication);
+
 				Application status;
 
 				if (pApplication.getYear() > 3) {
 					ProcessData.addToReject(pApplication);
 				} else {
 					status = res.addToAdmission(pApplication);
-					if (status == null) {
+					System.out.println("####" + status);
+					if (status != null) {
 						ProcessData.addToWaiting(pApplication);
-					
+
 					}
 				}
 				pApplication = pDataNotLocal.getTopAppliant();
@@ -104,7 +107,7 @@ System.out.println("Doing++++++++++++++++++++++");
 				Application status;
 
 				status = res.addToAdmission(pApplication);
-				if (status == null) {
+				if (status != null) {
 					ProcessData.addToReject(pApplication);
 				}
 				pApplication = pDataIsLocal.getTopAppliant();
@@ -122,7 +125,7 @@ System.out.println("Doing++++++++++++++++++++++");
 			System.out.println(pData);
 		}
 
-		System.out.println(ProcessData.getWaitingListing());
+		System.out.println(ProcessData.getListing());
 
 	}
 

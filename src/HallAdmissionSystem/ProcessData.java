@@ -55,10 +55,23 @@ public class ProcessData {
 		return output;
 	}
 
-	public static String getWaitingListing() {
+	public static String getListing() {
 		String output = "Waiting List\n";
 		for (Application application : waitingList) {
-			output += application + "\n";
+			if(waitingList.isEmpty()) {
+				output += "Empty listing\\n";
+			}else {
+				output += application + "\n";
+			}
+		}
+		
+		output += "Reject List\n";
+		for (Application application : rejectedList) {
+			if(rejectedList.isEmpty()) {
+				output += "Empty listing\\n";
+			}else {
+				output += application + "\n";
+			}
 		}
 		return output;
 	}
