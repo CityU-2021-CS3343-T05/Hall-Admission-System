@@ -41,12 +41,11 @@ public class Result {
 	@Override
 	public String toString() {
 		String output = hall + "\n";
-
-		for (Application application : admissionList) {
-			if (admissionList.length == 0) {
-				output += "Empty listing\\n";
-			} else {
-				output += "addmission  \t" + this.hall + "\t" + application + "\n";
+		if (this.numberOfPpl == 0) {
+			output += "Empty listing\n";
+		} else {
+			for (int i = 0; i < admissionList.length; i++) {
+				output += "addmission  \t" + this.hall + "\t" + admissionList[i] + "\n";
 			}
 		}
 

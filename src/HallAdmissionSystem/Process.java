@@ -73,18 +73,18 @@ public class Process {
 		return null;
 	}
 
-	private void handleAdmission() {
-		System.out.println("Doing++++++++++++++++++++++");
+	private void handleNonlocalAdmission() {
 		for (Result res : allResult) {
 			Hall pHall = res.getHall();
 
-			ProcessData pDataIsLocal = findProcessData(pHall, true);
 			ProcessData pDataNotLocal = findProcessData(pHall, false);
 
 			// Non local
 			Application pApplication = pDataNotLocal.getTopAppliant();
+			
+//			System.out.println("Doing++++++++++++++++++++++");
 			while (pApplication != null) {
-				System.out.println(">>>=========>>>" + pApplication);
+//				System.out.println(">>>=========>>>" + pApplication);
 
 				Application status;
 
@@ -92,7 +92,7 @@ public class Process {
 					ProcessData.addToReject(pApplication);
 				} else {
 					status = res.addToAdmission(pApplication);
-					System.out.println("####" + status);
+//					System.out.println("####" + status);
 					if (status != null) {
 						ProcessData.addToWaiting(pApplication);
 
@@ -100,9 +100,17 @@ public class Process {
 				}
 				pApplication = pDataNotLocal.getTopAppliant();
 			}
+		}
+	}
+	
+	private void handlelocalAdmission() {
+		for (Result res : allResult) {
+			Hall pHall = res.getHall();
 
+			ProcessData pDataIsLocal = findProcessData(pHall, true);
+			
 			// Local
-			pApplication = pDataIsLocal.getTopAppliant();
+			Application pApplication = pDataIsLocal.getTopAppliant();
 			while (pApplication != null) {
 				Application status;
 
@@ -113,7 +121,6 @@ public class Process {
 				pApplication = pDataIsLocal.getTopAppliant();
 			}
 		}
-
 	}
 
 	public void showProcessDetailedResult() {
@@ -121,18 +128,19 @@ public class Process {
 			System.out.println(res);
 		}
 
-		for (ProcessData pData : allProcessData) {
-			System.out.println(pData);
-		}
-
 		System.out.println(ProcessData.getListing());
-
+	}
+	
+	private void handleNonLocalWaiting() {
+		
+		
 	}
 
 	public void runProcess() {
 		setupQueue();
 		importApplication();
-		handleAdmission();
+		handleNonlocalAdmission();
+		handleNonLocalWaiting();
+		handlelocalAdmission();
 	}
-
 }

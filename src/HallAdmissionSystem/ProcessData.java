@@ -31,7 +31,7 @@ public class ProcessData {
 	public Application getTopAppliant() {
 		return fullList.poll();
 	}
-	
+
 	public static void addToReject(Application app) {
 		rejectedList.add(app);
 	}
@@ -46,10 +46,10 @@ public class ProcessData {
 
 	@Override
 	public String toString() {
-		String output = hall + "\t" + isLocal + "\n";
+		String output = "";
 
 		for (Application application : fullList) {
-			output += "full        \t" + this.hall + "\t" + application + "\n";
+			output += "full        \t" + this.hall + "\t" + this.isLocal + "\n" + application + "\n";
 		}
 
 		return output;
@@ -57,22 +57,24 @@ public class ProcessData {
 
 	public static String getListing() {
 		String output = "Waiting List\n";
-		for (Application application : waitingList) {
-			if(waitingList.isEmpty()) {
-				output += "Empty listing\\n";
-			}else {
+		if (waitingList.isEmpty()) {
+			output += "Empty listing\n";
+		} else {
+			for (Application application : waitingList) {
 				output += application + "\n";
 			}
 		}
-		
-		output += "Reject List\n";
-		for (Application application : rejectedList) {
-			if(rejectedList.isEmpty()) {
-				output += "Empty listing\\n";
-			}else {
+
+		output += "\nReject List\n";
+		if (rejectedList.isEmpty()) {
+			output += "Empty listing\n";
+		} else {
+			for (Application application : rejectedList) {
 				output += application + "\n";
+
 			}
 		}
+
 		return output;
 	}
 }
