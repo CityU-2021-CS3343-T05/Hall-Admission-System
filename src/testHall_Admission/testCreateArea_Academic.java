@@ -34,9 +34,8 @@ class testCreateArea_Academic {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testCreateArea_academic.csv")
-	void testCreateAcademic(String inputType, String inputValue,boolean expectedFail, String expectedResult,int expectedResultValue, String msg) {
-		Area_Academic actualResult = null;;
-		int actualResultValue = 0;;
+	void testCreateAcademic(String inputType,String inputValue,boolean expectedFail, String expectedResult, String msg) {
+		Area_Academic actualResult = null;
 		boolean expected = false;
 		boolean actualFail = false;
 		try {
@@ -45,14 +44,12 @@ class testCreateArea_Academic {
 			actualFail = true;
 		}
 		if(!expectedFail) {
-			actualResultValue = actualResult.getValue();
 			if(expectedResult.equals("T")){
 				expected=true;
 			}else if(expectedResult.equals("F")){
 				expected = false;
 			}
 			assertEquals(expected,actualResult instanceof Area_DSE);
-			assertEquals(expectedResultValue,actualResultValue,msg);
 		}
 		
 		assertEquals(expectedFail,actualFail);
