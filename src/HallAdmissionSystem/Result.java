@@ -3,13 +3,6 @@ package HallAdmissionSystem;
 import java.util.*;
 
 public class Result {
-	class FullException extends ArrayIndexOutOfBoundsException {
-
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-	}
 
 	private Hall hall;
 	private Application[] admissionList;
