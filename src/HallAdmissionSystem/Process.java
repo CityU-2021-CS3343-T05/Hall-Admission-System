@@ -37,14 +37,14 @@ public class Process {
 		System.out.println(application);
 		int[] detailScore = application.getDetailScore();
 		Hall preferencedHall = application.getPerferenceHall();
-//		System.out.println(preferencedHall);
+
 		int[] detailWeighting = preferencedHall.getHallWeightings();
 		int sum = 0;
 
 		for (int i = 0; i < detailWeighting.length; i++) {
 			sum += detailWeighting[i] * detailScore[i];
 		}
-		System.out.println(">" + sum);
+		
 		application.setTotalScore(sum);
 	}
 
@@ -69,8 +69,6 @@ public class Process {
 				i++;
 			} else {			
 				if (application.getYear() > 3) {
-//					System.out.println("===================???" + application);
-					//Line 76 run many time for random reason
 					Result.addToWaiting(application);
 				} else {
 					res.addToAdmission(application);

@@ -50,24 +50,22 @@ public class main {
 //			System.out.println(i);
 //		}
 		
-		System.out.println("Hall List");
+		System.out.println("> Hall");
 		HallSystem hS = HallSystem.getInstance();
 		hS.viewHallList();
 		
+		System.out.println("> Application");
 		Student std1 = new Student("001", "Jennifer", "Elston", false, 4);
 		hS.createApplication(std1, 1, new ScoreComponent("GPA", "4.3", "2", "300", "Cheung Chau"));
 		
 		Student std2 = new Student("002", "Elston", "Jennifer", true, 2);
 		hS.createApplication(std2, 1, new ScoreComponent("GPA", "3.3", "2", "300", "Cheung Chau"));
 		
-		System.out.println("Application");
 		hS.viewApplication();
 		
-		System.out.println("Process");
+		System.out.println("> Process");
 		hS.processApplication();
-		
-//		System.out.println("Application");
-//		hS.viewApplication();
+		hS.viewResult();
 		
 	}
 }

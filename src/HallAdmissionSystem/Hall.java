@@ -34,7 +34,7 @@ public class Hall {
 	
 	@Override
 	public String toString() {
-		return Integer.toString(hallNumber);
+		return "Hall " + Integer.toString(hallNumber);
 	}
 	
 	@Override

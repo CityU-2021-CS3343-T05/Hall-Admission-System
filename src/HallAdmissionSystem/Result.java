@@ -51,7 +51,7 @@ public class Result {
 
 	@Override
 	public String toString() {
-		String output = "Hall " + hall + "\t" + isLocal + "\n";
+		String output = hall + "\t" + isLocal + "\n";
 
 		for (Application application : fullList) {
 			output += "full        \t" + this.hall + "\t" + application + "\n";
@@ -61,7 +61,6 @@ public class Result {
 			output += "addmission  \t" + this.hall + "\t" + application + "\n";
 		}
 
-		output += "\n";
 		return output;
 	}
 
@@ -72,22 +71,4 @@ public class Result {
 		}
 		return output;
 	}
-
-//	@Override
-//	public boolean equals(Object target) {
-//		if (target == this) {
-//			return true;
-//		}
-//		if (target == null || target.getClass() != this.getClass()) {
-//			return false;
-//		}
-//
-//		Result resultTarget = (Result) target;
-//
-//		if (this.hall.equals(resultTarget.getHall()) && this.isLocal == resultTarget.isLocal) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
 }

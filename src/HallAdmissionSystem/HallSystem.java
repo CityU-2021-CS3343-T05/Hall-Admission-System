@@ -24,6 +24,8 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewApplication() {
+		System.out.println("========================= Application ========================");
+
 		for (Application application : allApplication) {
 			System.out.println(application);
 		}
@@ -36,16 +38,14 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-
+		System.out.println("=========================== Result ===========================");
+		processResult.showProcessResult();
 	}
 
 	@Override
 	public void processApplication() {
 		processResult = new Process(allApplication);
 		processResult.runProcess();
-		System.out.println("===========================================================");
-		System.out.println("Result");
-		processResult.showProcessResult();
 	}
 
 	@Override
