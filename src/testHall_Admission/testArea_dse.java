@@ -1,9 +1,7 @@
 package testHall_Admission;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,7 +12,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import HallAdmissionSystem.*;
 
-class testCreateArea_Academic {
+class testArea_dse {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,31 +29,21 @@ class testCreateArea_Academic {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-	
+
 	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testCreateArea_academic.csv")
-	void testCreateAcademic(String inputType,String inputValue,boolean expectedFail, String expectedResult, String msg) {
-		Area_Academic actualResult = null;
-		boolean expected = false;
+	@CsvFileSource(resources = "/testResource/testCreateArea_dse.csv")
+	void testConvertScore(String input,boolean expectedFail,int expectedResult,String msg) {
+		int actualResult = 0;
 		boolean actualFail = false;
 		try {
-			actualResult = Area_Academic.createArea_Academic(inputType,inputValue);	
-		}catch(Ex_WrongExamType e){
+			actualResult = Area_DSE.convertScore(input);
+		}catch(Exception e) {
 			actualFail = true;
 		}
-		assertEquals(expectedFail,actualFail);
+		assertEquals(expectedFail,actualFail,msg);
 		if(!expectedFail) {
-			if(expectedResult.equals("T")){
-				expected=true;
-			}else if(expectedResult.equals("F")){
-				expected = false;
-			}
-			assertEquals(expected,actualResult instanceof Area_DSE);
+			assertEquals(expectedResult,actualResult,msg);
 		}
-		
-		
-
-		
 		
 		
 	}
