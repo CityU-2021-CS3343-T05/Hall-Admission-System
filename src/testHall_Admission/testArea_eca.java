@@ -6,13 +6,12 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import HallAdmissionSystem.*;
+import HallAdmissionSystem.Area_ECA;
 
-class testArea_dse {
+class testArea_eca {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,13 +30,13 @@ class testArea_dse {
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testCreateArea_dse.csv")
+	@CsvFileSource(resources = "/testResource/testCreateArea_eca.csv")
 	void testConvertScore(String input,boolean expectedFail,int expectedResult,String msg) {
 		int actualResult = 0;
 		boolean actualFail = false;
 		try {
-			actualResult = Area_DSE.convertScore(input);
-		}catch(Exception e) {
+			actualResult = Area_ECA.convertScore(input);
+		}catch(NumberFormatException e) {
 			actualFail = true;
 		}
 		assertEquals(expectedFail,actualFail,msg);
