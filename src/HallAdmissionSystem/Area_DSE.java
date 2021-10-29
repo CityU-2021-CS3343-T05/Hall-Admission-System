@@ -22,7 +22,7 @@ public class Area_DSE extends Area_Academic {
 		}else if (rawData.equals("1")) {
 			return 1;
 		}else {
-			return 0;
+			return 0; //bug
 		}
 	}
 
