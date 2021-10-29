@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import HallAdmissionSystem.Area_ECA;
+import HallAdmissionSystem.Area_GPA;
 
 class testArea_gpa {
 
@@ -37,7 +37,7 @@ class testArea_gpa {
 		boolean actualFail = false;
 		
 		try {
-			actualResult = Area_ECA.convertScore(input);
+			actualResult = Area_GPA.convertScore(input);
 		}catch(NumberFormatException e) {
 			actualFail = true;
 		}
