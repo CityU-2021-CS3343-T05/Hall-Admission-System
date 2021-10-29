@@ -34,15 +34,18 @@ class testCreateArea_Academic {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testCreateArea_academic.csv")
-	void testCreateAcademic(String inputType, String inputValue, String expectedResult,int expectedResultValue, String msg) {
+	void testCreateAcademic(String inputType, String inputValue,boolean expectedFail, String expectedResult,int expectedResultValue, String msg) {
 		Area_Academic actualResult = null;;
 		int actualResultValue = 0;;
-		boolean expected = true;
-		
+		boolean expected = false;
+		boolean actualFail = false;
 		try {
-			actualResult = Area_Academic.createArea_Academic(inputType,inputValue);
+			actualResult = Area_Academic.createArea_Academic(inputType,inputValue);	
+		}catch(Ex_WrongExamType e){
+			actualFail = true;
+		}
+		if(!expectedFail) {
 			actualResultValue = actualResult.getValue();
-			expected=true;
 			if(expectedResult.equals("T")){
 				expected=true;
 			}else if(expectedResult.equals("F")){
@@ -50,10 +53,9 @@ class testCreateArea_Academic {
 			}
 			assertEquals(expected,actualResult instanceof Area_DSE);
 			assertEquals(expectedResultValue,actualResultValue,msg);
-		}catch(Ex_WrongExamType e){
-			assertEquals(true, e instanceof Ex_WrongExamType);
 		}
 		
+		assertEquals(expectedFail,actualFail);
 
 		
 		
