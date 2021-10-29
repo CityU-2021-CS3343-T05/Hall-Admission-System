@@ -43,6 +43,10 @@ public class ProcessData {
 	public static PriorityQueue<Application> getWaitingList() {
 		return waitingList;
 	}
+	
+	public static Application getTopWaitingStd() {
+		return waitingList.poll();
+	}
 
 	@Override
 	public String toString() {

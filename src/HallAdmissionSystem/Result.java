@@ -23,6 +23,10 @@ public class Result {
 	public Hall getHall() {
 		return this.hall;
 	}
+	
+	public int getNumberOfPpl() {
+		return numberOfPpl;
+	}
 
 	public Application addToAdmission(Application app) {
 		try {

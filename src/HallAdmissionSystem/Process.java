@@ -131,9 +131,35 @@ public class Process {
 		System.out.println(ProcessData.getListing());
 	}
 	
+	private Result findTheLessPplHall() {
+		Result minResult = allResult.get(0);
+		int minPpl = allResult.get(0).getNumberOfPpl();
+		
+		for (Result res : allResult) {
+			if(res.getNumberOfPpl()<minPpl) {
+				minResult = res;
+				minPpl = res.getNumberOfPpl();
+			}
+		}
+		
+		return minResult;
+	}
+	
 	private void handleNonLocalWaiting() {
 		
+		Application pApplication = ProcessData.getTopWaitingStd();
 		
+		while (pApplication != null) {
+			Application status;
+
+			Result res = findTheLessPplHall();
+			
+			status = res.addToAdmission(pApplication);
+			if (status != null) {
+				ProcessData.addToReject(pApplication);
+			}
+			pApplication = ProcessData.getTopWaitingStd();
+		}
 	}
 
 	public void runProcess() {
