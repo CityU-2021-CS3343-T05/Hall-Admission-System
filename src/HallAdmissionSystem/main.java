@@ -77,6 +77,8 @@ public class main {
 		
 		System.out.println("> Process");
 		hS.processApplication();
+		
+		System.out.println("> Result");
 		hS.viewResult();
 		
 	}

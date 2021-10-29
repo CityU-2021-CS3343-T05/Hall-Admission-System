@@ -65,8 +65,8 @@ public class Process {
 	private ProcessData findProcessData(Hall hall, boolean isLocal) {
 		for (ProcessData pData : allProcessData) {
 			if (pData.getHall().equals(hall) && pData.getIsLocal() == isLocal) {
-				System.out.println(">>>>>>>>>");
-				System.out.println(hall + "" + pData.getIsLocal());
+//				System.out.println(">>>>>>>>>");
+//				System.out.println(hall + "" + pData.getIsLocal());
 				return pData;
 			}
 		}
