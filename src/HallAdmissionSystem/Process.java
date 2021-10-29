@@ -92,6 +92,7 @@ System.out.println("Doing++++++++++++++++++++++");
 					status = res.addToAdmission(pApplication);
 					if (status == null) {
 						ProcessData.addToWaiting(pApplication);
+					
 					}
 				}
 				pApplication = pDataNotLocal.getTopAppliant();
