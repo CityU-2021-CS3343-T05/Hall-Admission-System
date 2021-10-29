@@ -22,7 +22,7 @@ public class Process {
 			allProcessData.add(new ProcessData(hall, true));
 			allProcessData.add(new ProcessData(hall, false));
 		}
-		
+
 		for (Hall hall : hallList) {
 			allResult.add(new Result(hall));
 		}
@@ -62,16 +62,45 @@ public class Process {
 		}
 	}
 
-	private void handleAdmission(ProcessData res, boolean isLocal) {
-		int i = 0;
-		while (i < res.getHall().getNumberofAcceptance()) {
-			Application application = res.getTopAppliant();
+	private ProcessData findProcessData(Hall hall, boolean isLocal) {
+		for (ProcessData pData : allProcessData) {
+			if (pData.getHall().equals(hall) && pData.getIsLocal() == isLocal) {
+				return pData;
+			}
+		}
+		return null;
+	}
+
+	private void handleAdmission() {
+
+		for (Result res : allResult) {
+			Hall pHall = res.getHall();
+
+			ProcessData pDataIsLocal = findProcessData(pHall, true);
+			ProcessData pDataNotLocal = findOutput(pHall, false);
+
+			//Non local
+			Application pApplication = pDataNotLocal.getTopAppliant();
+			while (pApplication != null) {
+				if (pApplication.getYear() > 3) {
+					ProcessData.addToReject(pApplication);
+				} else {
+					res.addToAdmission(application);
+					i++;
+				}
+				
+				pApplication = pDataNotLocal.getTopAppliant();
+			}
+		}
+
+		while (i < pData.getHall().getNumberofAcceptance()) {
+			Application application = pData.getTopAppliant();
 			if (application == null) {
 				break;
 			}
 
 			if (isLocal) {
-				res.addToAdmission(application);
+				pData.addToAdmission(application);
 				i++;
 			} else {
 				if (application.getYear() > 3) {

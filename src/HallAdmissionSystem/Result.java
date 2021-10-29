@@ -12,8 +12,18 @@ public class Result {
 		admissionList = new ArrayList<>();
 	}
 	
-	public void addToAdmission(Application app) {
-		admissionList.add(app);
+	public Hall getHall() {
+		return this.hall;
+	}
+	
+	public Application addToAdmission(Application app) {
+		
+		try {
+			admissionList.add(app);
+			return null;
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return app;
+		}
 	}
 	
 	public ArrayList<Application> getAdmissionList() {
