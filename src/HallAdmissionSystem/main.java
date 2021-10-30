@@ -1,7 +1,7 @@
 package HallAdmissionSystem;
 
 public class main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Ex_WrongExamType {
 //		LoginPortal loginPortal = LoginPortal.getInstance();
 //		Account ac=loginPortal.login();
 //		if(ac!=null)
