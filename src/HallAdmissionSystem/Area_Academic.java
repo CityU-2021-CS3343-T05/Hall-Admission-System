@@ -9,9 +9,9 @@ public class Area_Academic implements Weighting, Score {
 	}
 	
 	public static Area_Academic createArea_Academic(String type, String rawString) throws Ex_WrongExamType {
-		if(type.equals("DSE")) {
+		if(type.toUpperCase().equals("DSE")) {
 			return new Area_DSE(rawString);
-		}else if(type.equals("GPA")){
+		}else if(type.toUpperCase().equals("GPA")){
 			return new Area_GPA(rawString);
 		}else {
 			throw new Ex_WrongExamType();

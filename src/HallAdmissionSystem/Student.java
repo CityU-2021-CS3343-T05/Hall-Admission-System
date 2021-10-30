@@ -47,16 +47,7 @@ public class Student implements Account {
 	}
 
 	public void mainManuel() {
-		
-	}
-
-	public void createApplication() {
-		// TODO - implement Student.createApplication
-		throw new UnsupportedOperationException();
-	}
-
-	public void viewApplication() {
-		// TODO - implement Student.viewApplication
-		throw new UnsupportedOperationException();
+	
+		createApplication(this, year, null);
 	}
 }

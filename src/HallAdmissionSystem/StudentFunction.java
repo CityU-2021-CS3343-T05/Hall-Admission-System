@@ -4,7 +4,9 @@ public interface StudentFunction {
 
 	void createApplication(Student std, int perferHall, ScoreComponent score);
 
-	void viewApplication();
+	void delateApplication(Student std);
+	
+	void viewApplication(Student std);
 
 	void viewHallList();
 

@@ -17,7 +17,7 @@ public class Application implements Comparable<Application> {
 		this.sid = std.getSid();
 		this.isLocal = std.getIsLocal();
 		this.year = std.getYear();
-		
+
 		HallSystem hS = HallSystem.getInstance();
 		perferenceHall = hS.getHall(perferHall);
 
@@ -27,7 +27,7 @@ public class Application implements Comparable<Application> {
 	public String getSid() {
 		return this.sid;
 	}
-	
+
 	public int getYear() {
 		return this.year;
 	}
@@ -54,7 +54,8 @@ public class Application implements Comparable<Application> {
 
 	@Override
 	public String toString() {
-		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.year + "\t" + this.perferenceHall + "\t" + this.score + "\t" + this.totalScore;
+		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.year + "\t" + this.perferenceHall + "\t"
+				+ this.score + "\t" + this.totalScore;
 	}
 
 	@Override

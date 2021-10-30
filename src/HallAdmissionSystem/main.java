@@ -1,7 +1,7 @@
 package HallAdmissionSystem;
 
 public class main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Ex_WrongExamType {
 //		LoginPortal loginPortal = LoginPortal.getInstance();
 //		Account ac=loginPortal.login();
 //		if(ac!=null)
@@ -73,7 +73,7 @@ public class main {
 		Student std6 = new Student("006", "Jacky", "s006", false, 2);
 		hS.createApplication(std6, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau"));
 		
-		hS.viewApplication();
+		hS.viewAllApplication();
 		
 		System.out.println("> Process");
 		hS.processApplication();
