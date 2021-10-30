@@ -73,7 +73,7 @@ public class main {
 		Student std6 = new Student("006", "Jacky", "s006", false, 2);
 		hS.createApplication(std6, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau"));
 		
-		hS.viewApplication();
+		hS.viewAllApplication();
 		
 		System.out.println("> Process");
 		hS.processApplication();

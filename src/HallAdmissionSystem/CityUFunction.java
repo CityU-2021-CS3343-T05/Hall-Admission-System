@@ -4,7 +4,7 @@ public interface CityUFunction {
 
 	void processApplication();
 
-	void viewApplication();
+	void viewAllApplication();
 
 	void viewHallList();
 

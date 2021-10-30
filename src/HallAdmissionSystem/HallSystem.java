@@ -23,7 +23,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	}
 
 	@Override
-	public void viewApplication() {
+	public void viewAllApplication() {
 		System.out.println("========================= Application ========================");
 
 		for (Application application : allApplication) {
@@ -64,6 +64,15 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		}
 		return null;
 	}
+	
+	private Application getApplication(Student targetStd) {
+		for (Application app : allApplication) {
+			if (app.getSid() == targetStd.getSid()) {
+				return app;
+			}
+		}
+		return null;
+	}
 
 	public ArrayList<Hall> getHallList() {
 		return allHallListing;
@@ -79,5 +88,16 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	public void createNewHall(int hallNum, int capacity, int academicWeight, int leaderShipWeight, int ecaWeight,
 			int locationWeight) {
 		new Hall(hallNum, capacity, new WeightComponent(academicWeight, leaderShipWeight, ecaWeight, locationWeight));
+	}
+
+	@Override
+	public void viewApplication(Student std) {
+		System.out.println(getApplication(std));
+	}
+
+	@Override
+	public void delateApplication(Student std) {
+		Application removeApplication = getApplication(std);
+		this.allApplication.remove(removeApplication);	
 	}
 }
