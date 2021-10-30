@@ -96,7 +96,6 @@ public class LoginPortal{
 		}
 		input.close();
 		return targetAc;
-		
 	}
 
 }

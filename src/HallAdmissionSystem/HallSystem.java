@@ -100,4 +100,10 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		Application removeApplication = getApplication(std);
 		this.allApplication.remove(removeApplication);	
 	}
+	
+	//To Be done
+	public void runSystem() {
+		LoginPortal portal = LoginPortal.getInstance();
+		Account loginPersonAccount;
+	}
 }

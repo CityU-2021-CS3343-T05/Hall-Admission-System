@@ -47,6 +47,7 @@ public class Student implements Account {
 	}
 
 	public void mainManuel() {
-		
+	
+		createApplication(this, year, null);
 	}
 }
