@@ -81,7 +81,7 @@ public class Process {
 
 			// Non local
 			Application pApplication = pDataNotLocal.getTopAppliant();
-			
+
 //			System.out.println("Doing++++++++++++++++++++++");
 			while (pApplication != null) {
 //				System.out.println(">>>=========>>>" + pApplication);
@@ -102,13 +102,13 @@ public class Process {
 			}
 		}
 	}
-	
+
 	private void handlelocalAdmission() {
 		for (Result res : allResult) {
 			Hall pHall = res.getHall();
 
 			ProcessData pDataIsLocal = findProcessData(pHall, true);
-			
+
 			// Local
 			Application pApplication = pDataIsLocal.getTopAppliant();
 			while (pApplication != null) {
@@ -123,37 +123,70 @@ public class Process {
 		}
 	}
 
-	public void showProcessDetailedResult() {
+	public String ProcessDetailedResultList() {
+		String out = "";
+
 		for (Result res : allResult) {
-			System.out.println(res);
+			out += res.toString();
 		}
 
-		System.out.println(ProcessData.getListing());
+		out += ProcessData.getListing();
+
+		return out;
 	}
 	
+	public Application findApplication(Student std) {
+		for (Application application : allApplication) {
+			if (application.getSid() == std.getSid()) {
+				return application;
+			}
+		}
+		return null;
+	}
+
+	public String FindDetailedResult(Student std) {
+		String out = "";
+		
+		Application app = findApplication(std);
+
+		for (Result res : allResult) {
+			out = res.findSpecificResult(app);
+		}
+
+		if (out == null) {
+			out = ProcessData.getSpecificListing(app);
+		}
+		
+		if (out == null) {
+			out = "Result not found\n";
+		}
+
+		return out;
+	}
+
 	private Result findTheLessPplHall() {
 		Result minResult = allResult.get(0);
 		int minPpl = allResult.get(0).getNumberOfPpl();
-		
+
 		for (Result res : allResult) {
-			if(res.getNumberOfPpl()<minPpl) {
+			if (res.getNumberOfPpl() < minPpl) {
 				minResult = res;
 				minPpl = res.getNumberOfPpl();
 			}
 		}
-		
+
 		return minResult;
 	}
-	
+
 	private void handleNonLocalWaiting() {
-		
+
 		Application pApplication = ProcessData.getTopWaitingStd();
-		
+
 		while (pApplication != null) {
 			Application status;
 
 			Result res = findTheLessPplHall();
-			
+
 			status = res.addToAdmission(pApplication);
 			if (status != null) {
 				ProcessData.addToReject(pApplication);

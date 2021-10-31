@@ -10,7 +10,7 @@ public interface StudentFunction {
 
 	void viewHallList();
 
-	void viewResult();
+	void viewSpecificResult(Student std);
 	
 	Hall getHall(int targetHall);
 

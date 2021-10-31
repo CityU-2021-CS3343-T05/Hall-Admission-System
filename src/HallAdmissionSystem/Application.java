@@ -68,4 +68,22 @@ public class Application implements Comparable<Application> {
 			return 1;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object target) {
+		if (target == this) {
+            return true;
+        }
+        if (target == null || target.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Application appTarget = (Application)target;
+		
+		if(this.sid == appTarget.sid) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
