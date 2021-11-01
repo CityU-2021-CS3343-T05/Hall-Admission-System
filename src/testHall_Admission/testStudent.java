@@ -22,7 +22,7 @@ class testStudent {
 	private final InputStream standardIn = System.in;
 	private final PrintStream standardOut = System.out;
 	private ByteArrayInputStream inputStreamCaptor;
-	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+	private ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -40,7 +40,7 @@ class testStudent {
 	@BeforeEach
 	void setUp() throws Exception {
 		std1 = new Student("001", "Jennifer", "s001", false, 4);
-		System.setOut(new PrintStream(outputStreamCaptor));
+		//System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
 	@AfterEach
@@ -53,9 +53,12 @@ class testStudent {
 	void testMainManuel7() {
 		try {
 			String msg = "Test Change Password";
-			String input = "7\nAAA\n";
+			String input = "7\naaa";
 			String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Password =================\r\nInput the new password:\r\n==================================================\r\n> ";
 			provideInput(input);
+			System.out.println(standardIn);
+
+
 			std1.mainManuel();
 			
 			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
