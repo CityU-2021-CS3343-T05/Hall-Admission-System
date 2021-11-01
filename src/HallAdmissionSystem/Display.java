@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class Display {
 	private int width = 50;
 	
-	private Scanner sc;
-	
 	private Display() {
-		sc = new Scanner(System.in);
 	}
 
 	private void displayTitle(String title) {
@@ -46,8 +43,13 @@ public class Display {
 	}
 
 	private String DisplayInput() {
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("> ");
 		String str = sc.nextLine();
+		
+		sc.close();
+		
 		return str;
 	}
 
@@ -66,8 +68,12 @@ public class Display {
 	}
 	
 	private String displaySubInput() {
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("> ");
 		String str = sc.nextLine();
+		
+		sc.close();
 		return str;
 	}
 	
