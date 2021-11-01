@@ -11,7 +11,7 @@ public class Display {
 		sc = new Scanner(System.in);
 	}
 
-	private void DisplayTitle(String title) {
+	private void displayTitle(String title) {
 		int newWidth = width - title.length();
 		int upper = (int) Math.ceil(newWidth / 2.0);
 		int lower = (int) Math.floor(newWidth / 2.0);
@@ -31,11 +31,11 @@ public class Display {
 		System.out.println(out);
 	}
 
-	private void DisplayContent(String c) {
+	private void displayContent(String c) {
 		System.out.println(c);
 	}
 
-	private void DisplayEnd() {
+	private void displayEnd() {
 		String out = "";
 
 		for (int i = 0; i < width; i++) {
@@ -54,9 +54,9 @@ public class Display {
 	public static String runDisplay(String title, String Content, boolean needInput) {
 		Display d = new Display();
 		
-		d.DisplayTitle(title);
-		d.DisplayContent(Content);
-		d.DisplayEnd();
+		d.displayTitle(title);
+		d.displayContent(Content);
+		d.displayEnd();
 
 		if (needInput) {
 			return d.DisplayInput();
@@ -65,7 +65,7 @@ public class Display {
 		}
 	}
 	
-	private String DisplaySubInput() {
+	private String displaySubInput() {
 		System.out.print("> ");
 		String str = sc.nextLine();
 		return str;
@@ -76,7 +76,7 @@ public class Display {
 		
 		System.out.println(title);
 		
-		return d.DisplaySubInput();
+		return d.displaySubInput();
 	}
 	
 	public static void runDisplayLine(String title) {

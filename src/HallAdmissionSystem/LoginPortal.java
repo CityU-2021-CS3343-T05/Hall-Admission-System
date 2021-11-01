@@ -51,7 +51,6 @@ public class LoginPortal{
 	}
 
 	public static LoginPortal getInstance() {
-		
 		return instance;
 	}
 	
@@ -79,7 +78,6 @@ public class LoginPortal{
 		}
 		System.out.println("Wrong Password!Please try again!");
 		return null;
-		
 	}
 
 	public Account login() {

@@ -71,11 +71,11 @@ public class Student implements Account {
 			case 1:
 				int pHall = Integer.parseInt(Display.runDisplayDetails("Preferenced Hall"));
 
-				String academicType = Display.runDisplayDetails("Academic type");
-				String academicScore = Display.runDisplayDetails("Academic score");
+				String academicType = Display.runDisplayDetails("Academic Type");
+				String academicScore = Display.runDisplayDetails("Academic Score");
 				String leaderTime = Display.runDisplayDetails("Leardership Times");
 				String ecaHr = Display.runDisplayDetails("ECA Hours");
-				String location = Display.runDisplayDetails("Lived location");
+				String location = Display.runDisplayDetails("Lived Location");
 
 				ScoreComponent sc = new ScoreComponent(academicType, academicScore, leaderTime, ecaHr, location);
 
@@ -100,7 +100,7 @@ public class Student implements Account {
 				hS.viewSpecificResult(this);
 				break;
 			case 6:
-				setUserName(Display.runDisplay("Change Password", "Input the new password:", true));
+				setUserName(Display.runDisplay("Change Username", "Input the new username:", true));
 				break;
 			case 7:
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));

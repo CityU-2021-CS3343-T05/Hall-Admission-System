@@ -11,33 +11,17 @@ public class WeightComponent {
 		this.location = new Area_Location(new ValueWeighting(locationWeight));
 	}
 
-//	public int getAcademic() {
-//		return this.getAcademic();
-//	}
-
 	public void setAcademic(int newWeight) {
 		this.academic.setWeightValue(newWeight);
 	}
 
-//	public int getLeaderShip() {
-//		return this.leadership.getValue();
-//	}
-
 	public void setLeaderShip(int newLeaderShipTimes) {
 		this.leadership.setWeightValue(newLeaderShipTimes);
 	}
-
-//	public int getECA() {
-//		return this.eCA.getValue();
-//	}
-
+	
 	public void setEca(int newEca) {
 		this.eCA.setWeightValue(newEca);
 	}
-
-//	public int getLocation() {
-//		return this.location.getValue();
-//	}
 
 	public void setLocation(int newLocation) {
 		this.location.setWeightValue(newLocation);

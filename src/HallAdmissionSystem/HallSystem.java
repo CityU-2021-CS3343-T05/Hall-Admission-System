@@ -7,7 +7,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	private static HallSystem instance = new HallSystem();
 	private ArrayList<Hall> allHallListing;
 	private ArrayList<Application> allApplication;
-	private Process processResult;
+	private StartProcessing processResult;
 
 	private HallSystem() {
 		allHallListing = new ArrayList<>();
@@ -40,7 +40,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-		String content = processResult.ProcessDetailedResultList();
+		String content = processResult.processDetailedResultList();
 		
 		Display.runDisplay("All Result", content, false);
 	}
@@ -52,7 +52,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void processApplication() {
-		processResult = new Process(allApplication);
+		processResult = new StartProcessing(allApplication);
 		processResult.runProcess();
 	}
 

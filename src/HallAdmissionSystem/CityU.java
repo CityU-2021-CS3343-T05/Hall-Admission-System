@@ -80,7 +80,7 @@ public class CityU implements Account {
 				Display.runDisplayDetails("Done processing");
 				break;
 			case 6:
-				setUserName(Display.runDisplay("Change Password", "Input the new password:", true));
+				setUserName(Display.runDisplay("Change Username", "Input the new username:", true));
 				break;
 			case 7:
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
