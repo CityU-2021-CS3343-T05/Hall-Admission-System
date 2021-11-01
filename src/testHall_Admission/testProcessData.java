@@ -390,4 +390,36 @@ class testProcessData {
 		assertEquals(expectedFail,actualFail,msg);
 	}
 	
+	@Test
+	void testGetSpecificListing6() {
+		
+		String msg = "Test getting a application that not in waiting and rejected list";
+		
+		boolean expectedFail = false;
+		boolean actualFail = false;
+		
+		try {
+			 application1 = new Application(std1, 1, new ScoreComponent("GPA", "4.3", "2", "300", "Cheung Chau"));
+			 expectedDate1 = new Date();
+			 application2 = new Application(std2, 1, new ScoreComponent("GPA", "3.3", "2", "300", "Cheung Chau"));
+			 expectedDate2 = new Date();
+			 application3 = new Application(std3, 1, new ScoreComponent("GPA", "4.0", "2", "300", "Cheung Chau"));
+			 expectedDate3 = new Date();
+			 application4 = new Application(std4, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau"));
+			 expectedDate4 = new Date();
+		} catch (Ex_WrongExamType e) {
+			actualFail = true;
+		}
+		
+		if(!expectedFail) {
+			ProcessData.addToWaiting(application1);
+			ProcessData.addToWaiting(application2);
+			ProcessData.addToReject(application3);
+			String expectedOutput = "null";
+			System.out.print(ProcessData.getSpecificListing(application4));
+			assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+		}
+		assertEquals(expectedFail,actualFail,msg);
+	}
+	
 }
