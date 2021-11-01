@@ -24,11 +24,13 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewAllApplication() {
-		System.out.println("========================= Application ========================");
-
+		String out = "";
+		
 		for (Application application : allApplication) {
-			System.out.println(application);
+			out += application;
 		}
+		
+		Display.runDisplay("Application", out, false);
 	}
 
 	@Override
@@ -38,8 +40,14 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-		System.out.println("=========================== Result ===========================");
-		processResult.showProcessDetailedResult();
+		String content = processResult.ProcessDetailedResultList();
+		
+		Display.runDisplay("All Result", content, false);
+	}
+	
+	@Override
+	public void viewSpecificResult(Student std) {
+		Display.runDisplay("Specifici Result", processResult.FindDetailedResult(std), false);
 	}
 
 	@Override
@@ -50,9 +58,12 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewHallList() {
+		String out = "";
 		for (Hall hall : allHallListing) {
-			System.out.println(hall);
+			out += hall;
 		}
+		
+		Display.runDisplay("Hall Listing", out, false);
 	}
 
 	@Override
@@ -79,9 +90,10 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	}
 
 	@Override
-	public void changeHallSetting(Hall hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight,
+	public void changeHallSetting(int hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight,
 			int newLocationWeight) {
-		hall.setNewHallWeightings(newAcademicWeight, newLeaderShipWeight, newEcaWeight, newLocationWeight);
+		Hall h = getHall(hall);
+		h.setNewHallWeightings(newAcademicWeight, newLeaderShipWeight, newEcaWeight, newLocationWeight);
 	}
 
 	@Override
@@ -92,7 +104,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewApplication(Student std) {
-		System.out.println(getApplication(std));
+		Display.runDisplay("View Application", getApplication(std).toString(), false);
 	}
 
 	@Override
@@ -101,9 +113,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		this.allApplication.remove(removeApplication);	
 	}
 	
-	//To Be done
 	public void runSystem() {
-		LoginPortal portal = LoginPortal.getInstance();
-		Account loginPersonAccount;
+
 	}
 }

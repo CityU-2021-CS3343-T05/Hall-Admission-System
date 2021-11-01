@@ -49,4 +49,13 @@ public class Result {
 		return output;
 	}
 
+	public String findSpecificResult(Application app) {
+		for (int i = 0; i < admissionList.length; i++) {
+			if(admissionList[i].equals(app)) {
+				return "addmission  \t" + this.hall + "\t" + admissionList[i] + "\n";
+			}
+		}
+		return null;
+	}
+	
 }

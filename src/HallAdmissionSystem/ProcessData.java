@@ -43,7 +43,7 @@ public class ProcessData {
 	public static PriorityQueue<Application> getWaitingList() {
 		return waitingList;
 	}
-	
+
 	public static Application getTopWaitingStd() {
 		return waitingList.poll();
 	}
@@ -80,5 +80,21 @@ public class ProcessData {
 		}
 
 		return output;
+	}
+
+	public static String getSpecificListing(Application app) {
+		for (Application application : waitingList) {
+			if (application.equals(app)) {
+				return "Waiting List: " + application.toString();
+			}
+		}
+
+		for (Application application : rejectedList) {
+			if (application.equals(app)) {
+				return "Rejected List: " + application.toString();
+			}
+		}
+
+		return null;
 	}
 }
