@@ -2,13 +2,13 @@ package HallAdmissionSystem;
 
 import java.util.*;
 
-public class Process {
+public class StartProcessing {
 
 	private ArrayList<ProcessData> allProcessData;
 	private ArrayList<Result> allResult;
 	ArrayList<Application> allApplication;
 
-	public Process(ArrayList<Application> allApplication) {
+	public StartProcessing(ArrayList<Application> allApplication) {
 		this.allApplication = allApplication;
 		this.allProcessData = new ArrayList<>();
 		this.allResult = new ArrayList<>();
@@ -103,7 +103,7 @@ public class Process {
 		}
 	}
 
-	private void handlelocalAdmission() {
+	private void handleLocalAdmission() {
 		for (Result res : allResult) {
 			Hall pHall = res.getHall();
 
@@ -123,7 +123,7 @@ public class Process {
 		}
 	}
 
-	public String ProcessDetailedResultList() {
+	public String processDetailedResultList() {
 		String out = "";
 
 		for (Result res : allResult) {
@@ -200,6 +200,6 @@ public class Process {
 		importApplication();
 		handleNonlocalAdmission();
 		handleNonLocalWaiting();
-		handlelocalAdmission();
+		handleLocalAdmission();
 	}
 }

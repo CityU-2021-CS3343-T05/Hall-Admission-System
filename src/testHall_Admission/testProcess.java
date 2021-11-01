@@ -11,14 +11,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import HallAdmissionSystem.*;
-import HallAdmissionSystem.Process;
+import HallAdmissionSystem.StartProcessing;
 
 class testProcess {
 	
 	HallSystem hs;
 	Student std1, std2, std3, std4;
 	ArrayList<Application> allApplication;
-	Process process;
+	StartProcessing process;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -41,7 +41,7 @@ class testProcess {
 		allApplication.add(new Application(std3, 1, new ScoreComponent("GPA", "4.0", "2", "300", "Cheung Chau")));
 		allApplication.add(new Application(std4, 1, new ScoreComponent("GPA", "2.0", "2", "300", "Cheung Chau")));
 		
-		process = new Process(allApplication);
+		process = new StartProcessing(allApplication);
 
 	}
 
