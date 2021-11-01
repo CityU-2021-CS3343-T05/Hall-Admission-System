@@ -104,6 +104,7 @@ public class Student implements Account {
 				break;
 			case 7:
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
+				break;
 			default:
 				login = false;
 				break;
