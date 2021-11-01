@@ -113,7 +113,15 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		this.allApplication.remove(removeApplication);	
 	}
 	
-	public void runSystem() {
-
+	public void runSystem() throws Exception {
+		LoginPortal lP = LoginPortal.getInstance();
+		
+		Account loginAc = lP.login();
+		
+		while (loginAc == null) {
+			loginAc.mainManuel();
+			
+			loginAc = null;
+		}
 	}
 }

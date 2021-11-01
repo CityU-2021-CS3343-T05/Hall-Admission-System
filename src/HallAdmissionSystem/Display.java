@@ -84,4 +84,16 @@ public class Display {
 		
 		System.out.println(title);
 	}
+	
+	public static void runTitleLine(String title) {
+		Display d = new Display();
+		
+		d.displayTitle(title);
+	}
+	
+	public static void runEndLine() {
+		Display d = new Display();
+		
+		d.displayEnd();
+	}
 }
