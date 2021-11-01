@@ -14,7 +14,7 @@ public class Area_Location implements Weighting, Score {
 	public static int convertScore(String rawData) {
 		for (int i = 0; i < locationList.length; i++) {
 			if(rawData.equals(locationList[i])) {
-				return locationScore[i]/100*10;
+				return (int) Math.round(locationScore[i]/100.0*10.0);
 			}
 		}
 		
