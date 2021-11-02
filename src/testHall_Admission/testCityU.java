@@ -59,6 +59,8 @@ class testCityU {
 
 	@AfterEach
 	void tearDown() throws Exception {
+		System.setIn(standardIn);
+		System.setOut(standardOut);
 	}
 	
 	@Test

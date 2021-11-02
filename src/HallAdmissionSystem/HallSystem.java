@@ -47,7 +47,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	
 	@Override
 	public void viewSpecificResult(Student std) {
-		Display.runDisplay("Specifici Result", processResult.FindDetailedResult(std), false);
+		Display.runDisplay("Specifici Result", processResult.findDetailedResult(std), false);
 	}
 
 	@Override

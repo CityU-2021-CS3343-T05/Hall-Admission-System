@@ -144,7 +144,7 @@ public class StartProcessing {
 		return null;
 	}
 
-	public String FindDetailedResult(Student std) {
+	public String findDetailedResult(Student std) {
 		String out = "";
 		
 		Application app = findApplication(std);
