@@ -81,6 +81,8 @@ public class LoginPortal {
 		
 		Display.runTitleLine("Login Portal");
 		
+		Display.getScanner();
+		
 		String uName = Display.runDisplayDetails("Enter Username");
 		
 		Account findUserAc = findAccount(uName);

@@ -118,7 +118,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		
 		Account loginAc = lP.login();
 		
-		while (loginAc == null) {
+		while (loginAc != null) {
 			loginAc.mainManuel();
 			
 			loginAc = null;

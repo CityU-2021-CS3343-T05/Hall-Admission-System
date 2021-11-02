@@ -49,9 +49,8 @@ public class Student implements Account {
 	@Override
 	public void mainManuel() throws Ex_WrongExamType {
 		StudentFunction hS = HallSystem.getInstance();
-
+		Display.getScanner();
 		boolean login = true;
-		Display.createScanner();
 		while (login) {
 
 			String content = "Welcome, " + this.userName + "\n";
@@ -64,8 +63,6 @@ public class Student implements Account {
 			content += "[6] Change Username\n";
 			content += "[7] Change Password\n";
 			content += "[8] Logout\n";
-			
-			
 
 			int input = Integer.parseInt(Display.runDisplay("Student Manuel", content, true));
 
@@ -109,7 +106,6 @@ public class Student implements Account {
 				break;
 			default:
 				login = false;
-				Display.closeScanner();
 				break;
 			}
 		}

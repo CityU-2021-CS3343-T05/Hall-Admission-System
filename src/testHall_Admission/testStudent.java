@@ -6,7 +6,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.PriorityQueue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -14,8 +17,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import HallAdmissionSystem.ApplicationDateCompare;
+import HallAdmissionSystem.Display;
 import HallAdmissionSystem.Ex_WrongExamType;
 import HallAdmissionSystem.HallSystem;
+import HallAdmissionSystem.ProcessData;
 import HallAdmissionSystem.ScoreComponent;
 import HallAdmissionSystem.Student;
 
@@ -27,6 +33,8 @@ class testStudent {
 	private final PrintStream standardOut = System.out;
 	private ByteArrayInputStream inputStreamCaptor;
 	private ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+	Date expectedDate;
+	ScoreComponent sc;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -43,9 +51,13 @@ class testStudent {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		
 		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
 		System.setOut(new PrintStream(outputStreamCaptor));
+		
 		hs = HallSystem.getInstance();
+		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
+		
 	}
 
 	@AfterEach
@@ -63,7 +75,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -82,7 +96,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delate application (y/n)\r\n> Application Delated\r\n================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();		
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -101,7 +117,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delate application (y/n)\r\n> Application Not Delated\r\n================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();			
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -117,20 +135,15 @@ class testStudent {
 		String input = "3\r\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		Date expectedDate = null;
-		ScoreComponent sc;
-		try {
-			sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
-			hs.createApplication(std1, 1, sc);
-			expectedDate = new Date();
-		} catch (Ex_WrongExamType e1) {
-			actualFail = true;
-		}
-
-		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= View Application =================\r\n" + expectedDate + "\tS00001\tfalse\t4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		Student std2 = new Student("S00002", "Jennifer", "Passw0rd", false, 4);
+		hs.createApplication(std2, 1, sc);
+		expectedDate = new Date();
+		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= View Application =================\r\n" + expectedDate + "\tS00002\tfalse\t4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std2.mainManuel();
+			Display.closeScanner();			
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -149,7 +162,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Hall Listing ===================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();			
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -165,10 +180,15 @@ class testStudent {
 		String input = "5\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
+		
+		hs.processApplication();
+
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manuel ==================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();			
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -188,7 +208,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manuel ==================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();		
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -210,7 +232,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Password =================\r\nInput the new password:\r\n==================================================\r\n> ================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
-			std1.mainManuel();			
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();			
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}
@@ -231,8 +255,9 @@ class testStudent {
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
+			Display.createScanner();
 			std1.mainManuel();
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+			Display.closeScanner();	
 		} catch (Ex_WrongExamType e) {
 			actualFail = true;
 		}

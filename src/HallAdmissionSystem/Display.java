@@ -15,6 +15,10 @@ public class Display {
 		sc.close();
 	}
 	
+	public static Scanner getScanner() {
+		return sc;
+	} 
+	
 	private static void displayTitle(String title) {
 		int newWidth = width - title.length();
 		int upper = (int) Math.ceil(newWidth / 2.0);
@@ -61,7 +65,6 @@ public class Display {
 	}
 
 	public static String runDisplay(String title, String Content, boolean needInput) {
-		Display d = new Display();
 		
 		displayTitle(title);
 		displayContent(Content);

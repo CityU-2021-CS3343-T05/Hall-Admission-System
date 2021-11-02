@@ -81,8 +81,8 @@ public class main {
 //		hS.viewResult();
 		
 		HallSystem hS = HallSystem.getInstance();
-		
+		Display.createScanner();
 		hS.runSystem();
-		
+		Display.closeScanner();
 	}
 }

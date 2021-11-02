@@ -47,11 +47,6 @@ class testDisplay {
 	}
 
 	@Test
-	void testRunDisplay() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	void testRunDisplayDetails() {
 		String msg = "Test runDisplayDetails and get return value";
 		String expectedPrint = "Title\r\n> ";
