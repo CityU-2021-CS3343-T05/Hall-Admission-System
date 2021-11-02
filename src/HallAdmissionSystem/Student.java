@@ -51,7 +51,7 @@ public class Student implements Account {
 		StudentFunction hS = HallSystem.getInstance();
 
 		boolean login = true;
-
+		Display.createScanner();
 		while (login) {
 
 			String content = "Welcome, " + this.userName + "\n";
@@ -64,6 +64,8 @@ public class Student implements Account {
 			content += "[6] Change Username\n";
 			content += "[7] Change Password\n";
 			content += "[8] Logout\n";
+			
+			
 
 			int input = Integer.parseInt(Display.runDisplay("Student Manuel", content, true));
 
@@ -73,7 +75,7 @@ public class Student implements Account {
 
 				String academicType = Display.runDisplayDetails("Academic Type");
 				String academicScore = Display.runDisplayDetails("Academic Score");
-				String leaderTime = Display.runDisplayDetails("Leardership Times");
+				String leaderTime = Display.runDisplayDetails("Leadership Times");
 				String ecaHr = Display.runDisplayDetails("ECA Hours");
 				String location = Display.runDisplayDetails("Lived Location");
 
@@ -107,6 +109,7 @@ public class Student implements Account {
 				break;
 			default:
 				login = false;
+				Display.closeScanner();
 				break;
 			}
 		}

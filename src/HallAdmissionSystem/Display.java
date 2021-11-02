@@ -5,6 +5,16 @@ import java.util.Scanner;
 public class Display {
 	private static int width = 50;
 
+	private static Scanner sc;
+	
+	public static void createScanner() {
+		sc = new Scanner(System.in);
+	}
+	
+	public static void closeScanner() {
+		sc.close();
+	}
+	
 	private static void displayTitle(String title) {
 		int newWidth = width - title.length();
 		int upper = (int) Math.ceil(newWidth / 2.0);
@@ -40,12 +50,12 @@ public class Display {
 	}
 
 	private static String DisplayInput() {
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("> ");
 		String str = sc.nextLine();
 		
-		sc.close();
+//		sc.close();
 		
 		return str;
 	}
@@ -65,12 +75,12 @@ public class Display {
 	}
 	
 	private static String displaySubInput() {
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("> ");
 		String str = sc.nextLine();
 		
-		sc.close();
+//		sc.close();
 		return str;
 	}
 	
