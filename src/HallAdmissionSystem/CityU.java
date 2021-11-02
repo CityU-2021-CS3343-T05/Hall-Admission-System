@@ -37,8 +37,8 @@ public class CityU implements Account {
 			String content = "Welcome, " + this.userName + "\n";
 			content += "Select the functions:\n";
 			content += "[1] Create Hall\n";
-			content += "[2] Change Hall Setting\\n";			
-			content += "[3] View Hall Listing\\n";
+			content += "[2] Change Hall Setting\n";			
+			content += "[3] View Hall Listing\n";
 			content += "[4] View Applications\n";
 			content += "[5] Process Applications\n";
 			content += "[6] Change Username\n";
@@ -55,8 +55,6 @@ public class CityU implements Account {
 				int leadership = Integer.parseInt(Display.runDisplayDetails("Leadership Weighting"));
 				int eca = Integer.parseInt(Display.runDisplayDetails("ECA Weighting"));
 				int location = Integer.parseInt(Display.runDisplayDetails("Location Weighting"));
-
-				WeightComponent sc = new WeightComponent(academic, leadership, eca, leadership);
 				
 				hS.createNewHall(hName, numOfAcceptance, academic, leadership, eca, location);
 				break;
@@ -77,13 +75,14 @@ public class CityU implements Account {
 				break;
 			case 5:
 				hS.processApplication();
-				Display.runDisplayDetails("Done processing");
+				Display.runTitleLine("Done processing");
 				break;
 			case 6:
 				setUserName(Display.runDisplay("Change Username", "Input the new username:", true));
 				break;
 			case 7:
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
+				break;
 			default:
 				login = false;
 				break;
