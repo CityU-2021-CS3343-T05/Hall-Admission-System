@@ -135,6 +135,11 @@ class testStartProcessing {
 		
 		String expectedOutput = "";
 		
+		allApplication.add(application1);
+		allApplication.add(application2);
+		allApplication.add(application3);
+		allApplication.add(application4);
+		
 		process = new StartProcessing(allApplication);
 		process.runProcess();
 		

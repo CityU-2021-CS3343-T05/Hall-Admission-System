@@ -53,7 +53,7 @@ public class LoginPortal {
 
 	private Account findAccount(String inputUserName) {
 		if (inputUserName.isEmpty()) {
-			Display.runDisplayDetails("User Name cannot empty! Please try again!");
+			Display.runDisplayLine("User Name cannot empty! Please try again!");
 			return null;
 		} else {
 			for (Account e : accountList) {
@@ -61,19 +61,19 @@ public class LoginPortal {
 					return e;
 			}
 		}
-		Display.runDisplayDetails("No existing User! Please try again!");
+		Display.runDisplayLine("No existing User! Please try again!");
 		return null;
 	}
 
 	private Account checkPwd(Account targetAc, String inputUserPwd) {
 		if (inputUserPwd.isEmpty()) {
-			System.out.println("Password cannot empty! Please try again!");
+			Display.runDisplayLine("Password cannot empty! Please try again!");
 			return null;
 		} else {
 			if (inputUserPwd.equals(targetAc.getUserPwd()))
 				return targetAc;
 		}
-		System.out.println("Wrong Password!Please try again!");
+		Display.runDisplayLine("Wrong Password!Please try again!");
 		return null;
 	}
 
@@ -96,9 +96,9 @@ public class LoginPortal {
 		
 		Account userAccount = checkPwd(findUserAc, psw);
 		
-		while (findUserAc == null) {
+		while (userAccount == null) {
 			psw = Display.runDisplayDetails("Re enter Password");
-			findUserAc = checkPwd(findUserAc, psw);
+			userAccount = checkPwd(findUserAc, psw);
 		}
 		
 		Display.runDisplayLine("Login Successful");
