@@ -88,7 +88,7 @@ public class LoginPortal {
 		Account findUserAc = findAccount(uName);
 		
 		while (findUserAc == null) {
-			uName = Display.runDisplayDetails("Re enter Username");
+			uName = Display.runDisplayDetails("Re-enter Username");
 			findUserAc = findAccount(uName);
 		}
 		
@@ -97,7 +97,7 @@ public class LoginPortal {
 		Account userAccount = checkPwd(findUserAc, psw);
 		
 		while (userAccount == null) {
-			psw = Display.runDisplayDetails("Re enter Password");
+			psw = Display.runDisplayDetails("Re-enter Password");
 			userAccount = checkPwd(findUserAc, psw);
 		}
 		
