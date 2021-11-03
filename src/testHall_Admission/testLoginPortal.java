@@ -83,11 +83,11 @@ class testLoginPortal {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testLogin2.csv")
-	void testLogin2(String inputCmd, String expectedSid, String InputIsStudent, String msg) {
+	void testLogin2(String inputString, String expectedSid, String InputIsStudent, String msg) {
 		
 		boolean expectedIsStudent;
 		
-		String input = inputCmd.replace("|", "\n");
+		String input = inputString.replace("|", "\n");
 		
 		if(InputIsStudent.equals("T"))
 			expectedIsStudent = true;
