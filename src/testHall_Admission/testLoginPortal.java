@@ -53,36 +53,9 @@ class testLoginPortal {
 		System.setIn(standardIn);
 		System.setOut(standardOut);
 	}
-
-	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testLogin1.csv")
-	void testLogin1(String inputUserName, String inputUserPwd, String expectedSid, String InputIsStudent, String msg) {
-		
-		boolean expectedIsStudent;
-		String input = inputUserName + "\n" + inputUserPwd;
-		
-		if(InputIsStudent.equals("T"))
-			expectedIsStudent = true;
-		else 
-			expectedIsStudent = false;
-		
-		provideInput(input);
-		Display.createScanner();
-		Account actualAc = loginPortal.login();
-		Display.closeScanner();
-		
-		assertEquals(expectedIsStudent, actualAc instanceof Student,msg);
-		
-		if(expectedIsStudent) {
-			Student std = (Student)actualAc;
-			String actualSid = std.getSid(); 
-			assertEquals(expectedSid,actualSid,msg);
-		}
-		assertNotNull(actualAc,msg);
-	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testLogin2.csv")
+	@CsvFileSource(resources = "/testResource/testLogin.csv")
 	void testLogin2(String inputString, String expectedSid, String InputIsStudent, String msg) {
 		
 		boolean expectedIsStudent;
