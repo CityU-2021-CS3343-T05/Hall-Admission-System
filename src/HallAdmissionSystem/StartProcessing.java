@@ -22,9 +22,9 @@ public class StartProcessing {
 			allProcessData.add(new ProcessData(hall, true));
 			allProcessData.add(new ProcessData(hall, false));
 		}
-
 		for (Hall hall : hallList) {
-			allResult.add(new Result(hall));
+		
+			this.allResult.add(new Result(hall));
 		}
 	}
 

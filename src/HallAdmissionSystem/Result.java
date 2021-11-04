@@ -5,12 +5,14 @@ import java.util.*;
 public class Result {
 
 	private Hall hall;
-	private Application[] admissionList;
-	private int numberOfPpl = 0;
+//	private Application[] admissionList;
+	private ArrayList<Application> admissionList; 
+	private int numberOfPpl;
 
 	public Result(Hall hall) {
 		this.hall = hall;
-		admissionList = new Application[this.hall.getNumberofAcceptance()];
+		admissionList = new ArrayList<>();
+		this.numberOfPpl = hall.getNumberofAcceptance();
 	}
 
 	public Hall getHall() {
@@ -22,16 +24,17 @@ public class Result {
 	}
 
 	public Application addToAdmission(Application app) {
-		try {
-			admissionList[numberOfPpl] = app;
-			numberOfPpl++;
-			return null;
-		} catch (ArrayIndexOutOfBoundsException e) {
+		
+		if(admissionList.size() < numberOfPpl){
+			admissionList.add(app);
+		}
+		else {
 			return app;
 		}
+		return null;
 	}
 
-	public Application[] getAdmissionList() {
+	public ArrayList<Application> getAdmissionList() {
 		return admissionList;
 	}
 
@@ -41,8 +44,8 @@ public class Result {
 		if (this.numberOfPpl == 0) {
 			output += "Empty listing\n";
 		} else {
-			for (int i = 0; i < admissionList.length; i++) {
-				output += "addmission  \t" + this.hall + "\t" + admissionList[i] + "\n";
+			for (int i = 0; i < admissionList.size(); i++) {
+				output += "addmission  \t" + this.hall + "\t" + admissionList.get(i) + "\n";
 			}
 		}
 
@@ -50,9 +53,9 @@ public class Result {
 	}
 
 	public String findSpecificResult(Application app) {
-		for (int i = 0; i < admissionList.length; i++) {
-			if(admissionList[i].equals(app)) {
-				return "addmission  \t" + this.hall + "\t" + admissionList[i] + "\n";
+		for (int i = 0; i < admissionList.size(); i++) {
+			if(admissionList.get(i).equals(app)) {
+				return "addmission  \t" + this.hall + "\t" + admissionList.get(i) + "\n";
 			}
 		}
 		return null;

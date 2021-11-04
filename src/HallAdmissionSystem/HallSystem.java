@@ -1,5 +1,7 @@
 package HallAdmissionSystem;
 
+import static org.junit.Assert.assertFalse;
+
 import java.util.ArrayList;
 
 public class HallSystem implements CityUFunction, StudentFunction {
@@ -35,6 +37,12 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void createApplication(Student std, int perferHall, ScoreComponent score) {
+		for (Application application : allApplication) {
+			if (application.getSid() == std.getSid()) {
+				return;
+			}
+		}
+		
 		allApplication.add(new Application(std, perferHall, score));
 	}
 
