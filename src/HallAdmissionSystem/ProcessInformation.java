@@ -26,7 +26,12 @@ public class ProcessInformation {
 		}
 	}
 	
+	public Application topLocalApplicant() {
+		return localApplications.poll();
+	}
 	
-	
+	public Application topNonLocalApplication() {
+		return nonLocalApplications.poll();
+	}
 	
 }

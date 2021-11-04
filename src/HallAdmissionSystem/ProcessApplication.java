@@ -34,14 +34,66 @@ public class ProcessApplication {
 				return processInformation;
 			}
 		}
-		
+		return null;
+	}
+	
+	private ProcessResult findProcessResult(Hall h) {
+		for (ProcessResult processResult : allResults) {
+			if(processResult.getHall().equals(h)) {
+				return processResult;
+			}
+		}
 		return null;
 	}
 	
 	public void runSorting() {
 		for (Application app : rawApplications) {
+			calculateApplicationScore(app);
 			ProcessInformation pI = findProcessInformation(app.getPerferenceHall());
 			pI.importApplication(app);
+		}
+	}
+	
+//	IN REFACTORING TRANSFER TO APPLICATION CLASS
+	private void calculateApplicationScore(Application application) {
+		System.out.println(application);
+		int[] detailScore = application.getDetailScore();
+		Hall preferencedHall = application.getPerferenceHall();
+
+		int[] detailWeighting = preferencedHall.getHallWeightings();
+		int sum = 0;
+
+		for (int i = 0; i < detailWeighting.length; i++) {
+			sum += detailWeighting[i] * detailScore[i];
+		}
+
+		application.setTotalScore(sum);
+	}
+	
+	public void admitApplication() {
+		for (ProcessInformation processInformation : allInformation) {
+			
+			Hall admitingHall = processInformation.getHall();
+			ProcessResult procesingResult = findProcessResult(admitingHall);
+			
+			Application pendingApplication = processInformation.topNonLocalApplication();
+			
+			while (pendingApplication != null) {
+				procesingResult.admitApplication(pendingApplication);
+				pendingApplication = processInformation.topNonLocalApplication();
+			}
+			
+			//WaitingList
+			
+			
+			//Local
+			
+			pendingApplication = processInformation.topLocalApplicant();
+			
+			while (pendingApplication != null) {
+				procesingResult.admitApplication(pendingApplication);
+				pendingApplication = processInformation.topLocalApplicant();
+			}
 		}
 	}
 }
