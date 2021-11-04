@@ -27,7 +27,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		String out = "";
 		
 		for (Application application : allApplication) {
-			out += application;
+			out += application + "\n";
 		}
 		
 		Display.runDisplay("Application", out, false);
