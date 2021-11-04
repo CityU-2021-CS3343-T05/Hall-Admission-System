@@ -266,5 +266,26 @@ class testStudent {
 		}
 		assertEquals(expectedFail,actualFail,msg);	
 	}
+	
+	@Test
+	void testMainManuel9() {
+		String msg = "Test enter other input";
+		String input="9\n8";
+		boolean actualFail = false;
+		boolean expectedFail = false;
+		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Wrong command, please enter again!\r\n================== Student Manuel ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		try {
+			provideInput(input);
+			Display.createScanner();
+			std1.mainManuel();
+			Display.closeScanner();	
+		} catch (Ex_WrongExamType e) {
+			actualFail = true;
+		}
+		if(!expectedFail) {
+			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		}
+		assertEquals(expectedFail,actualFail,msg);	
+	}
 
 }
