@@ -56,7 +56,7 @@ public class Student implements Account {
 			String content = "Welcome, " + this.userName + "\n";
 			content += "Select the functions:\n";
 			content += "[1] Create Application\n";
-			content += "[2] Delate Application\n";
+			content += "[2] Delete Application\n";
 			content += "[3] View Application\n";
 			content += "[4] View Hall List\n";
 			content += "[5] View Result\n";
@@ -64,7 +64,7 @@ public class Student implements Account {
 			content += "[7] Change Password\n";
 			content += "[8] Logout\n";
 
-			int input = Integer.parseInt(Display.runDisplay("Student Manuel", content, true));
+			int input = Integer.parseInt(Display.runDisplay("Student Manual", content, true));
 
 			switch (input) {
 			case 1:

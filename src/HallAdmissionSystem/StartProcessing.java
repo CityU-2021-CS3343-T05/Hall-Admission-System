@@ -148,7 +148,7 @@ public class StartProcessing {
 		String out = "";
 		
 		Application app = findApplication(std);
-
+		
 		for (Result res : allResult) {
 			out = res.findSpecificResult(app);
 		}
