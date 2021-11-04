@@ -69,7 +69,7 @@ class testStartProcessing {
 		application6 = new Application(std6, 1, sc6);
 		expectedDate6 = new Date();
 		
-		//System.setOut(new PrintStream(outputStreamCaptor));
+		System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
 	@AfterEach
