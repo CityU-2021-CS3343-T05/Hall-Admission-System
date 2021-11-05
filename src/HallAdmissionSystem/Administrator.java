@@ -66,17 +66,17 @@ public class Administrator implements Account {
 				hS.createNewHall(hName, numOfAcceptance, academic, leadership, eca, location);
 				break;
 			case 2:
-				hName = Validation.getIntegerValue("New Hall Number");
+				hName = Validation.getIntegerValue("Hall Number");
 //				Integer.parseInt(Display.runDisplayDetails("Hall Name"));
-				academic = Validation.getIntegerValue("Academic Weighting");
+				academic = Validation.getIntegerValue("New Academic Weighting");
 //						Integer.parseInt(Display.runDisplayDetails("Academic Weighting"));
-				leadership = Validation.getIntegerValue("Leadership Weighting");
+				leadership = Validation.getIntegerValue("New Leadership Weighting");
 //						Integer.parseInt(Display.runDisplayDetails("Leadership Weighting"));
-				eca =  Validation.getIntegerValue("Eca Weighting");
+				eca =  Validation.getIntegerValue("New Eca Weighting");
 //				Integer.parseInt(Display.runDisplayDetails("ECA Weighting"));
-				location =  Validation.getIntegerValue("Location Weighting");
+				location =  Validation.getIntegerValue("New Location Weighting");
 //				Integer.parseInt(Display.runDisplayDetails("Location Weighting"));
-				numOfAcceptance = Validation.getIntegerValue("Number of Acceptance");
+				numOfAcceptance = Validation.getIntegerValue("New Number of Acceptance");
 				hS.changeHallSetting(hName,numOfAcceptance, academic, leadership, eca, location);
 				break;
 			case 3:
