@@ -54,18 +54,17 @@ public class Validation {
 		int pHall = 0;
 		HallSystem hS = HallSystem.getInstance();
 		ArrayList<Hall>allHallList = hS.getHallList();
-		if(!checkInteger(input)) {
-			return false;
-		}
+		if(input==null) return false;
+		if(!checkInteger(input)) return false;
 		pHall = Integer.parseInt(input);
 		for(Hall hall:allHallList){
-			if(pHall==hall.getHallNumber())
-				return true;
+			if(pHall==hall.getHallNumber()) return true;
 		}
 		return false;
 	}
 	
 	public static boolean validationType(String input) {
+		if(input==null) return false;
 		if(input.equals("DSE")||input.equals("GPA"))
 			return true;
 		return false;
@@ -73,6 +72,7 @@ public class Validation {
 	
 	public static boolean validationScore(String input, String academicType) {
 		Double temp = 0.0;
+		if(input==null||academicType==null) return false;
 		if(academicType.equals("DSE")) {
 			if(input.equals("5**")||input.equals("5*")||input.equals("5")||input.equals("4")||input.equals("3")||input.equals("2")||input.equals("1")||input.equals("U"))
 				return true;
@@ -87,6 +87,7 @@ public class Validation {
 	}
 	
 	public static boolean validationLocation(String input) {
+		if(input==null) return false;
 		String locationList[]= {"Cheung Chau","Lamma Island","Lantau","Mui Wo","Peng Chau","Shenzhen","Hung Shui Kiu","Kam Tin","Ma Wan","Sha Tau Kok","Deep Bay","Stanley","Wah Fu","Discovery Bay","Fanling","Lo Wu","Sai Kung","Sheung Shui","Tin Shui Wai","Tsing Lung Tau","Tuen Mun","Tung Chung","Yuen Long","Aberdeen","Ap Lei Chau","Chai Wan","Mid Level","Pok Fu Lam","Siu Sai Wan","South Horizons","Kwun Tong","Laguna City","Lai Chi Kok","Lam Tin","Lok Wah","Ngau Chi Wan","Sau Mau Ping","Yau Tong","Fo Tan","Hang Hau","Kwai Chung","Kwai Fong","Kwai Shing","Lai King","Ma On Shan","Po Lam","Shatin","Tai Po","Tai Wai","Tai Wo Hau","Tseung Kwan O","Tsing Yi","Tsuen Wan","Causeway Bay","Central","Fortress Hill","Happy Valley","Kennedy Town","North Point","Quarry Bay","Sai Wan Ho","Sai Ying Pun","Shau Kei Wan","Sheung Wan","Tai Hang","Tai Koo Shing","Tin Hau","Wan Chai","Western District?","Wong Chuk Hang","Cheung Sha Wan","Chuk Yuen","Choi Hung","Diamond Hill","Ho Man Tin","Hung Hom","Jordan","Kowloon Bay","Kowloon City","Lok Fu","Ma Tau Wai","Mei Foo","Ngau Tau Kok Mongkok","Ping Shek","San Po Kong","Sham Shui Po","Shek Kip Mei","Tai Kok Tsui","To Kwa Wan","Tsz Wan Shan","Wang Tau Hom","Whampoa","Wong Tai Sin","Yau Ma Tei","Kowloon Tong"};
 		for(int i=0;i<locationList.length;i++){
 			if(input.equals(locationList[i])){
@@ -100,6 +101,7 @@ public class Validation {
 		boolean isInt = false;
 		int convertInt = 0;
 		try {
+			if(input==null) return false;
 			convertInt = Integer.parseInt(input);
 			if(convertInt>=0) {
 				isInt = true;
@@ -115,6 +117,7 @@ public class Validation {
 		boolean isDouble = false;
 		int convertDouble = 0;
 		try {
+			if(input==null) return false;
 			Double.parseDouble(input);
 			if(convertDouble>=0) {
 				isDouble = true;

@@ -55,18 +55,26 @@ class testValidation {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testValidationHall() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationType() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testValidationHall.csv")
+	void testValidationHall(String input, boolean expectedOutput,String msg) {
+		
+		boolean actualOutput = Validation.validationHall(input);
+		
+		assertEquals(expectedOutput,actualOutput,msg);
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testValidationLocation.csv")
+	@CsvFileSource(resources = "/testResource/testValidationType.csv")
+	void testValidationType(String input, boolean expectedOutput, String msg) {
+		
+		boolean actualOutput = Validation.validationType(input);
+		
+		assertEquals(expectedOutput, actualOutput, msg);
+	}
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testValidationScore.csv")
 	void testValidationScore(String input,String type, boolean expectedOutput, String msg) {
 		
 		boolean actualOutput = Validation.validationScore(input, type);
