@@ -23,7 +23,7 @@ class testStartProcessing {
 	Application application1, application2, application3, application4, application5, application6;
 	ScoreComponent sc1, sc2, sc3, sc4, sc5, sc6;
 	ArrayList<Application> allApplication;
-	StartProcessing process;
+//	StartProcessing process;
 	private final PrintStream standardOut = System.out;
 	private ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 	Date expectedDate1, expectedDate2, expectedDate3, expectedDate4, expectedDate5, expectedDate6;
@@ -99,9 +99,9 @@ class testStartProcessing {
 		allApplication.add(application3);
 		allApplication.add(application4);
 		
-		process = new StartProcessing(allApplication);
-		process.runProcess();
-		process.processDetailedResultList();
+//		process = new StartProcessing(allApplication);
+//		process.runProcess();
+//		process.processDetailedResultList();
 		
 		String expectedOutput = expectedDate1 + "\tS00001\tfalse\t4\tHall 1\t10\t4\t10\t10\t0\r\n" + expectedDate2 + "\tS00002\tfalse\t2\tHall 1\t8\t4\t10\t10\t0\r\n" + expectedDate3 + "\tS00003\ttrue\t2\tHall 1\t9\t4\t10\t10\t0\r\n" + expectedDate4 + "\tS00004\ttrue\t2\tHall 1\t5\t4\t10\t10\t0";
 //		System.out.println(outputStreamCaptor.toString());

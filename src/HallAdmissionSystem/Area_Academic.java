@@ -8,14 +8,13 @@ public class Area_Academic implements Weighting, Score {
 		this.value = v;
 	}
 	
-	public static Area_Academic createArea_Academic(String type, String rawString) throws Exception {
+	public static Area_Academic createArea_Academic(String type, String rawString){
 		if(type.toUpperCase().equals("DSE")) {
 			return new Area_DSE(rawString);
 		}else if(type.toUpperCase().equals("GPA")){
 			return new Area_GPA(rawString);
-		}else {
-			throw new Exception();
 		}
+		return null;
 	}
 
 	@Override

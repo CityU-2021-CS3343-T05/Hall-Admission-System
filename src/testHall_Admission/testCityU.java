@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 
 import HallAdmissionSystem.Administrator;
 import HallAdmissionSystem.Display;
-import HallAdmissionSystem.Ex_WrongExamType;
 import HallAdmissionSystem.HallSystem;
 import HallAdmissionSystem.ScoreComponent;
 import HallAdmissionSystem.Student;
@@ -72,18 +71,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Hall Name\r\n> Number of Acceptance\r\n> Academic Weighting\r\n> Leadership Weighting\r\n> ECA Weighting\r\n> Location Weighting\r\n> ================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();			
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();			
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -94,18 +86,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Hall Name\r\n> Academic Weighting\r\n> Leadership Weighting\r\n> ECA Weighting\r\n> Location Weighting\r\n> ================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();			
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();			
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -116,18 +101,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Hall Listing ===================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -138,18 +116,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ==================== Application ===================\r\n\r\n==================================================\r\n================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -162,19 +133,11 @@ class testCityU {
 		hs.createApplication(std1, 1, sc);
 		expectedDate = new Date();
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ==================== Application ===================\r\n" + expectedDate + "\tS00001\tfalse\t4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
-		
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -185,18 +148,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Done processing =================\r\n================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();		
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();		
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
 	@Test
@@ -208,20 +164,13 @@ class testCityU {
 		String expectedUsername="KongU";
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manuel ==================\r\nWelcome, KongU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();		
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-			String actualUsername = cityu.getUserName();
-			assertEquals(expectedUsername,actualUsername,msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();		
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		String actualUsername = cityu.getUserName();
+		assertEquals(expectedUsername,actualUsername,msg);
 	}
 
 	@Test
@@ -233,20 +182,13 @@ class testCityU {
 		String expectedPassword="Abcd1234";
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Password =================\r\nInput the new password:\r\n==================================================\r\n> ================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();			
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-			String actualPassword = cityu.getUserPwd();
-			assertEquals(expectedPassword,actualPassword,msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);	
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();			
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		String actualPassword = cityu.getUserPwd();
+		assertEquals(expectedPassword,actualPassword,msg);	
 	}
 	
 	@Test
@@ -257,18 +199,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();	
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);	
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();	
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -279,18 +214,11 @@ class testCityU {
 		boolean expectedFail = false;
 		String expectedOutput = "================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>  Wrong command, please enter again!\r\n================== Student Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
-		try {
-			provideInput(input);
-			Display.createScanner();
-			cityu.mainManual();
-			Display.closeScanner();	
-		} catch (Ex_WrongExamType e) {
-			actualFail = true;
-		}
-		if(!expectedFail) {
-			assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-		}
-		assertEquals(expectedFail,actualFail,msg);	
+		provideInput(input);
+		Display.createScanner();
+		cityu.mainManual();
+		Display.closeScanner();	
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
 }
