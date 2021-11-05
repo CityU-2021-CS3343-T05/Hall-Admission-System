@@ -64,10 +64,10 @@ public class Student implements Account {
 			content += "[7] Change Password\n";
 			content += "[8] Logout\n";
 
-			int input = Integer.parseInt(Display.runDisplay("Student Manual", content, true));
+			String input = Display.runDisplay("Student Manual", content, true);
 
 			switch (input) {
-			case 1:
+			case "1":
 				int pHall = Validation.getHallInput();
 //				Integer.parseInt(Display.runDisplayDetails("Preferenced Hall"));
 
@@ -86,7 +86,7 @@ public class Student implements Account {
 
 				hS.createApplication(this, pHall, sc);
 				break;
-			case 2:
+			case "2":
 				String remove = Display.runDisplayDetails("Are you sure to delete application (y/n)");
 				if (remove.equals("y")) {
 					hS.delateApplication(this);
@@ -95,22 +95,22 @@ public class Student implements Account {
 					Display.runDisplayLine("Application Not Deleted");
 				}
 				break;
-			case 3:
+			case "3":
 				hS.viewApplication(this);
 				break;
-			case 4:
+			case "4":
 				hS.viewHallList();
 				break;
-			case 5:
+			case "5":
 				hS.viewSpecificResult(this);
 				break;
-			case 6:
+			case "6":
 				setUserName(Display.runDisplay("Change Username", "Input the new username:", true));
 				break;
-			case 7:
+			case "7":
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
 				break;
-			case 8:
+			case "8":
 				login = false;
 				break;
 			default:
