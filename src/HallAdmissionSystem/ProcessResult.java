@@ -105,6 +105,7 @@ public class ProcessResult {
 			if(application.equals(target)) {
 				return "Waiting list";
 			}
+			
 		}
 		return null;
 	}
