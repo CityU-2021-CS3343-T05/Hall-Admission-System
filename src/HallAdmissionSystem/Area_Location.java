@@ -17,7 +17,6 @@ public class Area_Location implements Weighting, Score {
 				return (int) Math.round(locationScore[i]/100.0*10.0);
 			}
 		}
-		
 		return 0;
 	}
 

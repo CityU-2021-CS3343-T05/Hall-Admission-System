@@ -32,18 +32,10 @@ class testArea_leaderShip {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testCreateArea_leaderShip.csv")
-	void testConvertScore(String input,boolean expectedFail,int expectedResult,String msg) {
+	void testConvertScore(String input,int expectedResult,String msg) {
 		int actualResult = 0;
-		boolean actualFail = false;
-		try {
-			actualResult = Area_LeaderShip.convertScore(input);
-		}catch(NumberFormatException e) {
-			actualFail = true;
-		}
-		assertEquals(expectedFail,actualFail,msg);
-		if(!expectedFail) {
-			assertEquals(expectedResult,actualResult,msg);
-		}
+		actualResult = Area_LeaderShip.convertScore(input);
+		assertEquals(expectedResult,actualResult,msg);
 	}
 
 }

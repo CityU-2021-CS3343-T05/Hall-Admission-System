@@ -47,7 +47,7 @@ public class Student implements Account {
 	}
 
 	@Override
-	public void mainManual() throws Exception {
+	public void mainManual(){
 		StudentFunction hS = HallSystem.getInstance();
 		Display.getScanner();
 		boolean login = true;
