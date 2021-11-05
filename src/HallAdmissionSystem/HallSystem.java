@@ -2,7 +2,7 @@ package HallAdmissionSystem;
 
 import java.util.ArrayList;
 
-public class HallSystem implements CityUFunction, StudentFunction {
+public class HallSystem implements AdministratorFunction, StudentFunction {
 
 	private static HallSystem instance = new HallSystem();
 	private ArrayList<Hall> allHallListing;
