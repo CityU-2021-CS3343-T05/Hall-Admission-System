@@ -23,6 +23,7 @@ public class Validation {
 		return input;
 	}
 	
+	
 	public static String getAcademicScore(String academicType) {
 		String input;
 		input = Display.runDisplayDetails("Academic Score");
@@ -32,9 +33,9 @@ public class Validation {
 		return input;
 	}
 	
-	public static String getEcaNLeaderShip() {
+	public static String getEcaNLeaderShip(String printString) {
 		String input;
-		input = Display.runDisplayDetails("Leadership Times");
+		input = Display.runDisplayDetails(printString);
 		while(!checkInteger(input)) {
 			input = Display.runDisplayDetails("Wrong input,please enter non-negative integer");
 		}
@@ -127,4 +128,16 @@ public class Validation {
 		}
 		return isDouble;
 	}
+	
+	public static int getIntegerValue(String printString) {
+		String input = null;
+		int output = 0;
+		input = Display.runDisplayDetails(printString);
+		while(!validationHall(input)) {
+			input = Display.runDisplayDetails("Not Valid input again");
+		}
+		output = Integer.parseInt(input);
+		return output;
+	}
+	
 }

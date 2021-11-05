@@ -14,7 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import HallAdmissionSystem.CityU;
+import HallAdmissionSystem.Administrator;
 import HallAdmissionSystem.Display;
 import HallAdmissionSystem.Ex_WrongExamType;
 import HallAdmissionSystem.HallSystem;
@@ -23,7 +23,7 @@ import HallAdmissionSystem.Student;
 
 class testCityU {
 
-	CityU cityu;
+	Administrator cityu;
 	Student std1;
 	HallSystem hs;
 	private final InputStream standardIn = System.in;
@@ -48,7 +48,7 @@ class testCityU {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		cityu = new CityU("CityU","Passw0rd");
+		cityu = new Administrator("CityU","Passw0rd");
 		System.setOut(new PrintStream(outputStreamCaptor));
 		
 		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);

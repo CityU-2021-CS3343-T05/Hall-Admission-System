@@ -24,7 +24,7 @@ public class LoginPortal {
 				if (type.equals("School")) {
 					userName = inLineContent[4];
 					userPwd = inLineContent[5];
-					Account account = new CityU(userName, userPwd);
+					Account account = new Administrator(userName, userPwd);
 					accountList.add(account);
 				} else if (type.equals("Student")) {
 					sid = inLineContent[1];

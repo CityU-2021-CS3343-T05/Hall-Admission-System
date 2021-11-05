@@ -68,13 +68,19 @@ public class Student implements Account {
 
 			switch (input) {
 			case 1:
-				int pHall = Integer.parseInt(Display.runDisplayDetails("Preferenced Hall"));
+				int pHall = Validation.getHallInput();
+//				Integer.parseInt(Display.runDisplayDetails("Preferenced Hall"));
 
-				String academicType = Display.runDisplayDetails("Academic Type");
-				String academicScore = Display.runDisplayDetails("Academic Score");
-				String leaderTime = Display.runDisplayDetails("Leadership Times");
-				String ecaHr = Display.runDisplayDetails("ECA Hours");
-				String location = Display.runDisplayDetails("Lived Location");
+				String academicType = Validation.getAcademicType(); 
+//						Display.runDisplayDetails("Academic Type");
+				String academicScore = Validation.getAcademicScore(academicType);
+//						Display.runDisplayDetails("Academic Score");
+				String leaderTime = Validation.getEcaNLeaderShip("Leadership Times");
+//						Display.runDisplayDetails("Leadership Times");
+				String ecaHr = Validation.getEcaNLeaderShip("ECA Hours");
+//						Display.runDisplayDetails("ECA Hours");
+				String location = Validation.getLocation();
+//						Display.runDisplayDetails("Lived Location");
 
 				ScoreComponent sc = new ScoreComponent(academicType, academicScore, leaderTime, ecaHr, location);
 

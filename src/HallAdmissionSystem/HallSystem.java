@@ -107,9 +107,10 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	}
 
 	@Override
-	public void changeHallSetting(int hall, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight,
+	public void changeHallSetting(int hall,int newCapacity, int newAcademicWeight, int newLeaderShipWeight, int newEcaWeight,
 			int newLocationWeight) {
 		Hall h = getHall(hall);
+		h.setNumberofAcceptance(newCapacity);
 		h.setNewHallWeightings(newAcademicWeight, newLeaderShipWeight, newEcaWeight, newLocationWeight);
 	}
 
