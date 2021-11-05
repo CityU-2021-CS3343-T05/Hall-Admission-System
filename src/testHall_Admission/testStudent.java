@@ -72,7 +72,7 @@ class testStudent {
 		String input = "1\r\n1\r\nDSE\r\n5**\r\n7\r\n211\r\nTin Shui Wai\r\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -89,11 +89,11 @@ class testStudent {
 	
 	@Test
 	void testMainManual2a() {
-		String msg = "Test delate Application and then choose y to not delate the application";
+		String msg = "Test Delete Application and then choose y to not Delete the application";
 		String input = "2\r\ny\r\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delate application (y/n)\r\n> Application Delated\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Deleted\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -110,11 +110,11 @@ class testStudent {
 	
 	@Test
 	void testMainManual2b() {
-		String msg = "Test delate Application and then choose n to not delate the application";
+		String msg = "Test Delete Application and then choose n to not Delete the application";
 		String input = "2\r\nn\r\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delate application (y/n)\r\n> Application Not Delated\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Not Deleted\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -138,7 +138,7 @@ class testStudent {
 		Student std2 = new Student("S00002", "Jennifer", "Passw0rd", false, 4);
 		hs.createApplication(std2, 1, sc);
 		expectedDate = new Date();
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= View Application =================\r\n" + expectedDate + "\tS00002\tfalse\t4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= View Application =================\r\n" + expectedDate + "\tS00002\tfalse\t4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -159,7 +159,7 @@ class testStudent {
 		String input = "4\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Hall Listing ===================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Hall Listing ===================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -183,7 +183,7 @@ class testStudent {
 		
 		hs.processApplication();
 
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manual ==================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manual ==================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -205,7 +205,7 @@ class testStudent {
 		boolean actualFail = false;
 		boolean expectedFail = false;
 		String expectedUsername="John";
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manual ==================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Username =================\r\nInput the new username:\r\n==================================================\r\n> ================== Student Manual ==================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -229,7 +229,7 @@ class testStudent {
 		boolean actualFail = false;
 		boolean expectedFail = false;
 		String expectedPassword="Abcd1234";
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Password =================\r\nInput the new password:\r\n==================================================\r\n> ================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Change Password =================\r\nInput the new password:\r\n==================================================\r\n> ================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -252,7 +252,7 @@ class testStudent {
 		String input="8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();
@@ -273,7 +273,7 @@ class testStudent {
 		String input="9\n8";
 		boolean actualFail = false;
 		boolean expectedFail = false;
-		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Wrong command, please enter again!\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delate Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Wrong command, please enter again!\r\n================== Student Manual ==================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		try {
 			provideInput(input);
 			Display.createScanner();

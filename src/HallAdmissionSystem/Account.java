@@ -10,6 +10,6 @@ public interface Account {
 
 	void setUserPwd(String userPwd);
 	
-	void mainManuel() throws Exception;
+	void mainManual() throws Exception;
 
 }

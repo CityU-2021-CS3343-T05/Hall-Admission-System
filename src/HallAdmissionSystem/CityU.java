@@ -27,7 +27,7 @@ public class CityU implements Account {
 	}
 	
 	@Override
-	public void mainManuel() throws Ex_WrongExamType {
+	public void mainManual() throws Ex_WrongExamType {
 		CityUFunction hS = HallSystem.getInstance();
 
 		boolean login = true;
@@ -83,9 +83,11 @@ public class CityU implements Account {
 			case 7:
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
 				break;
-			default:
+			case 8:
 				login = false;
 				break;
+			default:
+				Display.runDisplayLine("Wrong command, please enter again!");
 			}
 		}
 	}

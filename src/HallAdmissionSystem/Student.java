@@ -47,7 +47,7 @@ public class Student implements Account {
 	}
 
 	@Override
-	public void mainManuel() throws Ex_WrongExamType {
+	public void mainManual() throws Ex_WrongExamType {
 		StudentFunction hS = HallSystem.getInstance();
 		Display.getScanner();
 		boolean login = true;
@@ -81,12 +81,12 @@ public class Student implements Account {
 				hS.createApplication(this, pHall, sc);
 				break;
 			case 2:
-				String remove = Display.runDisplayDetails("Are you sure to delate application (y/n)");
+				String remove = Display.runDisplayDetails("Are you sure to delete application (y/n)");
 				if (remove.equals("y")) {
 					hS.delateApplication(this);
-					Display.runDisplayLine("Application Delated");
+					Display.runDisplayLine("Application Deleted");
 				} else {
-					Display.runDisplayLine("Application Not Delated");
+					Display.runDisplayLine("Application Not Deleted");
 				}
 				break;
 			case 3:
@@ -103,10 +103,12 @@ public class Student implements Account {
 				break;
 			case 7:
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
-				break;				
-			default:
+				break;
+			case 8:
 				login = false;
 				break;
+			default:
+				Display.runDisplayLine("Wrong command, please enter again!");
 			}
 		}
 	}
