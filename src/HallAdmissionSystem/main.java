@@ -79,7 +79,7 @@ public class main {
 		
 		System.out.println("> Result");
 		hS.viewResult();
-		
+		int azim = 0;
 //		HallSystem hS = HallSystem.getInstance();
 //		Display.createScanner();
 //		hS.runSystem();
