@@ -70,7 +70,6 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	public void viewSpecificResult(Student std) {
 		Application application = findApplication(std);
 		
-		
 		Display.runDisplay("Detailed Result", findApplicationStatus(application), false);
 	}
 
