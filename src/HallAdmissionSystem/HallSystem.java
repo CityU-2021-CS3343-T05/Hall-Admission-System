@@ -63,7 +63,7 @@ public class HallSystem implements AdministratorFunction, StudentFunction {
 			return "Watiting to process";
 		}
 		
-		return processApplication.findResultStatus(target);
+		return "Current Appication Status: " + processApplication.findResultStatus(target);
 	}
 	
 	@Override
