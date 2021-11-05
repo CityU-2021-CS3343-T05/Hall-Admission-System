@@ -65,23 +65,27 @@ class testValidation {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testValidationScore() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testValidationLocation.csv")
+	void testValidationScore(String input,String type, boolean expectedOutput, String msg) {
+		
+		boolean actualOutput = Validation.validationScore(input, type);
+		
+		assertEquals(expectedOutput, actualOutput, msg);
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testvalidationLocation.csv")
-	void testValidationLocation(String input,boolean expectedOutput, String msg) {
+	@CsvFileSource(resources = "/testResource/testValidationLocation.csv")
+	void testValidationLocation(String input, boolean expectedOutput, String msg) {
 		
-		boolean actualOutput = Validation.checkInteger(input);
+		boolean actualOutput = Validation.validationLocation(input);
 		
 		assertEquals(expectedOutput,actualOutput,msg);
 	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testCheckInteger.csv")
-	void testCheckInteger(String input,boolean expectedOutput, String msg) {
+	void testCheckInteger(String input, boolean expectedOutput, String msg) {
 		
 		boolean actualOutput = Validation.checkInteger(input);
 		
