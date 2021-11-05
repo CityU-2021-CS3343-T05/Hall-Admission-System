@@ -20,7 +20,7 @@ public class Display {
 	} 
 	
 	private static void displayTitle(String title) {
-		int newWidth = width - title.length();
+		int newWidth = width - title.length() - 2;
 		int upper = (int) Math.ceil(newWidth / 2.0);
 		int lower = (int) Math.floor(newWidth / 2.0);
 

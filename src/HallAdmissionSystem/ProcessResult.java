@@ -67,7 +67,7 @@ public class ProcessResult {
 	public static String getRejectListing() {
 		String out = "";
 		
-		if(waitingList.size() == 0) {
+		if(rejectedList.size() == 0) {
 			return "Reject List is empty \n";
 		}
 		
@@ -81,7 +81,7 @@ public class ProcessResult {
 	@Override
 	public String toString() {
 		String out = "";
-		out += this.hall;
+		out += this.hall + "\n";
 		
 		for (Application application : admittedList) {
 			out += "Admitted        " + application + "\n";

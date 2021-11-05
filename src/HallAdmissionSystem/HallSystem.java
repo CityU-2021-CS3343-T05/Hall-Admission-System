@@ -1,7 +1,5 @@
 package HallAdmissionSystem;
 
-import static org.junit.Assert.assertFalse;
-
 import java.util.ArrayList;
 
 public class HallSystem implements CityUFunction, StudentFunction {
@@ -28,6 +26,8 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		ProcessApplication pA = new ProcessApplication(this.allHallListing);
 		
 		pA.runProcess(allApplication);
+		
+		pA.getFinalResult();
 	}
 
 	@Override

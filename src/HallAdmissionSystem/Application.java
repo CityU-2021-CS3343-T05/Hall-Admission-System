@@ -54,7 +54,7 @@ public class Application implements Comparable<Application> {
 
 	@Override
 	public String toString() {
-		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\t" + this.year + "\t" + this.perferenceHall + "\t"
+		return this.applyTime + "\t" + sid + "\t" + this.isLocal + "\tYear " + this.year + "\t" + this.perferenceHall + "\t"
 				+ this.score + "\t" + this.totalScore;
 	}
 
