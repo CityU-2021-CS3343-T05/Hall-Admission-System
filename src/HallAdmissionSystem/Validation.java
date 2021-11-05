@@ -18,7 +18,7 @@ public class Validation {
 		String input;
 		input = Display.runDisplayDetails("Academic Type");
 		while(!validationType(input.toUpperCase())){
-			input = Display.runDisplayDetails("Wrong input, please enter \"Dse\" or \"GPA\"!");
+			input = Display.runDisplayDetails("Wrong input, please enter Dse or GPA!");
 		}
 		return input;
 	}
