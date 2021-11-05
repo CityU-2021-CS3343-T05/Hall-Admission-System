@@ -33,5 +33,4 @@ public class ProcessInformation {
 	public Application topNonLocalApplication() {
 		return nonLocalApplications.poll();
 	}
-	
 }

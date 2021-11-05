@@ -1,7 +1,6 @@
 package HallAdmissionSystem;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ProcessApplication {
 	private ArrayList<ProcessInformation> allInformation;
@@ -46,7 +45,7 @@ public class ProcessApplication {
 		return null;
 	}
 	
-	public void runSorting() {
+	public void startSorting() {
 		for (Application app : rawApplications) {
 			calculateApplicationScore(app);
 			ProcessInformation pI = findProcessInformation(app.getPerferenceHall());
@@ -70,6 +69,26 @@ public class ProcessApplication {
 		application.setTotalScore(sum);
 	}
 	
+	private ProcessResult findMoreEmptyHall() {
+		ProcessResult minRes = allResults.get(0);
+		int minCapacity;
+		
+		if(minRes==null) {
+			return null;
+		}else {
+			minCapacity = minRes.getOccupied();
+		}
+		 		
+		for (ProcessResult processResult : allResults) {
+			if(minCapacity>processResult.getOccupied()) {
+				minRes = processResult;
+				minCapacity = minRes.getOccupied();
+			}
+		}
+		
+		return minRes;
+	}
+	
 	public void admitApplication() {
 		for (ProcessInformation processInformation : allInformation) {
 			
@@ -84,7 +103,13 @@ public class ProcessApplication {
 			}
 			
 			//WaitingList
-			
+			pendingApplication = procesingResult.topWaitingApplication();
+			while (pendingApplication != null) {
+				ProcessResult moreEmptyHall = findMoreEmptyHall();
+				moreEmptyHall.admitApplication(pendingApplication);
+				
+				pendingApplication = procesingResult.topWaitingApplication();
+			}
 			
 			//Local
 			
@@ -95,5 +120,23 @@ public class ProcessApplication {
 				pendingApplication = processInformation.topLocalApplicant();
 			}
 		}
+	}
+	
+	public void runProcess(ArrayList<Application> raw) {
+		initializeEnvironment(raw);
+		
+		startSorting();
+		
+		admitApplication();
+		
+		System.out.println("============Res============");
+		
+		for (ProcessResult res : allResults) {
+			System.out.println(res);
+		}
+		
+		System.out.println(ProcessResult.getWaitingListing());
+		
+		System.out.println(ProcessResult.getRejectListing());
 	}
 }
