@@ -46,7 +46,7 @@ public class Administrator implements Account {
 			content += "[7] Change Password\n";
 			content += "[8] Logout\n";
 
-			int input = Integer.parseInt(Display.runDisplay("Student Manuel", content, true));
+			int input = Integer.parseInt(Display.runDisplay("Admin Manuel", content, true));
 
 			switch (input) {
 			case 1:
