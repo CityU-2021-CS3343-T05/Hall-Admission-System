@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import HallAdmissionSystem.Validation;
+
 class testValidation {
 
 	@BeforeAll
@@ -27,38 +29,16 @@ class testValidation {
 	}
 
 	@Test
-	void testValidationHall() {
-		fail("Not yet implemented");
+	void testCheckInput() {
+		String msg = "";
+		
+		boolean expectedOutput = false;
+		
+		boolean actualOutput = Validation.checkInteger("String");
+		
+		assertEquals(expectedOutput,actualOutput);
 	}
 
-	@Test
-	void testValidationType() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationScore() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationDouble() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationLocation() {
-		fail("Not yet implemented");
-	}
+	
 
 }
