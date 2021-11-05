@@ -91,7 +91,7 @@ class testValidation {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testGetEcaNLeaderShip.csv")
-	void testGetEcaNLeaderShip(String input, String title, String expectedResult, String expectedOutput, String msg) {
+	void testGetEcaNLeaderShip(String input, String expectedResult, String title, String expectedOutput, String msg) {
 		input = input.replace("|", "\r\n");
 		expectedOutput = expectedOutput.replace("|", "\r\n");
 		provideInput(input);
