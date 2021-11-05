@@ -70,16 +70,20 @@ class testValidation {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testValidationLocation() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testvalidationLocation.csv")
+	void testValidationLocation(String input,boolean expectedOutput, String msg) {
+		
+		boolean actualOutput = Validation.checkInteger(input);
+		
+		assertEquals(expectedOutput,actualOutput,msg);
 	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testCheckInteger.csv")
 	void testCheckInteger(String input,boolean expectedOutput, String msg) {
 		
-		boolean actualOutput = Validation.checkInteger("String");
+		boolean actualOutput = Validation.checkInteger(input);
 		
 		assertEquals(expectedOutput,actualOutput,msg);
 	} 
@@ -88,7 +92,7 @@ class testValidation {
 	@CsvFileSource(resources = "/testResource/testCheckDouble.csv")
 	void testCheckDouble(String input,boolean expectedOutput, String msg) {
 
-		boolean actualOutput = Validation.checkDouble("String");
+		boolean actualOutput = Validation.checkDouble(input);
 		
 		assertEquals(expectedOutput,actualOutput,msg);
 	}
