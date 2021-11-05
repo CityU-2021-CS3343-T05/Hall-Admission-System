@@ -45,13 +45,10 @@ class testStudent {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		
-		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
-		System.setOut(new PrintStream(outputStreamCaptor));
-		
 		hs = HallSystem.getInstance();
+		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
 		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
-		
+		System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
 	@AfterEach
