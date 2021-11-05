@@ -53,6 +53,10 @@ public class ProcessResult {
 	public static String getWaitingListing() {
 		String out = "";
 		
+		if(waitingList.size() == 0) {
+			return "Waiting List is empty \n";
+		}
+		
 		for (Application application : waitingList) {
 			out += "Waiting List    " + application + "\n";
 		}
@@ -62,6 +66,10 @@ public class ProcessResult {
 	
 	public static String getRejectListing() {
 		String out = "";
+		
+		if(waitingList.size() == 0) {
+			return "Reject List is empty \n";
+		}
 		
 		for (Application application : rejectedList) {
 			out += "Reject List     " + application + "\n";

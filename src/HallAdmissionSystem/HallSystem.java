@@ -23,6 +23,12 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	public static HallSystem getInstance() {
 		return instance;
 	}
+	
+	public void newProcess() {
+		ProcessApplication pA = new ProcessApplication(this.allHallListing);
+		
+		pA.runProcess(allApplication);
+	}
 
 	@Override
 	public void viewAllApplication() {
