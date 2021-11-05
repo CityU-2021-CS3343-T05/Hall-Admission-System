@@ -2,6 +2,11 @@ package testHall_Admission;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,9 +15,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
+import HallAdmissionSystem.Display;
 import HallAdmissionSystem.Validation;
 
 class testValidation {
+	
+	private final InputStream standardIn = System.in;
+	private final PrintStream standardOut = System.out;
+	private ByteArrayInputStream inputStreamCaptor;
+	private ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -21,38 +32,87 @@ class testValidation {
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 	}
+	
+	private void provideInput(String data){
+		inputStreamCaptor = new ByteArrayInputStream(data.getBytes());
+		System.setIn(inputStreamCaptor);
+	}
+
 
 	@BeforeEach
 	void setUp() throws Exception {
+		System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		System.setIn(standardIn);
+		System.setOut(standardOut);
 	}
 
-	@Test
-	void testGetHallInput() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetHallInput.csv")
+	void testGetHallInput(String input,int expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		int actualResult = Validation.getHallInput();
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
-	@Test
-	void testGetAcademicType() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetAcademicType.csv")
+	void testGetAcademicType(String input,String expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		String actualResult = Validation.getAcademicType();
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
-	@Test
-	void testGetAcademicScore() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetAcademicScore.csv")
+	void testGetAcademicScore(String input, String academicType, String expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		String actualResult = Validation.getAcademicScore(academicType);
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
-	@Test
-	void testGetEcaNLeaderShip() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetEcaNLeaderShip.csv")
+	void testGetEcaNLeaderShip(String input, String title, String expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		String actualResult = Validation.getEcaNLeaderShip(title);
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
-	@Test
-	void testGetLocation() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetLocation.csv")
+	void testGetLocation(String input, String expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		String actualResult = Validation.getLocation();
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 
 	@ParameterizedTest
