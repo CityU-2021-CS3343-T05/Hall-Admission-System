@@ -1,6 +1,7 @@
 package HallAdmissionSystem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 public class ProcessResult {
@@ -88,5 +89,33 @@ public class ProcessResult {
 		}
 		
 		return out;
+	}
+
+	public String findInAdmit(Application target) {
+		for (Application application : admittedList) {
+			if(application.equals(target)) {
+				return "Admited to " + this.hall;
+			}
+		}
+		return null;
+	}
+
+	public static String findInWaiting(Application target) {
+		for (Application application : waitingList) {
+			if(application.equals(target)) {
+				return "Waiting list";
+			}
+			
+		}
+		return null;
+	}
+
+	public static String findInReject(Application target) {
+		for (Application application : rejectedList) {
+			if(application.equals(target)) {
+				return "Reject list";
+			}
+		}
+		return null;
 	}
 }

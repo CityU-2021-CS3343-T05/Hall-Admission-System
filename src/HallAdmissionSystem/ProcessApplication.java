@@ -128,7 +128,7 @@ public class ProcessApplication {
 		admitApplication();
 	}
 
-	public void getFinalResult() {
+	public String getFinalResult() {
 
 		String out = "";
 
@@ -136,10 +136,33 @@ public class ProcessApplication {
 			out += res;
 		}
 
+		out += "\n";
+
 		out += ProcessResult.getWaitingListing();
 
+		out += "\n";
+
 		out += ProcessResult.getRejectListing();
+
+		return out;
+	}
+
+	public String findResultStatus(Application target) {
 		
-		Display.runDisplay("Final Process Result", out, false);
+		String outData = null;
+		
+		for (ProcessResult processResult : allResults) {
+			outData = processResult.findInAdmit(target);
+		}
+		
+		if(outData == null) {
+			outData = ProcessResult.findInWaiting(target);
+		}
+		
+		if(outData == null) {
+			outData = ProcessResult.findInReject(target);
+		}
+		
+		return outData;
 	}
 }

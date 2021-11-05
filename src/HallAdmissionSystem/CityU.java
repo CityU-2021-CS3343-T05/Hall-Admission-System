@@ -27,7 +27,7 @@ public class CityU implements Account {
 	}
 	
 	@Override
-	public void mainManual() throws Ex_WrongExamType {
+	public void mainManual() {
 		CityUFunction hS = HallSystem.getInstance();
 
 		boolean login = true;

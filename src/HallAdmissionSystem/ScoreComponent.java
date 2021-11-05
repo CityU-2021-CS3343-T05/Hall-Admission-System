@@ -4,7 +4,7 @@ public class ScoreComponent {
 
 	private Score academic, leadership, eCA, location;
 
-	public ScoreComponent(String academicType, String academicScore, String leadershipTimes, String ecaHour, String location) throws Ex_WrongExamType {
+	public ScoreComponent(String academicType, String academicScore, String leadershipTimes, String ecaHour, String location) throws Exception {
 		this.academic = Area_Academic.createArea_Academic(academicType, academicScore);
 		this.leadership = new Area_LeaderShip(new ValueScore(Area_LeaderShip.convertScore(leadershipTimes), leadershipTimes));
 		this.eCA = new Area_ECA(new ValueScore(Area_ECA.convertScore(ecaHour), ecaHour));
