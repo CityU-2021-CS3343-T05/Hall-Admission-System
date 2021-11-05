@@ -7,6 +7,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+
+import HallAdmissionSystem.Validation;
 
 class testValidation {
 
@@ -27,6 +31,31 @@ class testValidation {
 	}
 
 	@Test
+	void testGetHallInput() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAcademicType() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetAcademicScore() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetEcaNLeaderShip() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetLocation() {
+		fail("Not yet implemented");
+	}
+
+	@Test
 	void testValidationHall() {
 		fail("Not yet implemented");
 	}
@@ -36,29 +65,40 @@ class testValidation {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testValidationScore() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testValidationLocation.csv")
+	void testValidationScore(String input,String type, boolean expectedOutput, String msg) {
+		
+		boolean actualOutput = Validation.validationScore(input, type);
+		
+		assertEquals(expectedOutput, actualOutput, msg);
 	}
 
-	@Test
-	void testValidationInt() {
-		fail("Not yet implemented");
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testValidationLocation.csv")
+	void testValidationLocation(String input, boolean expectedOutput, String msg) {
+		
+		boolean actualOutput = Validation.validationLocation(input);
+		
+		assertEquals(expectedOutput,actualOutput,msg);
 	}
 
-	@Test
-	void testValidationDouble() {
-		fail("Not yet implemented");
-	}
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testCheckInteger.csv")
+	void testCheckInteger(String input, boolean expectedOutput, String msg) {
+		
+		boolean actualOutput = Validation.checkInteger(input);
+		
+		assertEquals(expectedOutput,actualOutput,msg);
+	} 
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testCheckDouble.csv")
+	void testCheckDouble(String input,boolean expectedOutput, String msg) {
 
-	@Test
-	void testValidationString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidationLocation() {
-		fail("Not yet implemented");
+		boolean actualOutput = Validation.checkDouble(input);
+		
+		assertEquals(expectedOutput,actualOutput,msg);
 	}
 
 }
