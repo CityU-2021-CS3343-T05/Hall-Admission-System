@@ -29,7 +29,7 @@ public class Administrator implements Account {
 	
 	@Override
 	public void mainManual() {
-		CityUFunction hS = HallSystem.getInstance();
+		AdministratorFunction hS = HallSystem.getInstance();
 
 		boolean login = true;
 

@@ -1,6 +1,6 @@
 package HallAdmissionSystem;
 
-public interface CityUFunction {
+public interface AdministratorFunction {
 
 	void processApplication();
 
