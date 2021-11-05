@@ -19,6 +19,10 @@ public class HallSystem implements AdministratorFunction, StudentFunction {
 	}
 
 	public static HallSystem getInstance() {
+		
+		if(instance==null) {
+			instance = new HallSystem();
+		}
 		return instance;
 	}
 	

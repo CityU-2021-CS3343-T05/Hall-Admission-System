@@ -48,6 +48,9 @@ public class LoginPortal {
 	}
 
 	public static LoginPortal getInstance() {
+		if(instance==null) {
+			instance = new LoginPortal();
+		}
 		return instance;
 	}
 
