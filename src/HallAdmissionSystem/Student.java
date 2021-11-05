@@ -47,7 +47,7 @@ public class Student implements Account {
 	}
 
 	@Override
-	public void mainManual() throws Ex_WrongExamType {
+	public void mainManual() throws Exception {
 		StudentFunction hS = HallSystem.getInstance();
 		Display.getScanner();
 		boolean login = true;

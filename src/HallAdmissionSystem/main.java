@@ -75,11 +75,10 @@ public class main {
 		hS.viewAllApplication();
 		
 		System.out.println("> Process");
-//		hS.processApplication();
-		hS.newProcess();
+		hS.processApplication();
 		
-//		System.out.println("> Result");
-//		hS.viewResult();
+		System.out.println("> Result");
+		hS.viewResult();
 		
 //		HallSystem hS = HallSystem.getInstance();
 //		Display.createScanner();

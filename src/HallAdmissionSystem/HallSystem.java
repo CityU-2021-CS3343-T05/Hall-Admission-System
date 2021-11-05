@@ -7,7 +7,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 	private static HallSystem instance = new HallSystem();
 	private ArrayList<Hall> allHallListing;
 	private ArrayList<Application> allApplication;
-	private StartProcessing processResult;
+	private ProcessApplication processApplication = null;
 
 	private HallSystem() {
 		allHallListing = new ArrayList<>();
@@ -22,12 +22,11 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		return instance;
 	}
 	
-	public void newProcess() {
-		ProcessApplication pA = new ProcessApplication(this.allHallListing);
+	@Override
+	public void processApplication() {
+		processApplication = new ProcessApplication(this.allHallListing);
 		
-		pA.runProcess(allApplication);
-		
-		pA.getFinalResult();
+		processApplication.runProcess(allApplication);
 	}
 
 	@Override
@@ -54,20 +53,22 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-		String content = processResult.processDetailedResultList();
+		String content = processApplication.getFinalResult();
 		
 		Display.runDisplay("All Result", content, false);
 	}
 	
+	public String findApplicationStatus(Application target) {
+		if(processApplication == null) {
+			return "Watiting to process";
+		}
+		
+		return processApplication.findResultStatus(target);
+	}
+	
 	@Override
 	public void viewSpecificResult(Student std) {
-		Display.runDisplay("Specifici Result", processResult.findDetailedResult(std), false);
-	}
-
-	@Override
-	public void processApplication() {
-		processResult = new StartProcessing(allApplication);
-		processResult.runProcess();
+	
 	}
 
 	@Override
@@ -90,7 +91,7 @@ public class HallSystem implements CityUFunction, StudentFunction {
 		return null;
 	}
 	
-	private Application getApplication(Student targetStd) {
+	private Application findApplication(Student targetStd) {
 		for (Application app : allApplication) {
 			if (app.getSid() == targetStd.getSid()) {
 				return app;
@@ -118,12 +119,12 @@ public class HallSystem implements CityUFunction, StudentFunction {
 
 	@Override
 	public void viewApplication(Student std) {
-		Display.runDisplay("View Application", getApplication(std).toString(), false);
+		Display.runDisplay("View Application", findApplication(std).toString(), false);
 	}
 
 	@Override
 	public void delateApplication(Student std) {
-		Application removeApplication = getApplication(std);
+		Application removeApplication = findApplication(std);
 		this.allApplication.remove(removeApplication);	
 	}
 	
