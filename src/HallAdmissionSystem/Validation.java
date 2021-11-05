@@ -23,7 +23,6 @@ public class Validation {
 		return input;
 	}
 	
-	
 	public static String getAcademicScore(String academicType) {
 		String input;
 		input = Display.runDisplayDetails("Academic Score");
@@ -133,7 +132,7 @@ public class Validation {
 		String input = null;
 		int output = 0;
 		input = Display.runDisplayDetails(printString);
-		while(!validationHall(input)) {
+		while(!checkInteger(input)) {
 			input = Display.runDisplayDetails("Not Valid input again");
 		}
 		output = Integer.parseInt(input);
