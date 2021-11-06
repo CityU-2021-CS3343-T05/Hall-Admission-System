@@ -82,7 +82,7 @@ public class Validation {
 			if(!checkDouble(input))
 				return false;
 			temp = Double.parseDouble(input);
-			if(temp<4.3 && temp>0)
+			if(temp<=4.3 && temp>=0)
 				return true;
 		}
 		return false;
@@ -90,7 +90,7 @@ public class Validation {
 	
 	public static boolean validationLocation(String input) {
 		if(input==null) return false;
-		String locationList[]= {"Cheung Chau","Lamma Island","Lantau","Mui Wo","Peng Chau","Shenzhen","Hung Shui Kiu","Kam Tin","Ma Wan","Sha Tau Kok","Deep Bay","Stanley","Wah Fu","Discovery Bay","Fanling","Lo Wu","Sai Kung","Sheung Shui","Tin Shui Wai","Tsing Lung Tau","Tuen Mun","Tung Chung","Yuen Long","Aberdeen","Ap Lei Chau","Chai Wan","Mid Level","Pok Fu Lam","Siu Sai Wan","South Horizons","Kwun Tong","Laguna City","Lai Chi Kok","Lam Tin","Lok Wah","Ngau Chi Wan","Sau Mau Ping","Yau Tong","Fo Tan","Hang Hau","Kwai Chung","Kwai Fong","Kwai Shing","Lai King","Ma On Shan","Po Lam","Shatin","Tai Po","Tai Wai","Tai Wo Hau","Tseung Kwan O","Tsing Yi","Tsuen Wan","Causeway Bay","Central","Fortress Hill","Happy Valley","Kennedy Town","North Point","Quarry Bay","Sai Wan Ho","Sai Ying Pun","Shau Kei Wan","Sheung Wan","Tai Hang","Tai Koo Shing","Tin Hau","Wan Chai","Western District?","Wong Chuk Hang","Cheung Sha Wan","Chuk Yuen","Choi Hung","Diamond Hill","Ho Man Tin","Hung Hom","Jordan","Kowloon Bay","Kowloon City","Lok Fu","Ma Tau Wai","Mei Foo","Ngau Tau Kok Mongkok","Ping Shek","San Po Kong","Sham Shui Po","Shek Kip Mei","Tai Kok Tsui","To Kwa Wan","Tsz Wan Shan","Wang Tau Hom","Whampoa","Wong Tai Sin","Yau Ma Tei","Kowloon Tong"};
+		String locationList[]= {"Cheung Chau","Lamma Island","Lantau","Mui Wo","Peng Chau","Shenzhen","Hung Shui Kiu","Kam Tin","Ma Wan","Sha Tau Kok","Deep Bay","Stanley","Wah Fu","Discovery Bay","Fanling","Lo Wu","Sai Kung","Sheung Shui","Tin Shui Wai","Tsing Lung Tau","Tuen Mun","Tung Chung","Yuen Long","Aberdeen","Ap Lei Chau","Chai Wan","Mid Level","Pok Fu Lam","Siu Sai Wan","South Horizons","Kwun Tong","Laguna City","Lai Chi Kok","Lam Tin","Lok Wah","Ngau Chi Wan","Sau Mau Ping","Yau Tong","Fo Tan","Hang Hau","Kwai Chung","Kwai Fong","Kwai Shing","Lai King","Ma On Shan","Po Lam","Shatin","Tai Po","Tai Wai","Tai Wo Hau","Tseung Kwan O","Tsing Yi","Tsuen Wan","Causeway Bay","Central","Fortress Hill","Happy Valley","Kennedy Town","North Point","Quarry Bay","Sai Wan Ho","Sai Ying Pun","Shau Kei Wan","Sheung Wan","Tai Hang","Tai Koo Shing","Tin Hau","Wan Chai","Western District","Wong Chuk Hang","Cheung Sha Wan","Chuk Yuen","Choi Hung","Diamond Hill","Ho Man Tin","Hung Hom","Jordan","Kowloon Bay","Kowloon City","Lok Fu","Ma Tau Wai","Mei Foo","Ngau Tau Kok Mongkok","Ping Shek","San Po Kong","Sham Shui Po","Shek Kip Mei","Tai Kok Tsui","To Kwa Wan","Tsz Wan Shan","Wang Tau Hom","Whampoa","Wong Tai Sin","Yau Ma Tei","Kowloon Tong"};
 		for(int i=0;i<locationList.length;i++){
 			if(input.equals(locationList[i])){
 				return true;
@@ -117,13 +117,14 @@ public class Validation {
 	
 	public static boolean checkDouble(String input) {
 		boolean isDouble = false;
-		int convertDouble = 0;
+		double convertDouble = 0;
 		try {
 			if(input==null) return false;
-			Double.parseDouble(input);
-			if(convertDouble>=0) {
+			convertDouble = Double.parseDouble(input);
+			if(convertDouble>=0) 
 				isDouble = true;
-			}
+			else
+				isDouble = false;
 		}catch(NumberFormatException e) {
 			isDouble = false;
 		}
