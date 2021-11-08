@@ -131,9 +131,22 @@ class testAdministrator {
 	}
 	
 	@Test
-	void testmainManual5() {
+	void testmainManual5a() {
 		String msg = "Test Process Application";
 		String input = "5\n8";
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Done processing =================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		hs = HallSystem.getInstance();
+		provideInput(input);
+		Display.createScanner();
+		admin.mainManual();
+		Display.closeScanner();		
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
+	void testmainManual5b() {
+		String msg = "Test Process Application";
+		String input = "5\n5\n8";
 		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Done processing =================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		hs = HallSystem.getInstance();
 		provideInput(input);
