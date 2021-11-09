@@ -14,6 +14,17 @@ public class Validation {
 		return output;
 	}
 	
+	public static int getNewHallInput() {
+		String input = null;
+		int output = 0;
+		input = Display.runDisplayDetails("New Hall Number");
+		while(validationHall(input)) {
+			input = Display.runDisplayDetails("Hall number already existing, please enter again!");
+		}
+		output = Integer.parseInt(input);
+		return output;
+	}
+	
 	public static String getAcademicType(){
 		String input;
 		input = Display.runDisplayDetails("Academic Type");
