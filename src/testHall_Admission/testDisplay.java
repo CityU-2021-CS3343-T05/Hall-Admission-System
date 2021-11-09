@@ -54,9 +54,9 @@ class testDisplay {
 		String title = "Title";
 		
 		provideInput(input);
-		
+		Display.createScanner();
 		String actualResult = Display.runDisplayDetails(title);
-		
+		Display.closeScanner();
 		assertEquals(input,actualResult,msg);
 		assertEquals(expectedPrint,outputStreamCaptor.toString(),msg);
 

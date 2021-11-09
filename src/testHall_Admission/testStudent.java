@@ -45,13 +45,10 @@ class testStudent {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		
-		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
-		System.setOut(new PrintStream(outputStreamCaptor));
-		
 		hs = HallSystem.getInstance();
+		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
 		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
-		
+		System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
 	@AfterEach
@@ -129,7 +126,7 @@ class testStudent {
 		String msg = "Test View Result";
 		String input = "5\n8";		
 		hs.processApplication();
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ Detailed Result ================\r\nReject list\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
