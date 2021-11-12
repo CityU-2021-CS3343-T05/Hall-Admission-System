@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import HallAdmissionSystem.*;
 
-class testCreateArea_Academic {
+class testArea_Academic {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,10 +32,13 @@ class testCreateArea_Academic {
 	void tearDown() throws Exception {
 	}
 	
-	@ParameterizedTest
-	@CsvFileSource(resources = "/testResource/testCreateArea_academic.csv")
-	void testCreateAcademic(String inputType, String inputValue, boolean expectedIsDse, boolean expectedIsGpa, String msg) {
+	@Test
+	void testCreateAcademic1() {
 		Area_Academic actualResult = null;
+		String msg = "Test input type is DSE";
+		
+		String inputType = "DSE", inputValue = "5**";
+		boolean expectedIsDse=true, expectedIsGpa=false;
 
 		actualResult = Area_Academic.createArea_Academic(inputType,inputValue);	
 		
@@ -43,5 +46,32 @@ class testCreateArea_Academic {
 		assertEquals(expectedIsDse,actualResult instanceof Area_DSE);
 		assertEquals(expectedIsGpa,actualResult instanceof Area_GPA);
 	}
+	
+	@Test
+	void testCreateAcademic2() {
+		Area_Academic actualResult = null;
+		String msg = "Test input type is GPA";
+		
+		String inputType = "GPA", inputValue = "4.3";
+		boolean expectedIsDse=false, expectedIsGpa=true;
+
+		actualResult = Area_Academic.createArea_Academic(inputType,inputValue);	
+		
+		assertNotNull(actualResult);
+		assertEquals(expectedIsDse,actualResult instanceof Area_DSE);
+		assertEquals(expectedIsGpa,actualResult instanceof Area_GPA);
+	}
+	
+	@Test
+	void testCreateAcademic3() {
+		Area_Academic actualResult = null;
+		String msg = "Test input type is wrong";
+		
+		String inputType = "other string", inputValue = "";
+		actualResult = Area_Academic.createArea_Academic(inputType,inputValue);	
+		
+		assertNull(actualResult);
+	}
+
 
 }
