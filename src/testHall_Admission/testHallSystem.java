@@ -113,6 +113,7 @@ class testHallSystem {
 		int expectedResult = 1;
 		Hall actualResult = hs.getHall(1);
 		
+		assertNotNull(actualResult);
 		assertEquals(expectedResult,actualResult.getHallNumber(),msg);
 	}
 	

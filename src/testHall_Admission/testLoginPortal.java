@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import HallAdmissionSystem.Account;
+import HallAdmissionSystem.Administrator;
 import HallAdmissionSystem.Display;
 import HallAdmissionSystem.LoginPortal;
 import HallAdmissionSystem.Student;
@@ -56,16 +57,9 @@ class testLoginPortal {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testLogin.csv")
-	void testLogin2(String inputString, String expectedSid, String InputIsStudent, String msg) {
-		
-		boolean expectedIsStudent;
+	void testLogin2(String inputString, String expectedSid, boolean expectedIsStudent, boolean expectedIsAdmin, String msg) {
 		
 		String input = inputString.replace("|", "\n");
-		
-		if(InputIsStudent.equals("T"))
-			expectedIsStudent = true;
-		else 
-			expectedIsStudent = false;
 		
 		provideInput(input);
 		Display.createScanner();
@@ -73,6 +67,7 @@ class testLoginPortal {
 		Display.closeScanner();
 		
 		assertEquals(expectedIsStudent, actualAc instanceof Student,msg);
+		assertEquals(expectedIsAdmin, actualAc instanceof Administrator,msg);
 		
 		if(expectedIsStudent) {
 			Student std = (Student)actualAc;
