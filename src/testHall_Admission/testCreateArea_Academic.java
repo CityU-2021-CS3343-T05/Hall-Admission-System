@@ -34,13 +34,14 @@ class testCreateArea_Academic {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testCreateArea_academic.csv")
-	void testCreateAcademic(String inputType,String inputValue,boolean expectedResult, String msg) {
+	void testCreateAcademic(String inputType, String inputValue, boolean expectedIsDse, boolean expectedIsGpa, String msg) {
 		Area_Academic actualResult = null;
 
 		actualResult = Area_Academic.createArea_Academic(inputType,inputValue);	
 		
 		assertNotNull(actualResult);
-		assertEquals(expectedResult,actualResult instanceof Area_DSE);
+		assertEquals(expectedIsDse,actualResult instanceof Area_DSE);
+		assertEquals(expectedIsGpa,actualResult instanceof Area_GPA);
 	}
 
 }

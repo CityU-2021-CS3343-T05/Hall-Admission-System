@@ -47,19 +47,37 @@ class testDisplay {
 	}
 
 	@Test
-	void testRunDisplayDetails() {
-		String msg = "Test runDisplayDetails and get return value";
-		String expectedPrint = "Title\r\n> ";
-		String input = "aaa";
-		String title = "Title";
+	void testRunDisplay1() {
+		String msg = "Test input is required";
 		
+		String title = "Test runDisplay";
+		String content = "Input is required";
+		boolean haveInput = true;
+		String input = "input";
+		String expectedResult = "input";
+		String expectedOutput = "================= Test runDisplay ================\r\nInput is required\r\n==================================================\r\n> ";
 		provideInput(input);
 		Display.createScanner();
-		String actualResult = Display.runDisplayDetails(title);
+		String actualResult = Display.runDisplay(title, content, haveInput);
 		Display.closeScanner();
-		assertEquals(input,actualResult,msg);
-		assertEquals(expectedPrint,outputStreamCaptor.toString(),msg);
-
+		assertNotNull(actualResult);
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		
+	}
+	
+	@Test
+	void testRunDisplay2() {
+		String msg = "Test input is not required";
+		
+		String title = "Test runDisplay";
+		String content = "Input is required";
+		boolean haveInput = false;
+		String expectedOutput = "================= Test runDisplay ================\r\nInput is required\r\n==================================================\r\n";
+		String actualResult = Display.runDisplay(title, content, haveInput);
+		assertNull(actualResult);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		
 	}
 
 }
