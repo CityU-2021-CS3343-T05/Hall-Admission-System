@@ -94,26 +94,6 @@ class testHallSystem {
 	}
 	
 	@Test
-	void testGetHall1() {
-		String msg = "Test get existing hall";
-		
-		int expectedResult = 1;
-		Hall actualResult = hs.getHall(1);
-		
-		assertNotNull(actualResult,msg);
-		assertEquals(expectedResult,actualResult.getHallNumber(),msg);
-	}
-	
-	@Test
-	void testGetHall2() {
-		String msg = "Test get non existing hall";
-		
-		Hall actualResult = hs.getHall(4);
-		
-		assertNull(actualResult,msg);
-	}
-	
-	@Test
 	void testViewSpecificResult1() {
 		String msg = "Test find application status before process applcation";
 		
@@ -140,14 +120,34 @@ class testHallSystem {
 	void testChangeHallSetting1() {
 		String msg = "Test changing hall weight setting";
 		
-		int[] expectedResult = {1,2,3,4};
+		int[] expectedArray = {1,2,3,4};
 		int expectedCapacity = 10;
 		
 		hs.changeHallSetting(1, 10, 1, 2, 3, 4);
-		Hall actualHall = hs.getHall(1);
-		int[] actualResult = actualHall.getHallWeightings();
-		int actualCapacity = actualHall.getNumberofAcceptance();
+		Hall actualResult = hs.getHall(1);
+		int[] actualArray = actualResult.getHallWeightings();
+		int actualCapacity = actualResult.getNumberofAcceptance();
 		assertEquals(expectedCapacity,actualCapacity,msg);
-		assertTrue(Arrays.equals(expectedResult,actualResult),msg);
+		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
+	}
+	
+	@Test
+	void testCreateNewHall() {
+		String msg = "Test create a new hall";
+		
+		int expectedHallNumber = 4;
+		int expectedCapacity = 10;
+		int[] expectedArray = {1,1,1,1};
+		
+		hs.createNewHall(4, 10, 1, 1, 1, 1);
+		Hall actualResult = hs.getHall(4);
+		int actualHallNumber = actualResult.getHallNumber();
+		int actualCapacity = actualResult.getNumberofAcceptance();
+		int[] actualArray = actualResult.getHallWeightings();
+		assertNotNull(actualResult);
+		assertEquals(expectedHallNumber,actualHallNumber,msg);
+		assertEquals(expectedCapacity,actualCapacity,msg);
+		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
+		
 	}
 }
