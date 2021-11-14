@@ -100,7 +100,7 @@ class testHallSystem {
 		int expectedResult = 1;
 		Hall actualResult = hs.getHall(1);
 		
-		assertNotNull(actualResult);
+		assertNotNull(actualResult,msg);
 		assertEquals(expectedResult,actualResult.getHallNumber(),msg);
 	}
 	
@@ -110,7 +110,7 @@ class testHallSystem {
 		
 		Hall actualResult = hs.getHall(4);
 		
-		assertNull(actualResult);
+		assertNull(actualResult,msg);
 	}
 	
 	@Test
@@ -136,6 +136,18 @@ class testHallSystem {
 		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
-   
-
+	@Test
+	void testChangeHallSetting1() {
+		String msg = "Test changing hall weight setting";
+		
+		int[] expectedResult = {1,2,3,4};
+		int expectedCapacity = 10;
+		
+		hs.changeHallSetting(1, 10, 1, 2, 3, 4);
+		Hall actualHall = hs.getHall(1);
+		int[] actualResult = actualHall.getHallWeightings();
+		int actualCapacity = actualHall.getNumberofAcceptance();
+		assertEquals(expectedCapacity,actualCapacity,msg);
+		assertTrue(Arrays.equals(expectedResult,actualResult),msg);
+	}
 }
