@@ -54,19 +54,6 @@ class testHallSystem {
 		System.setOut(standardOut);
 	}
 
-	@Test
-	void testGetInstance() {
-		String msg = "Test create new Hall System and there are three Hall object in allHallListing";
-		
-		int expectedHallNumber = 3;
-		
-		ArrayList<Hall> actualHallList = hs.getHallList();
-		int actualHallNumber = actualHallList.size();
-		
-		assertEquals(expectedHallNumber,actualHallNumber,msg);
-		
-	}
-
 	@ParameterizedTest
 	@CsvFileSource(resources = "/testResource/testHallSystem_getHall.csv")
 	void testGetHall(int input,boolean expectedExist, int expectedHallNumber, String msg) {
