@@ -1,5 +1,6 @@
 package HallAdmissionSystem;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class HallSystem implements AdministratorFunction, StudentFunction {
@@ -126,7 +127,14 @@ public class HallSystem implements AdministratorFunction, StudentFunction {
 
 	@Override
 	public void viewApplication(Student std) {
-		Display.runDisplay("View Application", findApplication(std).toString(), false);
+		Application application = findApplication(std);
+		if(application != null) {
+			Display.runDisplay("View Application", findApplication(std).toString(), false);
+		}
+		else {
+			System.out.println("");
+		}
+		
 	}
 
 	@Override
