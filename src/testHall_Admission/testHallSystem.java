@@ -43,7 +43,7 @@ class testHallSystem {
 	@BeforeEach
 	void setUp() throws Exception {
 		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
-//		std2 = new Student("S00002","John","Passw0rd",false,2);
+		std2 = new Student("S00002","John","Passw0rd",false,2);
 		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
 		hs = HallSystem.getInstance();
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -52,19 +52,6 @@ class testHallSystem {
 	@AfterEach
 	void tearDown() throws Exception {
 		System.setOut(standardOut);
-	}
-
-	@Test
-	void testGetInstance() {
-		String msg = "Test create new Hall System and there are three Hall object in allHallListing";
-		
-		int expectedHallNumber = 3;
-		
-		ArrayList<Hall> actualHallList = hs.getHallList();
-		int actualHallNumber = actualHallList.size();
-		
-		assertEquals(expectedHallNumber,actualHallNumber,msg);
-		
 	}
 
 	@ParameterizedTest
@@ -78,6 +65,15 @@ class testHallSystem {
 		}else {
 			assertNull(actualHall);
 		}
+	}
+	
+	@Test 
+	void testViewHallResult(){
+		String msg = "Test view all hall";
+		
+		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n";
+		hs.viewHallList();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test 
@@ -107,22 +103,46 @@ class testHallSystem {
 	}
 	
 	@Test
-	void testGetHall1() {
-		String msg = "Test get existing hall";
+	void testViewApplication1() {
+		String msg = "Test find specific application";
+		hs.createApplication(std1,2,sc);
+		expectedDate = new Date();
+		String expectedOutput = "";
+		hs.viewApplication(std1);
 		
-		int expectedResult = 1;
-		Hall actualResult = hs.getHall(1);
-		
-		assertEquals(expectedResult,actualResult.getHallNumber(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
-	void testGetHall2() {
-		String msg = "Test get non existing hall";
+	void testViewApplication2() {
+		String msg = "Test find specific application";
 		
-		Hall actualResult = hs.getHall(4);
+		String expectedOutput = "";
+		hs.viewApplication(std2);
 		
-		assertNull(actualResult);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
+	void testViewAllApplication1() {
+		String msg = "Test view all applications with no application";
+		
+		String expectedOutput = "=================== Application ==================\r\n\r\n==================================================\r\n";
+		hs.viewAllApplication();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
+	void testViewAllApplication2() {
+		String msg = "Test view all applications";
+		
+		hs.createApplication(std1, 1, sc);
+		expectedDate = new Date();
+		
+		String expectedOutput = "=================== Application ==================\r\n"+expectedDate+"\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n";
+		
+		hs.viewAllApplication();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
 	@Test
@@ -148,6 +168,38 @@ class testHallSystem {
 		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
 	
-   
-
+	@Test
+	void testChangeHallSetting1() {
+		String msg = "Test changing hall weight setting";
+		
+		int[] expectedArray = {1,2,3,4};
+		int expectedCapacity = 10;
+		
+		hs.changeHallSetting(1, 10, 1, 2, 3, 4);
+		Hall actualResult = hs.getHall(1);
+		int[] actualArray = actualResult.getHallWeightings();
+		int actualCapacity = actualResult.getNumberofAcceptance();
+		assertEquals(expectedCapacity,actualCapacity,msg);
+		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
+	}
+	
+	@Test
+	void testCreateNewHall() {
+		String msg = "Test create a new hall";
+		
+		int expectedHallNumber = 4;
+		int expectedCapacity = 10;
+		int[] expectedArray = {1,1,1,1};
+		
+		hs.createNewHall(4, 10, 1, 1, 1, 1);
+		Hall actualResult = hs.getHall(4);
+		int actualHallNumber = actualResult.getHallNumber();
+		int actualCapacity = actualResult.getNumberofAcceptance();
+		int[] actualArray = actualResult.getHallWeightings();
+		assertNotNull(actualResult);
+		assertEquals(expectedHallNumber,actualHallNumber,msg);
+		assertEquals(expectedCapacity,actualCapacity,msg);
+		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
+	}
+	
 }
