@@ -94,6 +94,28 @@ class testHallSystem {
 	}
 	
 	@Test
+	void testViewAllApplication1() {
+		String msg = "Test view all applications with no application";
+		
+		String expectedOutput = "=================== Application ==================\r\n\r\n==================================================\r\n";
+		hs.viewAllApplication();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
+	void testViewAllApplication2() {
+		String msg = "Test view all applications";
+		
+		hs.createApplication(std1, 1, sc);
+		expectedDate = new Date();
+		
+		String expectedOutput = "=================== Application ==================\r\n"+expectedDate+"\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n";
+		
+		hs.viewAllApplication();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
 	void testViewSpecificResult1() {
 		String msg = "Test find application status before process applcation";
 		
@@ -148,6 +170,16 @@ class testHallSystem {
 		assertEquals(expectedHallNumber,actualHallNumber,msg);
 		assertEquals(expectedCapacity,actualCapacity,msg);
 		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
-		
 	}
+	
+	@Test 
+	void testViewHallResult(){
+		String msg = "Test view all hall";
+		
+		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\n==================================================\r\n";
+		hs.viewHallList();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	
 }
