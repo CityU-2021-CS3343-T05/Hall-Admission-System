@@ -43,7 +43,7 @@ class testHallSystem {
 	@BeforeEach
 	void setUp() throws Exception {
 		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
-//		std2 = new Student("S00002","John","Passw0rd",false,2);
+		std2 = new Student("S00002","John","Passw0rd",false,2);
 		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
 		hs = HallSystem.getInstance();
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -68,6 +68,15 @@ class testHallSystem {
 	}
 	
 	@Test 
+	void testViewHallResult(){
+		String msg = "Test view all hall";
+		
+		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n";
+		hs.viewHallList();
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test 
 	void testCreateApplication1() {
 		String msg = "Test create new Application";
 		
@@ -89,6 +98,27 @@ class testHallSystem {
 		String expectedOutput = "================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n";
 		
 		hs.viewApplication(std1);
+		
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
+	void testViewApplication1() {
+		String msg = "Test find specific application";
+		hs.createApplication(std1,2,sc);
+		expectedDate = new Date();
+		String expectedOutput = "";
+		hs.viewApplication(std1);
+		
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@Test
+	void testViewApplication2() {
+		String msg = "Test find specific application";
+		
+		String expectedOutput = "";
+		hs.viewApplication(std2);
 		
 		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
@@ -171,15 +201,5 @@ class testHallSystem {
 		assertEquals(expectedCapacity,actualCapacity,msg);
 		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
 	}
-	
-	@Test 
-	void testViewHallResult(){
-		String msg = "Test view all hall";
-		
-		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\n==================================================\r\n";
-		hs.viewHallList();
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-	}
-	
 	
 }
