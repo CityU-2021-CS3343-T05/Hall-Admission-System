@@ -113,7 +113,6 @@ public class ProcessApplication {
 			// Local
 
 			pendingApplication = processInformation.topLocalApplicant();
-
 			while (pendingApplication != null) {
 				procesingResult.admitApplication(pendingApplication);
 				pendingApplication = processInformation.topLocalApplicant();
@@ -154,6 +153,7 @@ public class ProcessApplication {
 		
 		for (ProcessResult processResult : allResults) {
 			outData = processResult.findInAdmit(target);
+			if(outData!=null) break;
 		}
 		
 		if(outData == null) {
