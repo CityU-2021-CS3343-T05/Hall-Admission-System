@@ -53,7 +53,7 @@ public class ProcessApplication {
 
 //	IN REFACTORING TRANSFER TO APPLICATION CLASS
 	private void calculateApplicationScore(Application application) {
-		System.out.println(application);
+		
 		int[] detailScore = application.getDetailScore();
 		Hall preferencedHall = application.getPerferenceHall();
 
@@ -65,6 +65,7 @@ public class ProcessApplication {
 		}
 
 		application.setTotalScore(sum);
+		System.out.println(application);
 	}
 
 	private ProcessResult findMoreEmptyHall() {

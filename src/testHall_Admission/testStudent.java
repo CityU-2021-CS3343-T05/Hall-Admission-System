@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.util.Date;
 
 import org.junit.jupiter.api.AfterAll;
@@ -45,10 +46,16 @@ class testStudent {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		
+		Field instance = HallSystem.class.getDeclaredField("instance");
+		instance.setAccessible(true);
+		instance.set(null, null);
+		
 		hs = HallSystem.getInstance();
 		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
 		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
-		System.setOut(new PrintStream(outputStreamCaptor));
+		
+		
 	}
 
 	@AfterEach
@@ -60,8 +67,10 @@ class testStudent {
 	@Test
 	void testMainManual1() {
 		String msg = "Test View Result";
+		
 		String input = "1\n1\nDSE\n5**\n7\n211\nTin Shui Wai\n8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -72,8 +81,11 @@ class testStudent {
 	@Test
 	void testMainManual2a() {
 		String msg = "Test Delete Application and then choose y to not Delete the application";
+		
 		String input = "2\ny\n8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Deleted\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		hs.createApplication(std1, 1, sc);
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -84,8 +96,11 @@ class testStudent {
 	@Test
 	void testMainManual2b() {
 		String msg = "Test Delete Application and then choose n to not Delete the application";
+		
 		String input = "2\nn\n8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Not Deleted\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		hs.createApplication(std1, 1, sc);
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -96,15 +111,15 @@ class testStudent {
 	@Test
 	void testMainManual3() {
 		String msg = "Test View application";
-		String input = "3\n8";
-
-		Student std2 = new Student("S00002", "Jennifer", "Passw0rd", false, 4);
-		hs.createApplication(std2, 1, sc);
+		
+		String input = "3\n8";	
+		hs.createApplication(std1, 1, sc);
 		expectedDate = new Date();
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ View Application ================\r\n" + expectedDate + "\tS00002\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
-		std2.mainManual();
+		std1.mainManual();
 		Display.closeScanner();			
 		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
 	}
@@ -114,6 +129,7 @@ class testStudent {
 		String msg = "Test hall listing";
 		String input = "4\n8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -124,9 +140,11 @@ class testStudent {
 	@Test
 	void testMainManual5() {
 		String msg = "Test View Result";
-		String input = "5\n8";		
+		String input = "5\n8";
+		hs.createApplication(std1, 1, sc);
 		hs.processApplication();
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -140,6 +158,7 @@ class testStudent {
 		String input = "6\nJohn\n8";
 		String expectedUsername="John";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Change Username ================\r\nInput the new username:\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -154,6 +173,7 @@ class testStudent {
 		String input = "7\nAbcd1234\n8";
 		String expectedPassword="Abcd1234";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Change Password ================\r\nInput the new password:\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -168,6 +188,7 @@ class testStudent {
 		String msg = "Test student logout";
 		String input="8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
@@ -180,6 +201,7 @@ class testStudent {
 		String msg = "Test enter other input";
 		String input="9\n8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Wrong command, please enter again!\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
