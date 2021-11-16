@@ -29,7 +29,6 @@ class testHallSystem {
 	HallSystem hs;
 	Student std1, std2, std3;
 	ScoreComponent sc;
-	Date expectedDate;
 	private final PrintStream standardOut = System.out;
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 	
@@ -74,51 +73,25 @@ class testHallSystem {
 	}
 	
 	@Test 
-	void testViewHallResult(){
+	void testViewHallList(){
 		String msg = "Test view all hall";
 		
-		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n";
+		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewHallList();
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-	}
-	
-	@Test 
-	void testCreateApplication1() {
-		String msg = "Test create new Application";
-		
-		hs.createApplication(std1,1,sc);
-		expectedDate = new Date();
-		String expectedOutput = "================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n";
-		System.setOut(new PrintStream(outputStreamCaptor));
-		hs.viewApplication(std1);
-		
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
-	}
-	
-	@Test
-	void testCreateApplication2() {
-		String msg = "Test create new Application that student create an applcation before";
-		
-		hs.createApplication(std1,2,sc);
-		expectedDate = new Date();
-		String expectedOutput = "================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n";
-		System.setOut(new PrintStream(outputStreamCaptor));
-		hs.viewApplication(std1);
-		
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testViewApplication1() {
 		String msg = "Test find specific application";
 		hs.createApplication(std1,2,sc);
-		expectedDate = new Date();
-		String expectedOutput = "";
+		Date expectedDate = new Date();
+		String expectedOutput = "================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 2\t10\t10\t10\t7\t0\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewApplication(std1);
 		
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim().trim(),msg);
 	}
 	
 	@Test
@@ -129,17 +102,17 @@ class testHallSystem {
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewApplication(std2);
 		
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim().trim(),msg);
 	}
 	
 	@Test
 	void testViewAllApplication1() {
 		String msg = "Test view all applications with no application";
 		
-		String expectedOutput = "=================== Application ==================\r\n\r\n==================================================\r\n";
+		String expectedOutput = "=================== Application ==================\r\n\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewAllApplication();
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
@@ -147,68 +120,82 @@ class testHallSystem {
 		String msg = "Test view all applications";
 		
 		hs.createApplication(std1, 1, sc);
-		expectedDate = new Date();
-		String expectedOutput = "=================== Application ==================\r\n"+expectedDate+"\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n";
+		Date expectedDate1 = new Date();
+		String expectedOutput = "=================== Application ==================\r\n" + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewAllApplication();
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test
+	void testViewAllApplication3() {
+		String msg = "Test view all applications";
+		
+		hs.createApplication(std1, 1, sc);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std2, 1, sc);
+		Date expectedDate2 = new Date();
+		String expectedOutput = "=================== Application ==================\r\n" + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n" + expectedDate2 + "\tS00002\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t0\n\r\n" + "==================================================";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewAllApplication();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testViewSpecificResult1() {
 		String msg = "Test find application status before process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nWatiting to process\r\n==================================================\r\n";
+		String expectedOutput = "================= Detailed Result ================\r\nWatiting to process\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std1);
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testViewSpecificResult2() {
 		String msg = "Test find application status after process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: null\r\n==================================================\r\n";
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: null\r\n==================================================";
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std1);
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testViewSpecificResult3() {
 		String msg = "Test find application status after process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================\r\n";
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================";
 		hs.createApplication(std1, 1, sc);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std1);
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testViewSpecificResult4() {
 		String msg = "Test find application status after process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 1\r\n==================================================\r\n";
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 1\r\n==================================================";
 		hs.createApplication(std2, 1, sc);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std2);
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testViewSpecificResult5() {
 		String msg = "Test find application status after process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 2\r\n==================================================\r\n";
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 2\r\n==================================================";
 		hs.createApplication(std3, 2, sc);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std3);
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test

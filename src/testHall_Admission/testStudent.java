@@ -69,13 +69,13 @@ class testStudent {
 		String msg = "Test View Result";
 		
 		String input = "1\n1\nDSE\n5**\n7\n211\nTin Shui Wai\n8";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
@@ -83,14 +83,14 @@ class testStudent {
 		String msg = "Test Delete Application and then choose y to not Delete the application";
 		
 		String input = "2\ny\n8";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Deleted\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Deleted\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		hs.createApplication(std1, 1, sc);
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();		
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
@@ -98,14 +98,14 @@ class testStudent {
 		String msg = "Test Delete Application and then choose n to not Delete the application";
 		
 		String input = "2\nn\n8";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Not Deleted\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Are you sure to delete application (y/n)\r\n> Application Not Deleted\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		hs.createApplication(std1, 1, sc);
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();			
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
@@ -115,26 +115,26 @@ class testStudent {
 		String input = "3\n8";	
 		hs.createApplication(std1, 1, sc);
 		expectedDate = new Date();
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();			
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testMainManual4() {
 		String msg = "Test hall listing";
 		String input = "4\n8";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();			
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
@@ -143,13 +143,13 @@ class testStudent {
 		String input = "5\n8";
 		hs.createApplication(std1, 1, sc);
 		hs.processApplication();
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();			
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
@@ -157,12 +157,12 @@ class testStudent {
 		String msg = "Test Change Username";
 		String input = "6\nJohn\n8";
 		String expectedUsername="John";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Change Username ================\r\nInput the new username:\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Change Username ================\r\nInput the new username:\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, John\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 		String actualUsername = std1.getUserName();
 		assertEquals(expectedUsername,actualUsername,msg);	
 	}
@@ -172,13 +172,13 @@ class testStudent {
 		String msg = "Test Change Password";
 		String input = "7\nAbcd1234\n8";
 		String expectedPassword="Abcd1234";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Change Password ================\r\nInput the new password:\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================= Change Password ================\r\nInput the new password:\r\n==================================================\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();			
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 		String actualPassword = std1.getUserPwd();
 		assertEquals(expectedPassword,actualPassword,msg);
 	}
@@ -187,26 +187,26 @@ class testStudent {
 	void testMainManual8() {
 		String msg = "Test student logout";
 		String input="8";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();	
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 	@Test
 	void testMainManual9() {
 		String msg = "Test enter other input";
 		String input="9\n8";
-		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Wrong command, please enter again!\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Wrong command, please enter again!\r\n================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
 		std1.mainManual();
 		Display.closeScanner();	
-		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 
 }
