@@ -137,6 +137,23 @@ class testAdministrator {
 	}
 	
 	@Test
+	void testmainManual4c() {
+		String msg = "Test all application";
+		String input = "4\n8";
+		hs.createApplication(std1, 1, sc);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std2, 1, sc);
+		Date expectedDate2 = new Date();
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Application ==================\r\n" + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n" + expectedDate1 + "\tS00002\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		provideInput(input);
+		Display.createScanner();
+		admin.mainManual();
+		Display.closeScanner();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test
 	void testmainManual5a() {
 		String msg = "Test Process Application";
 		String input = "5\n8";

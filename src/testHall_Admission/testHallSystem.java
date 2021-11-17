@@ -164,7 +164,7 @@ class testHallSystem {
 	
 	@Test
 	void testViewSpecificResult1() {
-		String msg = "Test find application status before process applcation";
+		String msg = "Test find application status before process application";
 		
 		String expectedOutput = "================= Detailed Result ================\r\nWatiting to process\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -174,7 +174,7 @@ class testHallSystem {
 	
 	@Test
 	void testViewSpecificResult2() {
-		String msg = "Test find application status after process applcation";
+		String msg = "Test find not existing application status after process application";
 		
 		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: null\r\n==================================================";
 		hs.processApplication();
@@ -185,7 +185,7 @@ class testHallSystem {
 	
 	@Test
 	void testViewSpecificResult3() {
-		String msg = "Test find application status after process applcation";
+		String msg = "Test find application status after process application";
 		
 		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================";
 		hs.createApplication(std1, 1, sc1);
@@ -225,7 +225,6 @@ class testHallSystem {
 		
 		int[] expectedArray = {1,2,3,4};
 		int expectedCapacity = 10;
-		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.changeHallSetting(1, 10, 1, 2, 3, 4);
 		Hall actualResult = hs.getHall(1);
 		int[] actualArray = actualResult.getHallWeightings();
@@ -241,7 +240,6 @@ class testHallSystem {
 		int expectedHallNumber = 4;
 		int expectedCapacity = 10;
 		int[] expectedArray = {1,1,1,1};
-		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.createNewHall(4, 10, 1, 1, 1, 1);
 		Hall actualResult = hs.getHall(4);
 		int actualHallNumber = actualResult.getHallNumber();
@@ -255,7 +253,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess1() {
-		String msg = "Test 3 non-local application apply same hall. 1 of the application will go waiting list and then admit to other hall";
+		String msg = "Test 3 non-local applications apply to the same hall. 1 of the application will go waiting list and then admit to other hall";
 		
 		hs.createApplication(std2, 1, sc1);
 		Date expectedDate1 = new Date();
@@ -273,7 +271,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess2() {
-		String msg = "Test 2 non-local application and 1 local application apply same hall. The local application will go to rejected list";
+		String msg = "Test 2 non-local applications and 1 local application apply to the same hall. The local application will go to rejected list";
 		
 		hs.createApplication(std2, 1, sc1);
 		Date expectedDate1 = new Date();
@@ -291,7 +289,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess3() {
-		String msg = "Test 3 non-local application and 1 local application apply same hall. The non-local application applied from Year 4 student and the local application will go to rejected list";
+		String msg = "Test 3 non-local applications and 1 local application apply to the same hall. The non-local application applied from Year 4 student and the local application will go to rejected list";
 		
 		hs.createApplication(std2, 1, sc1);
 		Date expectedDate1 = new Date();
@@ -311,7 +309,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess4() {
-		String msg = "Test 3 local application apply same hall. The local application which hava the lowest score will go to rejected list";
+		String msg = "Test 3 local applications apply to the same hall. The local application which have the lowest score will go to rejected list";
 		
 		hs.createApplication(std3, 1, sc1);
 		Date expectedDate1 = new Date();
@@ -328,7 +326,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess5() {
-		String msg = "Test 3 local application apply different hall. All application can admit to their perference hall";
+		String msg = "Test 3 local applications apply to the different halls. All application can admit to their preference hall";
 		
 		hs.createApplication(std3, 1, sc1);
 		Date expectedDate1 = new Date();
@@ -345,7 +343,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess6() {
-		String msg = "Test 4 non-local application apply same hall.";
+		String msg = "Test 4 non-local applications apply to the same hall.";
 		
 		
 		hs.createApplication(std2, 1, sc1);
