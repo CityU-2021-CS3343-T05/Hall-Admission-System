@@ -51,6 +51,10 @@ public class ProcessResult {
 		return admittedList.size();
 	}
 	
+	public int getRemainCapacity() {
+		return capacity-admittedList.size();
+	}
+	
 	public static String getWaitingListing() {
 		String out = "";
 		

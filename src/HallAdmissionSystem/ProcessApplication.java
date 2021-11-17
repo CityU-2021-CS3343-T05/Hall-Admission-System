@@ -68,20 +68,40 @@ public class ProcessApplication {
 		System.out.println(application);
 	}
 
+//	private ProcessResult findMoreEmptyHall() {
+//		ProcessResult minRes = allResults.get(0);
+//		int minCapacity;
+//
+//		if (minRes == null) {
+//			return null;
+//		} else {
+//			minCapacity = minRes.getOccupied();
+//		}
+//
+//		for (ProcessResult processResult : allResults) {
+//			if (minCapacity > processResult.getOccupied()) {
+//				minRes = processResult;
+//				minCapacity = minRes.getOccupied();
+//			}
+//		}
+//
+//		return minRes;
+//	}
+	
 	private ProcessResult findMoreEmptyHall() {
 		ProcessResult minRes = allResults.get(0);
-		int minCapacity;
+		int moreCapacity;
 
 		if (minRes == null) {
 			return null;
 		} else {
-			minCapacity = minRes.getOccupied();
+			moreCapacity = minRes.getRemainCapacity();
 		}
 
 		for (ProcessResult processResult : allResults) {
-			if (minCapacity > processResult.getOccupied()) {
+			if (moreCapacity < processResult.getRemainCapacity()) {
 				minRes = processResult;
-				minCapacity = minRes.getOccupied();
+				moreCapacity = minRes.getRemainCapacity();
 			}
 		}
 
@@ -95,20 +115,31 @@ public class ProcessApplication {
 			ProcessResult procesingResult = findProcessResult(admitingHall);
 
 			Application pendingApplication = processInformation.topNonLocalApplication();
-
+			
 			while (pendingApplication != null) {
 				procesingResult.admitApplication(pendingApplication);
 				pendingApplication = processInformation.topNonLocalApplication();
 			}
 
 			// WaitingList
-			pendingApplication = procesingResult.topWaitingApplication();
-			while (pendingApplication != null) {
-				ProcessResult moreEmptyHall = findMoreEmptyHall();
-				moreEmptyHall.admitApplication(pendingApplication);
-
+			
+//			pendingApplication = procesingResult.topWaitingApplication();
+//			while (pendingApplication != null) {
+//				ProcessResult moreEmptyHall = findMoreEmptyHall();
+//				moreEmptyHall.admitApplication(pendingApplication);
+//				pendingApplication = procesingResult.topWaitingApplication();
+//			}
+			
+			ProcessResult moreEmptyHall = findMoreEmptyHall();
+			while(moreEmptyHall.getRemainCapacity()>0) {
 				pendingApplication = procesingResult.topWaitingApplication();
+				if (pendingApplication != null) {
+					moreEmptyHall.admitApplication(pendingApplication);
+					moreEmptyHall = findMoreEmptyHall();
+				}else
+					break;
 			}
+				
 
 			// Local
 
