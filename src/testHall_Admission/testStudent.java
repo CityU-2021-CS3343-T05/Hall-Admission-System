@@ -65,10 +65,24 @@ class testStudent {
 	}
 	
 	@Test
-	void testMainManual1() {
+	void testMainManual1a() {
 		String msg = "Test View Result";
 		
 		String input = "1\n1\nDSE\n5**\n7\n211\nTin Shui Wai\n8";
+		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Wrong input, please enter Dse or GPA!\r\n> Academic Type\r\n> Academic Score\r\n> Wrong input, please enter correct score!\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		provideInput(input);
+		Display.createScanner();
+		std1.mainManual();
+		Display.closeScanner();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test
+	void testMainManual1b() {
+		String msg = "Test View Result";
+		
+		String input = "1\n1\ngpaaa\nDse\n4.3\n5**\n7\n211\nTin Shui Wai\n8";
 		String expectedOutput = "================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Preferenced Hall\r\n> Academic Type\r\n> Academic Score\r\n> Leadership Times\r\n> ECA Hours\r\n> Lived Location\r\n> ================= Student Manual =================\r\nWelcome, Jennifer\nSelect the functions:\n[1] Create Application\n[2] Delete Application\n[3] View Application\n[4] View Hall List\n[5] View Result\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);

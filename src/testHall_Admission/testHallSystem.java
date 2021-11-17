@@ -30,7 +30,7 @@ import HallAdmissionSystem.Student;
 class testHallSystem {
 	
 	HallSystem hs;
-	Student std1, std2, std3, std4, std5, std6, std7;
+	Student std1, std2, std3, std4, std5, std6, std7, std8, std9, std10, std11;
 	ScoreComponent sc1, sc2, sc3;
 	private final PrintStream standardOut = System.out;
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -65,6 +65,10 @@ class testHallSystem {
 		std5 = new Student("S00005", "Mary", "Passw0rd", false, 1);
 		std6 = new Student("S00006", "Chris", "Passw0rd", true, 2);
 		std7 = new Student("S00007", "Alvin", "Passw0rd", true, 4);		
+		std8 = new Student("S00008", "Ralph", "Passw0rd", false, 2);
+		std9 = new Student("S00009", "John", "Passw0rd", false, 2);
+		std10 = new Student("S00010", "John", "Passw0rd", false, 2);
+		std11 = new Student("S00011", "John", "Passw0rd", false, 2);
 		sc1 = new ScoreComponent("GPA", "4.3", "7", "211", "Tin Shui Wai");
 		sc2 = new ScoreComponent("GPA", "3", "2", "150", "Wong Chuk Hang");
 		sc3 = new ScoreComponent("DSE", "5", "5", "100", "Lamma Island");
@@ -287,7 +291,7 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess3() {
-		String msg = "Test 3 non-local application and 1 local application apply same hall. 1 of the non-local application and the local application will go to rejected list";
+		String msg = "Test 3 non-local application and 1 local application apply same hall. The non-local application applied from Year 4 student and the local application will go to rejected list";
 		
 		hs.createApplication(std2, 1, sc1);
 		Date expectedDate1 = new Date();
@@ -341,18 +345,27 @@ class testHallSystem {
 	
 	@Test 
 	void testRunProcess6() {
-		String msg = "Test 3 local application apply different hall. All application can admit to their perference hall";
+		String msg = "Test 4 non-local application apply same hall.";
 		
-		hs.createApplication(std3, 1, sc1);
+		
+		hs.createApplication(std2, 1, sc1);
 		Date expectedDate1 = new Date();
-		hs.createApplication(std6, 2, sc2);
+		hs.createApplication(std4, 1, sc2);
 		Date expectedDate2 = new Date();
-		hs.createApplication(std7, 3, sc3);
+		hs.createApplication(std5, 1, sc3);
 		Date expectedDate3 = new Date();
-		hs.processApplication();
+		hs.createApplication(std8, 1, sc3);
+		Date expectedDate4 = new Date();
+		hs.createApplication(std9, 1, sc3);
+		Date expectedDate5 = new Date();
+		hs.createApplication(std10, 1, sc3);
+		Date expectedDate6 = new Date();
+		hs.createApplication(std11, 1, sc3);
+		Date expectedDate7 = new Date();
+		//hs.processApplication();
 		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 +"\tS00003\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t37\nHall 2\nAdmitted        " + expectedDate2 + "\tS00006\ttrue\tYear 2\tHall 2\t7\t4\t4\t5\t0\nHall 3\nAdmitted        " + expectedDate3 + "\tS00007\ttrue\tYear 4\tHall 3\t5\t10\t2\t10\t0\n\nWaiting List is empty \n\nReject List is empty \n\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
-		hs.viewResult();
+		//hs.viewResult();
 		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
