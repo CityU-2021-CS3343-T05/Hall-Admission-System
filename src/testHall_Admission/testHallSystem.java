@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.PriorityQueue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -19,16 +20,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import HallAdmissionSystem.ApplicationDateCompare;
 import HallAdmissionSystem.Hall;
 import HallAdmissionSystem.HallSystem;
+import HallAdmissionSystem.ProcessResult;
 import HallAdmissionSystem.ScoreComponent;
 import HallAdmissionSystem.Student;
 
 class testHallSystem {
 	
 	HallSystem hs;
-	Student std1, std2, std3;
-	ScoreComponent sc;
+	Student std1, std2, std3, std4, std5, std6, std7;
+	ScoreComponent sc1, sc2, sc3;
 	private final PrintStream standardOut = System.out;
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 	
@@ -47,10 +50,24 @@ class testHallSystem {
 		instance.setAccessible(true);
 		instance.set(null, null);
 		
+		Field rejectedList = ProcessResult.class.getDeclaredField("rejectedList");
+		rejectedList.setAccessible(true);
+		rejectedList.set(null, new ArrayList<>());
+		
+		Field waitingList = ProcessResult.class.getDeclaredField("waitingList");
+		waitingList.setAccessible(true);
+		waitingList.set(null, new PriorityQueue<>(new ApplicationDateCompare()));
+		
 		std1 = new Student("S00001", "Jennifer", "Passw0rd", false, 4);
 		std2 = new Student("S00002", "John", "Passw0rd", false, 2);
 		std3 = new Student("S00003", "Charles", "Passw0rd", true, 1);
-		sc = new ScoreComponent("DSE", "5**", "7", "211", "Tin Shui Wai");
+		std4 = new Student("S00004", "Tom", "Passw0rd", false, 2);
+		std5 = new Student("S00005", "Mary", "Passw0rd", false, 1);
+		std6 = new Student("S00006", "Chris", "Passw0rd", true, 2);
+		std7 = new Student("S00007", "Alvin", "Passw0rd", true, 4);		
+		sc1 = new ScoreComponent("GPA", "4.3", "7", "211", "Tin Shui Wai");
+		sc2 = new ScoreComponent("GPA", "3", "2", "150", "Wong Chuk Hang");
+		sc3 = new ScoreComponent("DSE", "5", "5", "100", "Lamma Island");
 		hs = HallSystem.getInstance();
 	}
 
@@ -85,7 +102,7 @@ class testHallSystem {
 	@Test
 	void testViewApplication1() {
 		String msg = "Test find specific application";
-		hs.createApplication(std1,2,sc);
+		hs.createApplication(std1,2,sc1);
 		Date expectedDate = new Date();
 		String expectedOutput = "================ View Application ================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 2\t10\t10\t10\t7\t0\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -119,7 +136,7 @@ class testHallSystem {
 	void testViewAllApplication2() {
 		String msg = "Test view all applications";
 		
-		hs.createApplication(std1, 1, sc);
+		hs.createApplication(std1, 1, sc1);
 		Date expectedDate1 = new Date();
 		String expectedOutput = "=================== Application ==================\r\n" + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -131,9 +148,9 @@ class testHallSystem {
 	void testViewAllApplication3() {
 		String msg = "Test view all applications";
 		
-		hs.createApplication(std1, 1, sc);
+		hs.createApplication(std1, 1, sc1);
 		Date expectedDate1 = new Date();
-		hs.createApplication(std2, 1, sc);
+		hs.createApplication(std2, 1, sc1);
 		Date expectedDate2 = new Date();
 		String expectedOutput = "=================== Application ==================\r\n" + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n" + expectedDate2 + "\tS00002\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t0\n\r\n" + "==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -167,7 +184,7 @@ class testHallSystem {
 		String msg = "Test find application status after process applcation";
 		
 		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Reject list\r\n==================================================";
-		hs.createApplication(std1, 1, sc);
+		hs.createApplication(std1, 1, sc1);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std1);
@@ -179,7 +196,7 @@ class testHallSystem {
 		String msg = "Test find application status after process applcation";
 		
 		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 1\r\n==================================================";
-		hs.createApplication(std2, 1, sc);
+		hs.createApplication(std2, 1, sc1);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std2);
@@ -191,7 +208,7 @@ class testHallSystem {
 		String msg = "Test find application status after process applcation";
 		
 		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 2\r\n==================================================";
-		hs.createApplication(std3, 2, sc);
+		hs.createApplication(std3, 2, sc1);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewSpecificResult(std3);
@@ -199,7 +216,7 @@ class testHallSystem {
 	}
 	
 	@Test
-	void testChangeHallSetting1() {
+	void testChangeHallSetting() {
 		String msg = "Test changing hall weight setting";
 		
 		int[] expectedArray = {1,2,3,4};
@@ -230,6 +247,113 @@ class testHallSystem {
 		assertEquals(expectedHallNumber,actualHallNumber,msg);
 		assertEquals(expectedCapacity,actualCapacity,msg);
 		assertTrue(Arrays.equals(expectedArray,actualArray),msg);
+	}
+	
+	@Test 
+	void testRunProcess1() {
+		String msg = "Test 3 non-local application apply same hall. 1 of the application will go waiting list and then admit to other hall";
+		
+		hs.createApplication(std2, 1, sc1);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std4, 1, sc2);
+		Date expectedDate2 = new Date();
+		hs.createApplication(std5, 1, sc3);
+		Date expectedDate3 = new Date();
+		hs.processApplication();
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 + "\tS00002\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate3 + "\tS00005\tfalse\tYear 1\tHall 1\t5\t10\t2\t10\t27\nHall 2\nAdmitted        " + expectedDate2 + "\tS00004\tfalse\tYear 2\tHall 1\t7\t4\t4\t5\t20\nHall 3\n\nWaiting List is empty \n\nReject List is empty \n\r\n==================================================";
+		
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test 
+	void testRunProcess2() {
+		String msg = "Test 2 non-local application and 1 local application apply same hall. The local application will go to rejected list";
+		
+		hs.createApplication(std2, 1, sc1);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std3, 1, sc2);
+		Date expectedDate2 = new Date();
+		hs.createApplication(std5, 1, sc3);
+		Date expectedDate3 = new Date();
+		hs.processApplication();
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 + "\tS00002\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate3 + "\tS00005\tfalse\tYear 1\tHall 1\t5\t10\t2\t10\t27\nHall 2\nHall 3\n\nWaiting List is empty \n\nReject List     " + expectedDate2 + "\tS00003\ttrue\tYear 1\tHall 1\t7\t4\t4\t5\t20\n\r\n==================================================";
+		
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test 
+	void testRunProcess3() {
+		String msg = "Test 3 non-local application and 1 local application apply same hall. 1 of the non-local application and the local application will go to rejected list";
+		
+		hs.createApplication(std2, 1, sc1);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std3, 1, sc2);
+		Date expectedDate2 = new Date();
+		hs.createApplication(std5, 1, sc3);
+		Date expectedDate3 = new Date();
+		hs.createApplication(std1, 1, sc1);
+		Date expectedDate4 = new Date();
+		hs.processApplication();
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 + "\tS00002\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate3 + "\tS00005\tfalse\tYear 1\tHall 1\t5\t10\t2\t10\t27\nHall 2\nHall 3\n\nWaiting List is empty \n\nReject List     " + expectedDate4 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t37\nReject List     " + expectedDate2 + "\tS00003\ttrue\tYear 1\tHall 1\t7\t4\t4\t5\t20\n\r\n==================================================";
+		
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test 
+	void testRunProcess4() {
+		String msg = "Test 3 local application apply same hall. The local application which hava the lowest score will go to rejected list";
+		
+		hs.createApplication(std3, 1, sc1);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std6, 1, sc2);
+		Date expectedDate2 = new Date();
+		hs.createApplication(std7, 1, sc3);
+		Date expectedDate3 = new Date();
+		hs.processApplication();
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 +"\tS00003\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate3 + "\tS00007\ttrue\tYear 4\tHall 1\t5\t10\t2\t10\t27\nHall 2\nHall 3\n\nWaiting List is empty \n\nReject List     " + expectedDate2 + "\tS00006\ttrue\tYear 2\tHall 1\t7\t4\t4\t5\t20\n\r\n==================================================";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test 
+	void testRunProcess5() {
+		String msg = "Test 3 local application apply different hall. All application can admit to their perference hall";
+		
+		hs.createApplication(std3, 1, sc1);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std6, 2, sc2);
+		Date expectedDate2 = new Date();
+		hs.createApplication(std7, 3, sc3);
+		Date expectedDate3 = new Date();
+		hs.processApplication();
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 +"\tS00003\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t37\nHall 2\nAdmitted        " + expectedDate2 + "\tS00006\ttrue\tYear 2\tHall 2\t7\t4\t4\t5\t0\nHall 3\nAdmitted        " + expectedDate3 + "\tS00007\ttrue\tYear 4\tHall 3\t5\t10\t2\t10\t0\n\nWaiting List is empty \n\nReject List is empty \n\r\n==================================================";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test 
+	void testRunProcess6() {
+		String msg = "Test 3 local application apply different hall. All application can admit to their perference hall";
+		
+		hs.createApplication(std3, 1, sc1);
+		Date expectedDate1 = new Date();
+		hs.createApplication(std6, 2, sc2);
+		Date expectedDate2 = new Date();
+		hs.createApplication(std7, 3, sc3);
+		Date expectedDate3 = new Date();
+		hs.processApplication();
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 +"\tS00003\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t37\nHall 2\nAdmitted        " + expectedDate2 + "\tS00006\ttrue\tYear 2\tHall 2\t7\t4\t4\t5\t0\nHall 3\nAdmitted        " + expectedDate3 + "\tS00007\ttrue\tYear 4\tHall 3\t5\t10\t2\t10\t0\n\nWaiting List is empty \n\nReject List is empty \n\r\n==================================================";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
 	
 }
