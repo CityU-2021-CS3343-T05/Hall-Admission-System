@@ -85,6 +85,7 @@ public class Student implements Account {
 				ScoreComponent sc = new ScoreComponent(academicType, academicScore, leaderTime, ecaHr, location);
 
 				hS.createApplication(this, pHall, sc);
+				Display.runDisplayLine("Application Created");
 				break;
 			case "2":
 				String remove = Display.runDisplayDetails("Are you sure to delete application (y/n)");
