@@ -17,7 +17,7 @@ public class LoginPortal {
 			while (in.hasNextLine()) {
 				String inLine = in.nextLine();
 				String[] inLineContent = inLine.split(",");
-				String type, sid, name, charIsLocal, userName, userPwd;
+				String type, sid, charIsLocal, userName, userPwd;
 				int year;
 				boolean isLocal = true;
 				type = inLineContent[0];

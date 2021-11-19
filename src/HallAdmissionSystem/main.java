@@ -78,18 +78,27 @@ public class main {
 //		
 //		System.out.println("> Result");
 //		hS.viewResult();
-
+		boolean isEnd = false;
+		String cmdString;
 		HallSystem hS = HallSystem.getInstance();
 		Display.createScanner();
-		while(true) {
+		
+		while(!isEnd) {
 			hS.runSystem();
-			
-			String cmdString = Display.runDisplay("If you want to change Account", "Y/N", true);
 
-			if(cmdString.equals("N")) {
-				break;
+			while(true) {
+				cmdString = Display.runDisplay("If you want to change Account", "Y/N", true);
+				cmdString = cmdString.toUpperCase();
+				
+				if(cmdString.equals("N")) {
+					isEnd = true;
+					break;
+				}else if(cmdString.equals("Y"))
+					break;
+				Display.runDisplayLine("Wrong Command, Please enter Y/N!");
 			}
 		}
+		Display.runDisplayLine("System End");
 		Display.closeScanner();
 	}
 

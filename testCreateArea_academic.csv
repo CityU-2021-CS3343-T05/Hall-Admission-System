@@ -1,3 +1,0 @@
-"DSE","5**",false,"T","Test input type is DSE"
-"GPA","4.3",false,"F","Test input type is GPA"
-"Other String",,true,,"Test input type is not DSE or GPA"
