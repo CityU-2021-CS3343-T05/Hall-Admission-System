@@ -361,7 +361,7 @@ class testHallSystem {
 		hs.createApplication(std11, 1, sc1);
 		Date expectedDate7 = new Date();
 		hs.processApplication();
-		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 +"\tS00003\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t37\nHall 2\nAdmitted        " + expectedDate2 + "\tS00006\ttrue\tYear 2\tHall 2\t7\t4\t4\t5\t0\nHall 3\nAdmitted        " + expectedDate3 + "\tS00007\ttrue\tYear 4\tHall 3\t5\t10\t2\t10\t0\n\nWaiting List is empty \n\nReject List is empty \n\r\n==================================================";
+		String expectedOutput = "=================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate1 + "\tS00002\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate7 + "\tS00011\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nHall 2\nAdmitted        " + expectedDate6 + "\tS00010\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate3 + "\tS00005\tfalse\tYear 1\tHall 1\t10\t10\t10\t7\t37\nHall 3\nAdmitted        " + expectedDate2 + "\tS00004\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\nAdmitted        " + expectedDate4 + "\tS00008\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\n\nWaiting List    " + expectedDate5 + "\tS00009\tfalse\tYear 2\tHall 1\t10\t10\t10\t7\t37\n\nReject List is empty \n\r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewResult();
 		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
