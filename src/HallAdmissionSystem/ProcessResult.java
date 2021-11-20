@@ -98,7 +98,7 @@ public class ProcessResult {
 	public String findInAdmit(Application target) {
 		for (Application application : admittedList) {
 			if(application.equals(target)) {
-				return "Admited to " + this.hall;
+				return "Admitted to " + this.hall;
 			}
 		}
 		return null;

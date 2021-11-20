@@ -199,7 +199,7 @@ class testHallSystem {
 	void testViewSpecificResult4() {
 		String msg = "Test find application status after process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 1\r\n==================================================";
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admitted to Hall 1\r\n==================================================";
 		hs.createApplication(std2, 1, sc1);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -211,7 +211,7 @@ class testHallSystem {
 	void testViewSpecificResult5() {
 		String msg = "Test find application status after process applcation";
 		
-		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admited to Hall 2\r\n==================================================";
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: Admitted to Hall 2\r\n==================================================";
 		hs.createApplication(std3, 2, sc1);
 		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));

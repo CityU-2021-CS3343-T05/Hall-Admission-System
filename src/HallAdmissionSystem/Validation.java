@@ -3,10 +3,10 @@ package HallAdmissionSystem;
 import java.util.ArrayList;
 
 public class Validation {
-	public static int getHallInput() {
+	public static int getHallInput(String title) {
 		String input = null;
 		int output = 0;
-		input = Display.runDisplayDetails("Preferenced Hall");
+		input = Display.runDisplayDetails(title);
 		while(!validationHall(input)) {
 			input = Display.runDisplayDetails("Not existing hall, please enter again!");
 		}

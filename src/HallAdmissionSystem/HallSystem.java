@@ -82,7 +82,7 @@ public class HallSystem implements AdministratorFunction, StudentFunction {
 	public void viewHallList() {
 		String out = "";
 		for (Hall hall : allHallListing) {
-			out += hall;
+			out += hall + " ";
 		}
 		
 		Display.runDisplay("Hall Listing", out, false);

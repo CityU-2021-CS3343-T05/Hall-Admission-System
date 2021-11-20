@@ -57,7 +57,7 @@ class testValidation {
 		expectedOutput = expectedOutput.replace("|", "\r\n");
 		provideInput(input);
 		Display.createScanner();
-		int actualResult = Validation.getHallInput();
+		int actualResult = Validation.getHallInput("Preferenced Hall");
 		Display.closeScanner();
 		assertEquals(expectedResult,actualResult,msg);
 		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);

@@ -50,7 +50,7 @@ public class Administrator implements Account {
 
 			switch (input) {
 			case 1:
-				int hName = Validation.getIntegerValue("New Hall Number");
+				int hName = Validation.getNewHallInput();
 //				Integer.parseInt(Display.runDisplayDetails("Hall Name"));
 				int numOfAcceptance = Validation.getIntegerValue("Number of Acceptance");
 //						Integer.parseInt(Display.runDisplayDetails("Number of Acceptance"));
@@ -66,7 +66,7 @@ public class Administrator implements Account {
 				hS.createNewHall(hName, numOfAcceptance, academic, leadership, eca, location);
 				break;
 			case 2:
-				hName = Validation.getIntegerValue("Hall Number");
+				hName = Validation.getHallInput("Hall Number");
 //				Integer.parseInt(Display.runDisplayDetails("Hall Name"));
 				academic = Validation.getIntegerValue("New Academic Weighting");
 //						Integer.parseInt(Display.runDisplayDetails("Academic Weighting"));

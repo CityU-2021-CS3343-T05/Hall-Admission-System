@@ -68,7 +68,7 @@ public class Student implements Account {
 
 			switch (input) {
 			case "1":
-				int pHall = Validation.getHallInput();
+				int pHall = Validation.getHallInput("Preferenced Hall");
 //				Integer.parseInt(Display.runDisplayDetails("Preferenced Hall"));
 
 				String academicType = Validation.getAcademicType(); 
