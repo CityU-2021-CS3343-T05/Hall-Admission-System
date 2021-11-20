@@ -97,7 +97,7 @@ class testHallSystem {
 	void testViewHallList(){
 		String msg = "Test view all hall";
 		
-		String expectedOutput = "================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================";
+		String expectedOutput = "================== Hall Listing ==================\r\nHall 1 Hall 2 Hall 3 \r\n==================================================";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		hs.viewHallList();
 		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);

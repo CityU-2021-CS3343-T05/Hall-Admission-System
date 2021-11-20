@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.jupiter.api.AfterAll;
@@ -18,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import HallAdmissionSystem.Administrator;
 import HallAdmissionSystem.Display;
 import HallAdmissionSystem.HallSystem;
+import HallAdmissionSystem.ProcessResult;
 import HallAdmissionSystem.ScoreComponent;
 import HallAdmissionSystem.Student;
 
@@ -52,6 +54,10 @@ class testAdministrator {
 		instance.setAccessible(true);
 		instance.set(null, null);
 		
+		Field rejectedList = ProcessResult.class.getDeclaredField("rejectedList");
+		rejectedList.setAccessible(true);
+		rejectedList.set(null, new ArrayList<>());
+		
 		hs = HallSystem.getInstance();
 		
 		admin = new Administrator("CityU","Passw0rd");
@@ -73,7 +79,7 @@ class testAdministrator {
 		
 		String msg = "Test Create Hall";
 		String input = "1\n4\n4\n1\n1\n1\n1\n8";
-		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> New Hall Number\r\n> Number of Acceptance\r\n> Academic Weighting\r\n> Leadership Weighting\r\n> Eca Weighting\r\n> Location Weighting\r\n> ================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> New Hall Number\r\n> Number of Acceptance\r\n> Academic Weighting\r\n> Leadership Weighting\r\n> Eca Weighting\r\n> Location Weighting\r\n> Hall Created\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
@@ -84,9 +90,9 @@ class testAdministrator {
 	
 	@Test
 	void testmainManual2() {
-		String msg = "Test Create Hall";
+		String msg = "Test Change Hall Setting";
 		String input = "2\n3\n2\n2\n1\n1\n1\n8";
-		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Hall Number\r\n> New Academic Weighting\r\n> New Leadership Weighting\r\n> New Eca Weighting\r\n> New Location Weighting\r\n> New Number of Acceptance\r\n> ================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> Hall Number\r\n> New Academic Weighting\r\n> New Leadership Weighting\r\n> New Eca Weighting\r\n> New Location Weighting\r\n> New Number of Acceptance\r\n> Hall 3 setting changed\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
@@ -99,7 +105,7 @@ class testAdministrator {
 	void testmainManual3() {
 		String msg = "Test hall listing";
 		String input = "3\n8";
-		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Hall Listing ==================\r\nHall 1Hall 2Hall 3\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> ================== Hall Listing ==================\r\nHall 1 Hall 2 Hall 3 \r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
@@ -112,7 +118,8 @@ class testAdministrator {
 	void testmainManual4a() {
 		String msg = "Test all application";
 		String input = "4\n8";
-		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Application ==================\r\n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== All Result ===================\r\nHall 1\nHall 2\nHall 3\n\nWaiting List is empty \n\nReject List is empty \n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		hs.processApplication();
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
@@ -127,7 +134,8 @@ class testAdministrator {
 		String input = "4\n8";
 		hs.createApplication(std1, 1, sc);
 		Date expectedDate = new Date();
-		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Application ==================\r\n" + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		hs.processApplication();
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== All Result ===================\r\nHall 1\nHall 2\nHall 3\n\nWaiting List is empty \n\nReject List     " + expectedDate + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t37\n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();
@@ -144,7 +152,8 @@ class testAdministrator {
 		Date expectedDate1 = new Date();
 		hs.createApplication(std2, 1, sc);
 		Date expectedDate2 = new Date();
-		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== Application ==================\r\n" + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t0\n" + expectedDate1 + "\tS00002\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t0\n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
+		hs.processApplication();
+		String expectedOutput = "================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n> =================== All Result ===================\r\nHall 1\nAdmitted        " + expectedDate2 + "\tS00002\ttrue\tYear 1\tHall 1\t10\t10\t10\t7\t37\nHall 2\nHall 3\n\nWaiting List is empty \n\nReject List     " + expectedDate1 + "\tS00001\tfalse\tYear 4\tHall 1\t10\t10\t10\t7\t37\n\r\n==================================================\r\n================== Admin Manuel ==================\r\nWelcome, CityU\nSelect the functions:\n[1] Create Hall\n[2] Change Hall Setting\n[3] View Hall Listing\n[4] View Applications\n[5] Process Applications\n[6] Change Username\n[7] Change Password\n[8] Logout\n\r\n==================================================\r\n>";
 		System.setOut(new PrintStream(outputStreamCaptor));
 		provideInput(input);
 		Display.createScanner();

@@ -40,7 +40,7 @@ public class Administrator implements Account {
 			content += "[1] Create Hall\n";
 			content += "[2] Change Hall Setting\n";			
 			content += "[3] View Hall Listing\n";
-			content += "[4] View Applications\n";
+			content += "[4] View All Results\n";
 			content += "[5] Process Applications\n";
 			content += "[6] Change Username\n";
 			content += "[7] Change Password\n";
@@ -64,6 +64,7 @@ public class Administrator implements Account {
 //						Integer.parseInt(Display.runDisplayDetails("Location Weighting"));
 				
 				hS.createNewHall(hName, numOfAcceptance, academic, leadership, eca, location);
+				Display.runDisplayLine("Hall Created");
 				break;
 			case 2:
 				hName = Validation.getHallInput("Hall Number");
@@ -78,12 +79,13 @@ public class Administrator implements Account {
 //				Integer.parseInt(Display.runDisplayDetails("Location Weighting"));
 				numOfAcceptance = Validation.getIntegerValue("New Number of Acceptance");
 				hS.changeHallSetting(hName,numOfAcceptance, academic, leadership, eca, location);
+				Display.runDisplayLine("Hall " + hName+" setting changed");
 				break;
 			case 3:
 				hS.viewHallList();
 				break;
 			case 4:
-				hS.viewAllApplication();
+				hS.viewResult();
 				break;
 			case 5:
 				hS.processApplication();
