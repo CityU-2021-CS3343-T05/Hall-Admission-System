@@ -46,10 +46,10 @@ public class Administrator implements Account {
 			content += "[7] Change Password\n";
 			content += "[8] Logout\n";
 
-			int input = Integer.parseInt(Display.runDisplay("Admin Manuel", content, true));
+			String input = Display.runDisplay("Admin Manual", content, true);
 
 			switch (input) {
-			case 1:
+			case "1":
 				int hName = Validation.getNewHallInput();
 //				Integer.parseInt(Display.runDisplayDetails("Hall Name"));
 				int numOfAcceptance = Validation.getIntegerValue("Number of Acceptance");
@@ -66,7 +66,7 @@ public class Administrator implements Account {
 				hS.createNewHall(hName, numOfAcceptance, academic, leadership, eca, location);
 				Display.runDisplayLine("Hall Created");
 				break;
-			case 2:
+			case "2":
 				hName = Validation.getHallInput("Hall Number");
 //				Integer.parseInt(Display.runDisplayDetails("Hall Name"));
 				academic = Validation.getIntegerValue("New Academic Weighting");
@@ -81,23 +81,23 @@ public class Administrator implements Account {
 				hS.changeHallSetting(hName,numOfAcceptance, academic, leadership, eca, location);
 				Display.runDisplayLine("Hall " + hName+" setting changed");
 				break;
-			case 3:
+			case "3":
 				hS.viewHallList();
 				break;
-			case 4:
+			case "4":
 				hS.viewResult();
 				break;
-			case 5:
+			case "5":
 				hS.processApplication();
 				Display.runTitleLine("Done processing");
 				break;
-			case 6:
+			case "6":
 				setUserName(Display.runDisplay("Change Username", "Input the new username:", true));
 				break;
-			case 7:
+			case "7":
 				setUserPwd(Display.runDisplay("Change Password", "Input the new password:", true));
 				break;
-			case 8:
+			case "8":
 				login = false;
 				break;
 			default:
