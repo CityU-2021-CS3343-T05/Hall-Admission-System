@@ -3,6 +3,8 @@ package HallAdmissionSystem;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import javax.swing.text.AbstractDocument.Content;
+
 public class HallSystem implements AdministratorFunction, StudentFunction {
 
 	private static HallSystem instance = new HallSystem();
@@ -58,9 +60,16 @@ public class HallSystem implements AdministratorFunction, StudentFunction {
 
 	@Override
 	public void viewResult() {
-		String content = processApplication.getFinalResult();
-		
-		Display.runDisplay("All Result", content, false);
+		if(processApplication != null){
+			String content = processApplication.getFinalResult();
+			
+			Display.runDisplay("All Result", content, false);
+		}
+		else {
+			String content = "Waiting for processing to finish.";
+			Display.runDisplay("All Result",content , false);
+			
+		}
 	}
 	
 	public String findApplicationStatus(Application target) {
