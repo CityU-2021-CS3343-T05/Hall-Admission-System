@@ -168,5 +168,31 @@ class testValidation {
 		
 		assertEquals(expectedOutput,actualOutput,msg);
 	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetNewHallInput.csv")
+	void testGetNewHallInput(String input,int expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		int actualResult = Validation.getNewHallInput();
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/testResource/testGetIntegerValue.csv")
+	void testGetIntegerValue(String input,int expectedResult, String expectedOutput, String msg) {
+		input = input.replace("|", "\r\n");
+		expectedOutput = expectedOutput.replace("|", "\r\n");
+		provideInput(input);
+		Display.createScanner();
+		int actualResult = Validation.getIntegerValue("Testing");
+		Display.closeScanner();
+		assertEquals(expectedResult,actualResult,msg);
+		assertEquals(expectedOutput,outputStreamCaptor.toString(),msg);
+	}
 
 }
