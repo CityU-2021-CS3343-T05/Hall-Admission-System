@@ -220,6 +220,17 @@ class testHallSystem {
 	}
 	
 	@Test
+	void testViewSpecificResult6() {
+		String msg = "Test find application status after process applcation";
+		
+		String expectedOutput = "================= Detailed Result ================\r\nCurrent Appication Status: null\r\n==================================================";
+		hs.processApplication();
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewSpecificResult(std1);
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+	
+	@Test
 	void testChangeHallSetting() {
 		String msg = "Test changing hall weight setting";
 		
@@ -366,5 +377,16 @@ class testHallSystem {
 		hs.viewResult();
 		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
 	}
+	
+	@Test
+	void testViewResult() {
+		String msg = "Test view result before process application";
+		
+		String expectedOutput = "=================== All Result ===================\r\nWaiting for processing to finish.\r\n==================================================";
+		System.setOut(new PrintStream(outputStreamCaptor));
+		hs.viewResult();
+		assertEquals(expectedOutput,outputStreamCaptor.toString().trim(),msg);
+	}
+
 	
 }
