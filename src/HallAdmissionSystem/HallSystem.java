@@ -119,7 +119,7 @@ public class HallSystem implements AdministratorFunction, StudentFunction {
 	public void changeHallSetting(int hall,int newCapacity, WeightComponent newWeightComponent) {
 		Hall h = getHall(hall);
 		h.setNumberofAcceptance(newCapacity);
-		h.setNewHallWeightings(null);
+		h.setNewHallWeightings(newWeightComponent);
 	}
 
 	@Override

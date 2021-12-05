@@ -1,5 +1,7 @@
 package HallAdmissionSystem;
 
+import java.io.PrintStream;
+
 public class Area_DSE extends Area_Academic {
 
 	public Area_DSE(String rawScore) {
@@ -13,7 +15,13 @@ public class Area_DSE extends Area_Academic {
 			return 7;
 		}
 		else {
-			return Integer.parseInt(rawData);
+			try {
+				return Integer.parseInt(rawData);	
+			}catch (Exception e) {
+				return 0;
+			}
+          
+			
 		}
 		
 		

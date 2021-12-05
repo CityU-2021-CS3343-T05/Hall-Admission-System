@@ -18,7 +18,7 @@ public class Validation {
 		String input = null;
 		int output = 0;
 		input = Display.runDisplayDetails("New Hall Number");
-		while(validationHall(input)) {
+		while(!checkInteger(input)||validationHall(input)) {
 			input = Display.runDisplayDetails("Hall number already existing, please enter again!");
 		}
 		output = Integer.parseInt(input);

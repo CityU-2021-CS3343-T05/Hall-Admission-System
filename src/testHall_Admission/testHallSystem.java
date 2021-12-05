@@ -26,6 +26,7 @@ import HallAdmissionSystem.HallSystem;
 import HallAdmissionSystem.ProcessResult;
 import HallAdmissionSystem.ScoreComponent;
 import HallAdmissionSystem.Student;
+import HallAdmissionSystem.WeightComponent;
 
 class testHallSystem {
 	
@@ -236,7 +237,7 @@ class testHallSystem {
 		
 		int[] expectedArray = {1,2,3,4};
 		int expectedCapacity = 10;
-		hs.changeHallSetting(1, 10, 1, 2, 3, 4);
+		hs.changeHallSetting(1, 10,new WeightComponent(1, 2, 3, 4));
 		Hall actualResult = hs.getHall(1);
 		int[] actualArray = actualResult.getHallWeightings();
 		int actualCapacity = actualResult.getNumberofAcceptance();
@@ -251,7 +252,7 @@ class testHallSystem {
 		int expectedHallNumber = 4;
 		int expectedCapacity = 10;
 		int[] expectedArray = {1,1,1,1};
-		hs.createNewHall(4, 10, 1, 1, 1, 1);
+		hs.createNewHall(4, 10,new WeightComponent(1, 1, 1, 1));
 		Hall actualResult = hs.getHall(4);
 		int actualHallNumber = actualResult.getHallNumber();
 		int actualCapacity = actualResult.getNumberofAcceptance();

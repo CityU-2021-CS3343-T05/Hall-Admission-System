@@ -1,0 +1,6 @@
+1,1,"Testing|> ",Test enter integer
+1.1|1,1,"Testing|> Not Valid input again|> ",Test enter a number with 1 dp
+-1|1,1,"Testing|> Not Valid input again|> ",Test enter a negative number
+test|1,1,"Testing|> Not Valid input again|> ",Test enter a string
+|1,1,"Testing|> Not Valid input again|> ",Test enter a blank input
+%|1,1,"Testing|> Not Valid input again|> ",Test enter a symbol
