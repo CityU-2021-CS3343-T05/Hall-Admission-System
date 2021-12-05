@@ -1,0 +1,10 @@
+1,true,Test enter existing hall
+2,true,Test enter existing hall
+3,true,Test enter existing hall
+4,false,Test enter not existing hall
+,false,Test enter null value
+test,false,Test enter string
+%,false,Test enter symbol
+0.1,false,Test enter integer with 1 dp
+-1,false,Test enter negative number
+1**,false,Test enter integer with symbol

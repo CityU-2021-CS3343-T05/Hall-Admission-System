@@ -1,0 +1,8 @@
+1,1,"Preferenced Hall|> ",Test enter existing hall
+4|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",Test enter not existing hall
+|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",Test enter null input
+test|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",Test enter other string
+%|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",test enter symbol
+0.1|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",test enter decimal number
+-1|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",test enter negative number
+1**|1,1,"Preferenced Hall|> Not existing hall, please enter again!|> ",test enter existing hall number with symbol
