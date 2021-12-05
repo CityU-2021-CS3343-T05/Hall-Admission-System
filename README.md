@@ -47,7 +47,7 @@ Readme.md**
 
 # 3.     Installation
 Prerequisites:
-Our project requires Java version 14 to compile and run
+Our project requires Java version 11 to compile and run
 Junit5 is installed as a classpath to be able to test Java test files. Put the testResource file in the bin folder for some parameterized tests
 Getting Started:
 To check the installed Java version, use the command:
