@@ -35,23 +35,7 @@ This version contains refactored code. It works in the same way as Release 2 and
 Feature:
 This version contains some of the changes mentioned in the Refactoring Report, including the parameter changes in the HallSystem.changeHall() and several other changes.
 
-
-2.2 	   Release Date
-
-Version
-Release Date
-Release 1.0
-10th October 2021
-Release 1.1
-28th October 2021
-Release 1.2
-23rd November 2021
-Release 2.0
-26th November 2021
-Release 3.0
-4th December 2021
-
-
+```bash
 **Latest version includes:
 Java Source folder
 Java Test case folder
@@ -59,6 +43,7 @@ Database.csv file
 Java .jar file
 runProgramme.bat
 Readme.md**
+```
 
 # 3.     Installation
 Prerequisites:
@@ -106,10 +91,6 @@ Running function “4”, it basically shows the allocation of all applications.
 
 
 By entering “Student” in the panel, the user will be asked to enter the login credentials for the account. The credentials for the Student account can be seen in the picture. After that, it will list all the functions that the Student can use in our Program. 
-
-
-
-
 
 
 3.1.1     Create Application Function
