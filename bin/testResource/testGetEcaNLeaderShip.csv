@@ -1,0 +1,13 @@
+7,7,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+6,6,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+5,5,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+4,4,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+3,3,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+2,2,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+1,1,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+0,0,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+210,210,Leadership Times,"Leadership Times|> ",Test enter correct non-negative integer
+160,160,ECA Hours,"ECA Hours|> ",Test enter correct non-negative integer
+110,110,ECA Hours,"ECA Hours|> ",Test enter correct non-negative integer
+60,60,ECA Hours,"ECA Hours|> ",Test enter correct non-negative integer
+abc|7,7,Leadership Times,"Leadership Times|> Wrong input,please enter non-negative integer|> ",Test invalid input after with correct non-negative integer

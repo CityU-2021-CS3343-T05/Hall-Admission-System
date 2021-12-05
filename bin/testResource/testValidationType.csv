@@ -1,0 +1,7 @@
+DSE,true,Test correct academic type
+GPA,true,test correct academic type
+dse,false,Test correct academic type with lower case
+gpa,false,Test correct academic type with lower case
+DSEandGPA,false,Test incorrect academic type
+123,false,Test incorrect academic type
+,false,Test empty input

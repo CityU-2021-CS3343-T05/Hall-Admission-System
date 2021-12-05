@@ -1,0 +1,57 @@
+5**,DSE,true,Test correct DSE Score
+5*,DSE,true,Test correct DSE Score
+5,DSE,true,Test correct DSE Score
+4,DSE,true,Test correct DSE Score
+3,DSE,true,Test correct DSE Score
+2,DSE,true,Test correct DSE Score
+1,DSE,true,Test correct DSE Score
+U,DSE,true,Test correct DSE Score
+4.2,GPA,true,Test correct GPA Score
+4.1,GPA,true,Test correct GPA Score
+4,GPA,true,Test correct GPA Score
+3.9,GPA,true,Test correct GPA Score
+3.8,GPA,true,Test correct GPA Score
+3.7,GPA,true,Test correct GPA Score
+3.6,GPA,true,Test correct GPA Score
+3.5,GPA,true,Test correct GPA Score
+3.4,GPA,true,Test correct GPA Score
+3.3,GPA,true,Test correct GPA Score
+3.2,GPA,true,Test correct GPA Score
+3.1,GPA,true,Test correct GPA Score
+3,GPA,true,Test correct GPA Score
+2.9,GPA,true,Test correct GPA Score
+2.8,GPA,true,Test correct GPA Score
+2.7,GPA,true,Test correct GPA Score
+2.6,GPA,true,Test correct GPA Score
+2.5,GPA,true,Test correct GPA Score
+2.4,GPA,true,Test correct GPA Score
+2.3,GPA,true,Test correct GPA Score
+2.2,GPA,true,Test correct GPA Score
+2.1,GPA,true,Test correct GPA Score
+2,GPA,true,Test correct GPA Score
+1.9,GPA,true,Test correct GPA Score
+1.8,GPA,true,Test correct GPA Score
+1.7,GPA,true,Test correct GPA Score
+1.6,GPA,true,Test correct GPA Score
+1.5,GPA,true,Test correct GPA Score
+1.4,GPA,true,Test correct GPA Score
+1.3,GPA,true,Test correct GPA Score
+1.2,GPA,true,Test correct GPA Score
+1.1,GPA,true,Test correct GPA Score
+1,GPA,true,Test correct GPA Score
+0.9,GPA,true,Test correct GPA Score
+0.8,GPA,true,Test correct GPA Score
+0.7,GPA,true,Test correct GPA Score
+0.6,GPA,true,Test correct GPA Score
+0.5,GPA,true,Test correct GPA Score
+0.4,GPA,true,Test correct GPA Score
+0.3,GPA,true,Test correct GPA Score
+0.2,GPA,true,Test correct GPA Score
+0.1,GPA,true,Test correct GPA Score
+0,GPA,true,Test type validation
+5***,DSE,false,Test invalid input
+4.4,GPA,false,Test out of range input
+-1,DSE,false,Test negative input
+-1,GPA,false,Test negative input
+5**,GPA,false,Test wrong type matching
+4.3,DSE,false,Test wrong type matching

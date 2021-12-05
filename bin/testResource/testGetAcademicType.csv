@@ -1,0 +1,10 @@
+DSE,DSE,"Academic Type|> ",Test correct academic type
+GPA,GPA,"Academic Type|> ",Test correct academic type
+dse,DSE,"Academic Type|> ",Test correct academic type
+Dse,DSE,"Academic Type|> ",Test correct academic type
+dSe,DSE,"Academic Type|> ",Test correct academic type
+dsE,DSE,"Academic Type|> ",Test correct academic type
+DSe,DSE,"Academic Type|> ",Test correct academic type
+DsE,DSE,"Academic Type|> ",Test correct academic type
+dSE,DSE,"Academic Type|> ",Test correct academic type
+other string|Dse,DSE,"Academic Type|> Wrong input, please enter Dse or GPA!|> ",Test correct academic type

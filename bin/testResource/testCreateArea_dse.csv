@@ -1,0 +1,8 @@
+5**,10,Test convert 5** to score
+5*,7,Test convert 5* to score
+5,5,Test convert 5 to score
+4,4,Test convert 4 to score
+3,3,Test convert 3 to score
+2,2,Test convert 2 to score
+1,1,Test convert 1 to score
+U,0,Test convert U to score

@@ -1,0 +1,8 @@
+1.2,TRUE,Test checking positive double with 1 decimal number1.2 
+0,TRUE,Test checking inputing 0
+,false,Test checking null value 
+one.two,false,test checking string value
+-1.2,false,test chekcing negative double
+&&,false,test checking symbol input
+10.5-9.2,false,test chekcing formula
+3/4,false,test checking fraction
