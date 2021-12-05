@@ -43,5 +43,11 @@ Important Function Instructions:
 username: CityU
 password: Passw0rd
 ```
+
+```python
+username: William
+password: Passw0rd
+```
+
 # License
 City University of Hong Kong
