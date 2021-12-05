@@ -39,12 +39,13 @@ Important Function Instructions:
 
 **To run program run the runProgramme.bat file which uses the release_v_3.jar file.**
 ```python
-**Sample account**
+**Sample Admin Account**
 username: CityU
 password: Passw0rd
 ```
 
 ```python
+Sample Student Account
 username: William
 password: Passw0rd
 ```
