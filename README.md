@@ -1,8 +1,8 @@
-# 1.     Overview
+# 1. Overview
 Hall Admission System is our solution for allocating residence rooms for local and non-local students of the City University of Hong Kong. The current hall allocation is not transparent in the admission process and is more qualitative rather than quantitative. Our solution brings forth an effective way to process the quantitative value of student applications.
 
 
-# Introduction:
+# 2. Introduction:
 This version contains refactored code. It works in the same way as Release 2 and passes the unit testing, integrated testing and system testing.  
 Feature:
 This version contains some of the changes mentioned in the Refactoring Report, including the parameter changes in the HallSystem.changeHall() and several other changes.
@@ -21,7 +21,7 @@ runProgramme.bat
 Readme.md**
 ```
 
-# 3.     Installation
+# 3. Installation
 Prerequisites:
 Our project requires Java version 11 to compile and run
 Junit5 is installed as a classpath to be able to test Java test files. Put the testResource file in the bin folder for some parameterized tests
@@ -38,6 +38,10 @@ Login as desired, either as an Administrator or as a Student. (Student credentia
 Important Function Instructions:
 
 **To run program run the runProgramme.bat file which uses the release_v_3.jar file.**
-
+```python
+**Sample account**
+username: CityU
+password: Passw0rd
+```
 # License
 City University of Hong Kong
