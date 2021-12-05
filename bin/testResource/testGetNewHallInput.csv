@@ -1,0 +1,7 @@
+4,4,"New Hall Number|> ",Test enter not existing hall
+1|4,4,"New Hall Number|> Hall number already existing, please enter again!|> ",Test enter existing hall
+|4,4,"New Hall Number|> Hall number already existing, please enter again!|> ",Test enter null input
+test|4,4,"New Hall Number|> Hall number already existing, please enter again!|> ",Test enter other string
+%|4,4,"New Hall Number|> Hall number already existing, please enter again!|> ",test enter symbol
+0.1|4,4,"New Hall Number|> Hall number already existing, please enter again!|> ",test enter decimal number
+1**|4,4,"New Hall Number|> Hall number already existing, please enter again!|> ",test enter existing hall number with symbol
