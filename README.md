@@ -61,50 +61,7 @@ Run runProgramme.bat to open the program via command prompt
 Login as desired, either as an Administrator or as a Student. (Student credentials can be found in the database.csv file.)
 Important Function Instructions:
 
-3.1 	   Administrator
+**To run program run the runProgramme.bat file which uses the release_v_3.jar file.**
 
-To login as an Administrator, first enter “Admin” or “admin” in the prompt. This will prompt the user to input the Administrator’s credentials. The credentials for the admin account can be seen in the picture. After that, it will list all the functions that the Administrator can use in our Program. 
-
-
-3.1.1     Create Hall Function
-
-
-By entering “4” in the prompt, the Administrator can use the function of creating a hall. In our program, 3 halls have been set up in advance. Using this function, the user can work with several halls at the same time to facilitate hall allocations. The user can also directly change the input of the weighting distribution of the newly-built halls or change the allocation of existing halls.
-
-
-
-3.1.2     Process Applications Function and View All Results
-
-
-
-Entering “5” allows the Administrator to process applications. This takes all applications in the system to be processed according to the weighting for each hall. Right after running this function, we can immediately use the “4” View all Results function, which will display all the final results. As we can see, function “5” can be used to display all applications (in this case we created manually in the system) and process them afterwards.
-
-
-
-
-Running function “4”, it basically shows the allocation of all applications. Some applications will be forwarded to the waiting list or rejected list.
-
-
-
-3.1 	   Student
-
-
-
-By entering “Student” in the panel, the user will be asked to enter the login credentials for the account. The credentials for the Student account can be seen in the picture. After that, it will list all the functions that the Student can use in our Program. 
-
-
-3.1.1     Create Application Function
-
-
-Entering “1” basically prompts the system to let the Student create an application. After inputting, the user needs to fill in the credentials to create the application. This application is for the hall and will be sent directly to the “Residence Administrator”
-
-
-
-	
-
-3.1.2     View Result Function
-
-
-After completing the application, the applicant must wait for the Administrator to log in and process the applications in the system. After the processing is completed, the applicant can check the application status through the “5” command.
-
-
+# License
+City University of Hong Kong
