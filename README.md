@@ -1,27 +1,7 @@
-
-Content Page
-
-1.     Overview	3
-2.     Progress	3-5
-2.1     Public Release	3
-2.1.1      Release 1	3
-2.1.2     Release 2	4
-2.1.3     Release 3	4
-2.2     Release Date	5
-3.     Installation	5-11
-3.1     Administrator	6
-3.1.1      Create Hall Function	7
-3.1.2     Process Applications Function and View All Results	8
-3.1     Student	9
-3.1.1      Create Application Function	10
-3.1.2     View Result Function	11
-
-
-
-1.     Overview
+# 1.     Overview
 Hall Admission System is our solution for allocating residence rooms for local and non-local students of the City University of Hong Kong. The current hall allocation is not transparent in the admission process and is more qualitative rather than quantitative. Our solution brings forth an effective way to process the quantitative value of student applications.
 
-2.     Progress
+# 2.     Progress
 
 In order to track all program versions and development progress, GitHub is used to provide us with version control. 
 
@@ -80,7 +60,7 @@ Java .jar file
 runProgramme.bat
 Readme.md**
 
-3.     Installation
+# 3.     Installation
 Prerequisites:
 Our project requires Java version 14 to compile and run
 Junit5 is installed as a classpath to be able to test Java test files. Put the testResource file in the bin folder for some parameterized tests
