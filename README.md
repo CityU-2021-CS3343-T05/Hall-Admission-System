@@ -1,52 +1,4 @@
 
-
-
-
-
-
-         Group 5
-
-RELEASE SUMMARY
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          2021 - 2022	         CS3343 SOFTWARE ENGINEERING PRACTICE               
-
-
-Hall Admission System
-
-
-STUDENT NAME 
-STUDENT ID
- Ling Chi Erick AU
-56219096
-Mohammed AZIM
-55321806
-Man Huen Bliss CHAN
-56215405
-Chun Hei PANG
-56215546
-Chun Hay SHIK
-56206863
-Ting Chung SIU
-56214365
-
-
-
 Content Page
 
 1.     Overview	3
@@ -73,8 +25,6 @@ Hall Admission System is our solution for allocating residence rooms for local a
 
 In order to track all program versions and development progress, GitHub is used to provide us with version control. 
 
-The GitHub page is named:
-CityU-2021-CS3343-T05/Hall-Admission-System: CS3343 Group Project (github.com).
 
 2.1 	   Public Release
 
@@ -122,27 +72,31 @@ Release 3.0
 4th December 2021
 
 
-Latest version includes:
+**Latest version includes:
 Java Source folder
 Java Test case folder
 Database.csv file
 Java .jar file
 runProgramme.bat
-Readme.md
+Readme.md**
 
 3.     Installation
 Prerequisites:
 Our project requires Java version 14 to compile and run
 Junit5 is installed as a classpath to be able to test Java test files. Put the testResource file in the bin folder for some parameterized tests
 Getting Started:
-To check the installed Java version, use the command – “java -–version” at the Windows Command Prompt
+To check the installed Java version, use the command:
+
+```bash
+“java -–version” 
+```
+
+at the Windows Command Prompt
 Run runProgramme.bat to open the program via command prompt
 Login as desired, either as an Administrator or as a Student. (Student credentials can be found in the database.csv file.)
 Important Function Instructions:
 
 3.1 	   Administrator
-
-
 
 To login as an Administrator, first enter “Admin” or “admin” in the prompt. This will prompt the user to input the Administrator’s credentials. The credentials for the admin account can be seen in the picture. After that, it will list all the functions that the Administrator can use in our Program. 
 
